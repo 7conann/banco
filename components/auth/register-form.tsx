@@ -1,54 +1,78 @@
 "use client"
 
-import { CardDescription } from "@/components/ui/card"
-
-import { CardTitle } from "@/components/ui/card"
-
-import { CardHeader } from "@/components/ui/card"
-
-import Link from "next/link"
-
 import type React from "react"
-import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { CardContent } from "@/components/ui/card"
-import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { CheckCircle, Mail, Eye, EyeOff } from "lucide-react"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { useAuth } from "./auth-provider"
+import { Eye, EyeOff, Loader2, CheckCircle, Mail } from "lucide-react"
+import Link from "next/link"
 
-const RegisterForm: React.FC = () => {
-  const router = useRouter()
+export function RegisterForm() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    phone: "",
-    documentNumber: "",
-    accountType: "personal",
     password: "",
     confirmPassword: "",
+    phone: "",
+    documentNumber: "",
+    accountType: "personal" as "personal" | "business",
   })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [loading, setLoading] = useState(false) // Local loading state for form submission
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState(false)
+
+  const { signUp } = useAuth()
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!formData.fullName || !formData.email || !formData.password) {
+      setError("Por favor, preencha todos os campos obrigatórios")
+      return
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("As senhas não coincidem")
+      return
+    }
+
+    if (formData.password.length < 6) {
+      setError("A senha deve ter pelo menos 6 caracteres")
+      return
+    }
+
     setLoading(true)
     setError("")
 
     try {
-      // Simulate registration logic here
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      setSuccess(true)
-      setTimeout(() => {
-        router.push("/auth/login")
-      }, 3000)
+      const { error } = await signUp(formData.email, formData.password, formData.fullName)
+
+      if (error) {
+        console.error("Erro no registro:", error)
+
+        if (error.message?.includes("User already registered")) {
+          setError("Este e-mail já está cadastrado")
+        } else if (error.message?.includes("Password should be at least")) {
+          setError("A senha deve ter pelo menos 6 caracteres")
+        } else {
+          setError(error.message || "Erro ao criar conta. Tente novamente.")
+        }
+      } else {
+        setSuccess(true)
+        // Redirecionar após 3 segundos
+        setTimeout(() => {
+          router.push("/auth/login")
+        }, 3000)
+      }
     } catch (err) {
       console.error("Erro inesperado no registro:", err)
       setError("Erro inesperado. Tente novamente.")
@@ -230,7 +254,7 @@ const RegisterForm: React.FC = () => {
             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
             disabled={loading}
           >
-            {loading && <Eye className="mr-2 h-4 w-4 animate-spin" />}
+            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {loading ? "Criando conta..." : "Criar conta"}
           </Button>
 
@@ -245,5 +269,3 @@ const RegisterForm: React.FC = () => {
     </Card>
   )
 }
-
-export default RegisterForm
