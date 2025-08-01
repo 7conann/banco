@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-yellow-100 hero-pattern overflow-hidden">
+    <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-white">
       <div className="container px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">
@@ -32,15 +32,6 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-      </div>
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero-bg.png"
-          alt="Background"
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover opacity-20"
-        />
       </div>
     </section>
   )
