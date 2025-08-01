@@ -28,7 +28,7 @@ export function Header() {
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">Z</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">Zi Credit</span>
+            <span className="text-xl font-bold text-gray-900 leading-[1.74rem]">Zi Credit</span>
           </Link>
 
           {/* Desktop Navigation */}
