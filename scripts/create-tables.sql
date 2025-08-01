@@ -1,153 +1,172 @@
--- Reset the public schema completely
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 
--- Grant permissions to the authenticated role
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO anon;
 GRANT ALL ON SCHEMA public TO authenticated;
 GRANT ALL ON SCHEMA public TO service_role;
 
--- Create profiles table
-CREATE TABLE profiles (
-  id UUID REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
-  full_name VARCHAR(255),
-  phone VARCHAR(20),
-  document_number VARCHAR(20),
-  account_type VARCHAR(50) DEFAULT 'personal' CHECK (account_type IN ('personal', 'business')),
-  account_status VARCHAR(50) DEFAULT 'pending' CHECK (account_status IN ('pending', 'active', 'suspended')),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- Table: profiles
+CREATE TABLE public.profiles (
+    id uuid REFERENCES auth.users ON DELETE CASCADE NOT NULL PRIMARY KEY,
+    full_name text,
+    email text UNIQUE,
+    phone text,
+    document_number text,
+    account_type text,
+    avatar_url text,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
--- Enable Row Level Security (RLS) for profiles
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 
--- Policy for profiles: Users can view and update their own profile
-CREATE POLICY "Users can view their own profile" ON profiles FOR SELECT USING (auth.uid() = id);
-CREATE POLICY "Users can update their own profile" ON profiles FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY "Public profiles are viewable by everyone." ON public.profiles
+  FOR SELECT USING (true);
 
--- Create accounts table
-CREATE TABLE accounts (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES profiles ON DELETE CASCADE NOT NULL,
-  account_number VARCHAR(50) UNIQUE NOT NULL,
-  balance NUMERIC(15, 2) DEFAULT 0.00 NOT NULL,
-  currency VARCHAR(3) DEFAULT 'BRL' NOT NULL,
-  account_type VARCHAR(50) DEFAULT 'checking' CHECK (account_type IN ('checking', 'savings', 'credit')),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+CREATE POLICY "Users can insert their own profile." ON public.profiles
+  FOR INSERT WITH CHECK (auth.uid() = id);
+
+CREATE POLICY "Users can update own profile." ON public.profiles
+  FOR UPDATE USING (auth.uid() = id);
+
+-- Table: accounts
+CREATE TABLE public.accounts (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    user_id uuid REFERENCES public.profiles ON DELETE CASCADE NOT NULL,
+    account_number text UNIQUE NOT NULL,
+    balance numeric DEFAULT 0 NOT NULL,
+    currency text DEFAULT 'BRL' NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
--- Enable RLS for accounts
-ALTER TABLE accounts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.accounts ENABLE ROW LEVEL SECURITY;
 
--- Policy for accounts: Users can view and manage their own accounts
-CREATE POLICY "Users can view their own accounts" ON accounts FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users can manage their own accounts" ON accounts FOR ALL USING (auth.uid() = user_id);
+CREATE POLICY "Users can view their own accounts." ON public.accounts
+  FOR SELECT USING (auth.uid() = user_id);
 
--- Create transactions table
-CREATE TABLE transactions (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  account_id UUID REFERENCES accounts ON DELETE CASCADE NOT NULL,
-  type VARCHAR(50) NOT NULL CHECK (type IN ('deposit', 'withdrawal', 'transfer_in', 'transfer_out', 'payment', 'reward')),
-  amount NUMERIC(15, 2) NOT NULL,
-  currency VARCHAR(3) DEFAULT 'BRL' NOT NULL,
-  description TEXT,
-  status VARCHAR(50) DEFAULT 'completed' CHECK (status IN ('pending', 'completed', 'failed', 'cancelled')),
-  transaction_date TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+CREATE POLICY "Users can insert their own accounts." ON public.accounts
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can update their own accounts." ON public.accounts
+  FOR UPDATE USING (auth.uid() = user_id);
+
+-- Table: transactions
+CREATE TABLE public.transactions (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    account_id uuid REFERENCES public.accounts ON DELETE CASCADE NOT NULL,
+    type text NOT NULL, -- e.g., 'deposit', 'withdrawal', 'transfer', 'payment'
+    amount numeric NOT NULL,
+    currency text DEFAULT 'BRL' NOT NULL,
+    description text,
+    status text DEFAULT 'completed' NOT NULL, -- e.g., 'pending', 'completed', 'failed'
+    created_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
--- Enable RLS for transactions
-ALTER TABLE transactions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.transactions ENABLE ROW LEVEL SECURITY;
 
--- Policy for transactions: Users can view their own transactions
-CREATE POLICY "Users can view their own transactions" ON transactions FOR SELECT USING (
-  EXISTS (SELECT 1 FROM accounts WHERE accounts.id = account_id AND accounts.user_id = auth.uid())
+CREATE POLICY "Users can view their own transactions." ON public.transactions
+  FOR SELECT USING (EXISTS (SELECT 1 FROM public.accounts WHERE id = account_id AND user_id = auth.uid()));
+
+CREATE POLICY "Users can insert their own transactions." ON public.transactions
+  FOR INSERT WITH CHECK (EXISTS (SELECT 1 FROM public.accounts WHERE id = account_id AND user_id = auth.uid()));
+
+-- Table: rewards
+CREATE TABLE public.rewards (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    user_id uuid REFERENCES public.profiles ON DELETE CASCADE NOT NULL,
+    points integer DEFAULT 0 NOT NULL,
+    last_earned_at timestamp with time zone,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
--- Create rewards table
-CREATE TABLE rewards (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES profiles ON DELETE CASCADE NOT NULL,
-  reward_name VARCHAR(255) NOT NULL,
-  points_awarded INT NOT NULL,
-  awarded_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'redeemed', 'expired')),
-  redeemed_at TIMESTAMP WITH TIME ZONE
+ALTER TABLE public.rewards ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view their own rewards." ON public.rewards
+  FOR SELECT USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can update their own rewards." ON public.rewards
+  FOR UPDATE USING (auth.uid() = user_id);
+
+-- Table: cashback_services
+CREATE TABLE public.cashback_services (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    name text NOT NULL,
+    description text,
+    cashback_rate numeric NOT NULL,
+    is_active boolean DEFAULT true NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
--- Enable RLS for rewards
-ALTER TABLE rewards ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.cashback_services ENABLE ROW LEVEL SECURITY;
 
--- Policy for rewards: Users can view and manage their own rewards
-CREATE POLICY "Users can view their own rewards" ON rewards FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users can manage their own rewards" ON rewards FOR ALL USING (auth.uid() = user_id);
+CREATE POLICY "Cashback services are viewable by everyone." ON public.cashback_services
+  FOR SELECT USING (true);
 
--- Create cashback_services table
-CREATE TABLE cashback_services (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  service_name VARCHAR(255) UNIQUE NOT NULL,
-  cashback_percentage NUMERIC(5, 2) NOT NULL,
-  is_active BOOLEAN DEFAULT TRUE,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- Table: notifications
+CREATE TABLE public.notifications (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    user_id uuid REFERENCES public.profiles ON DELETE CASCADE NOT NULL,
+    title text NOT NULL,
+    message text NOT NULL,
+    read_status boolean DEFAULT false NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
--- Create user_cashback table (to track user's earned cashback)
-CREATE TABLE user_cashback (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES profiles ON DELETE CASCADE NOT NULL,
-  service_id UUID REFERENCES cashback_services ON DELETE CASCADE NOT NULL,
-  amount_earned NUMERIC(15, 2) NOT NULL,
-  transaction_id UUID REFERENCES transactions ON DELETE SET NULL, -- Link to the transaction that generated cashback
-  earned_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+ALTER TABLE public.notifications ENABLE ROW LEVEL SECURITY;
 
--- Enable RLS for user_cashback
-ALTER TABLE user_cashback ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can view their own notifications." ON public.notifications
+  FOR SELECT USING (auth.uid() = user_id);
 
--- Policy for user_cashback: Users can view their own cashback
-CREATE POLICY "Users can view their own cashback" ON user_cashback FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can insert notifications for themselves." ON public.notifications
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
 
--- Create notifications table
-CREATE TABLE notifications (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES profiles ON DELETE CASCADE NOT NULL,
-  title VARCHAR(255) NOT NULL,
-  message TEXT NOT NULL,
-  type VARCHAR(50) NOT NULL CHECK (type IN ('transaction', 'reward', 'alert', 'promotion', 'system')),
-  is_read BOOLEAN DEFAULT FALSE,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+CREATE POLICY "Users can update their own notifications." ON public.notifications
+  FOR UPDATE USING (auth.uid() = user_id);
 
--- Enable RLS for notifications
-ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
-
--- Policy for notifications: Users can view and update their own notifications
-CREATE POLICY "Users can view their own notifications" ON notifications FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users can update their own notifications" ON notifications FOR UPDATE USING (auth.uid() = user_id);
-
--- Function to create a profile for new users
-CREATE FUNCTION public.handle_new_user()
+-- Function to create a profile and account on new user signup
+CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
+DECLARE
+    new_account_number TEXT;
 BEGIN
-  INSERT INTO public.profiles (id, full_name)
-  VALUES (NEW.id, NEW.raw_user_meta_data->>'full_name');
-  RETURN NEW;
+    INSERT INTO public.profiles (id, email, full_name)
+    VALUES (NEW.id, NEW.email, NEW.raw_user_meta_data->>'full_name');
+
+    -- Generate a unique 10-digit account number
+    LOOP
+        new_account_number := LPAD(FLOOR(RANDOM() * 10000000000)::TEXT, 10, '0');
+        EXIT WHEN NOT EXISTS (SELECT 1 FROM public.accounts WHERE account_number = new_account_number);
+    END LOOP;
+
+    INSERT INTO public.accounts (user_id, account_number, balance)
+    VALUES (NEW.id, new_account_number, 0);
+
+    INSERT INTO public.rewards (user_id, points)
+    VALUES (NEW.id, 0);
+
+    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- Trigger to call handle_new_user on auth.users insert
+-- Trigger to call the function on new user signup
 CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
-  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
 
--- Set up Realtime for public tables
-ALTER PUBLICATION supabase_realtime ADD TABLE profiles;
-ALTER PUBLICATION supabase_realtime ADD TABLE accounts;
-ALTER PUBLICATION supabase_realtime ADD TABLE transactions;
-ALTER PUBLICATION supabase_realtime ADD TABLE rewards;
-ALTER PUBLICATION supabase_realtime ADD TABLE user_cashback;
-ALTER PUBLICATION supabase_realtime ADD TABLE notifications;
+-- Function to delete profile and related data on user deletion
+CREATE OR REPLACE FUNCTION public.handle_delete_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  DELETE FROM public.profiles WHERE id = OLD.id;
+  RETURN OLD;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Trigger to call the function on user deletion
+CREATE TRIGGER on_auth_user_deleted
+  AFTER DELETE ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_delete_user();

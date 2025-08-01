@@ -1,94 +1,98 @@
 import { notFound } from "next/navigation"
-import Image from "next/image"
-import { CalendarDays, Clock } from "lucide-react"
-import { Separator } from "@/components/ui/separator"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import React from "react" // Import React for React.use
 
 // Mock data for blog posts
 const blogPosts = [
   {
     slug: "como-economizar-dinheiro",
     title: "Como Economizar Dinheiro: Dicas Essenciais para o Seu Bolso",
-    date: "2024-07-20",
-    readTime: "5 min",
+    author: "Equipe Zi Credit",
+    date: "15 de Julho de 2024",
+    category: "Finanças Pessoais",
     image: "/placeholder.svg?height=400&width=800",
     content: `
-      <p>Economizar dinheiro é uma meta comum para muitas pessoas, mas nem sempre é fácil saber por onde começar. Com a inflação e os custos de vida em constante aumento, ter um plano financeiro sólido é mais importante do que nunca. Este artigo oferece dicas práticas e eficazes para ajudá-lo a economizar dinheiro e construir um futuro financeiro mais seguro.</p>
+      <p>Economizar dinheiro é uma habilidade fundamental para alcançar a estabilidade financeira e realizar sonhos. Não importa qual seja sua renda, sempre há maneiras de otimizar seus gastos e construir uma reserva.</p>
       <h2>1. Crie um Orçamento Detalhado</h2>
-      <p>O primeiro passo para economizar é saber para onde seu dinheiro está indo. Crie um orçamento detalhado que liste todas as suas fontes de renda e todas as suas despesas. Categorize suas despesas em fixas (aluguel, contas) e variáveis (alimentação, lazer). Ferramentas como planilhas ou aplicativos de orçamento podem ser muito úteis.</p>
-      <h2>2. Defina Metas de Economia Claras</h2>
-      <p>Ter metas claras e realistas pode motivá-lo a economizar. Seja para comprar uma casa, fazer uma viagem, pagar dívidas ou construir uma reserva de emergência, defina o valor e o prazo para cada meta. Isso tornará o processo mais tangível e menos abstrato.</p>
-      <h2>3. Reduza Despesas Desnecessárias</h2>
-      <p>Analise seu orçamento e identifique áreas onde você pode cortar gastos. Isso pode incluir reduzir idas a restaurantes, cancelar assinaturas que não usa, ou encontrar alternativas mais baratas para seus hobbies. Pequenas economias diárias podem somar grandes quantias ao longo do tempo.</p>
+      <p>O primeiro passo para economizar é saber para onde seu dinheiro está indo. Registre todas as suas receitas e despesas. Existem muitos aplicativos e planilhas que podem te ajudar nessa tarefa. Ao visualizar seus gastos, você identifica áreas onde pode cortar.</p>
+      <h2>2. Defina Metas Claras</h2>
+      <p>Economizar para quê? Uma viagem, a entrada de uma casa, a aposentadoria? Ter metas claras e realistas te mantém motivado. Divida grandes metas em pequenas etapas para torná-las mais alcançáveis.</p>
+      <h2>3. Corte Gastos Desnecessários</h2>
+      <p>Analise seu orçamento e identifique despesas que podem ser reduzidas ou eliminadas. Assinaturas que você não usa, comer fora com frequência, compras por impulso – pequenos cortes podem gerar grandes economias a longo prazo.</p>
       <h2>4. Automatize Suas Economias</h2>
-      <p>Configure transferências automáticas do seu salário para uma conta poupança ou de investimento. Ao automatizar suas economias, você garante que uma parte do seu dinheiro seja destinada a suas metas antes mesmo que você tenha a chance de gastá-la.</p>
-      <h2>5. Evite Dívidas de Consumo</h2>
-      <p>Cartões de crédito e empréstimos pessoais podem ser armadilhas financeiras devido aos juros altos. Tente pagar suas faturas de cartão de crédito integralmente todos os meses e evite fazer novas dívidas desnecessárias. Se você já tem dívidas, priorize o pagamento das que têm juros mais altos.</p>
-      <h2>6. Cozinhe Mais em Casa</h2>
-      <p>Comer fora ou pedir delivery com frequência pode ser um grande ralo de dinheiro. Cozinhar em casa é geralmente mais barato e mais saudável. Planeje suas refeições, faça uma lista de compras e evite desperdício de alimentos.</p>
-      <h2>7. Compare Preços e Negocie</h2>
-      <p>Antes de fazer uma compra grande, pesquise e compare preços em diferentes lojas ou online. Não hesite em negociar preços, especialmente para serviços como internet, TV a cabo ou seguros. Muitas empresas estão dispostas a oferecer descontos para reter clientes.</p>
-      <h2>8. Invista em Educação Financeira</h2>
-      <p>Quanto mais você souber sobre finanças pessoais, melhores decisões você tomará. Leia livros, siga blogs e podcasts sobre o assunto, e participe de workshops. O conhecimento é uma ferramenta poderosa para melhorar sua saúde financeira.</p>
-      <p>Economizar dinheiro é uma jornada contínua que exige disciplina e planejamento. Ao implementar essas dicas, você estará no caminho certo para alcançar seus objetivos financeiros e desfrutar de uma vida mais tranquila e segura.</p>
+      <p>Configure transferências automáticas para sua poupança ou investimento logo após receber seu salário. Assim, você garante que uma parte do seu dinheiro seja destinada à economia antes mesmo de começar a gastar.</p>
+      <h2>5. Evite Dívidas de Alto Custo</h2>
+      <p>Juros de cartão de crédito e cheque especial podem corroer suas economias. Priorize o pagamento dessas dívidas e evite contrair novas. Se precisar de crédito, procure opções com juros mais baixos.</p>
+      <h2>6. Pesquise e Compare Preços</h2>
+      <p>Antes de fazer uma compra grande, pesquise em diferentes lojas e compare preços. Use a internet a seu favor para encontrar as melhores ofertas e descontos.</p>
+      <h2>7. Invista Seu Dinheiro</h2>
+      <p>Não deixe seu dinheiro parado na poupança se você busca rendimentos maiores. Explore opções de investimento que se adequem ao seu perfil de risco e objetivos, como CDBs, Tesouro Direto ou fundos de investimento.</p>
+      <p>Lembre-se, economizar é uma jornada contínua. Pequenas mudanças de hábito podem fazer uma grande diferença ao longo do tempo. Comece hoje e veja seu futuro financeiro se transformar!</p>
     `,
   },
   {
-    slug: "o-futuro-dos-pagamentos-digitais",
-    title: "O Futuro dos Pagamentos Digitais: Tendências e Inovações",
-    date: "2024-07-15",
-    readTime: "7 min",
+    slug: "seguranca-digital-no-banco",
+    title: "Segurança Digital no Banco: Proteja Suas Finanças Online",
+    author: "Equipe Zi Credit",
+    date: "20 de Julho de 2024",
+    category: "Segurança",
     image: "/placeholder.svg?height=400&width=800",
     content: `
-      <p>Os pagamentos digitais estão revolucionando a forma como interagimos com o dinheiro. De carteiras móveis a criptomoedas, a inovação nesse setor é constante. Este artigo explora as principais tendências e inovações que moldarão o futuro dos pagamentos digitais.</p>
-      <h2>1. Ascensão das Carteiras Digitais e Pagamentos por Aproximação</h2>
-      <p>As carteiras digitais como Apple Pay, Google Pay e Samsung Pay, juntamente com a tecnologia NFC (Near Field Communication), estão se tornando o método de pagamento preferido para muitos. A conveniência e a segurança que oferecem impulsionam sua adoção em larga escala.</p>
-      <h2>2. Blockchain e Criptomoedas</h2>
-      <p>A tecnologia blockchain e as criptomoedas, como Bitcoin e Ethereum, prometem transformar os pagamentos transfronteiriços e a inclusão financeira. Embora ainda enfrentem desafios regulatórios e de volatilidade, seu potencial para pagamentos mais rápidos e baratos é inegável.</p>
-      <h2>3. Pagamentos Invisíveis e Contextuais</h2>
-      <p>Imagine pagar por um café sem sequer tirar o celular do bolso. Os pagamentos invisíveis, onde a transação ocorre automaticamente em segundo plano (como em carros autônomos ou lojas sem caixas), são uma tendência crescente. Pagamentos contextuais, que se integram à experiência do usuário, também estão ganhando força.</p>
-      <h2>4. Inteligência Artificial e Machine Learning</h2>
-      <p>IA e Machine Learning estão sendo usadas para aprimorar a segurança dos pagamentos, detectar fraudes em tempo real e personalizar a experiência do usuário. Algoritmos podem analisar padrões de gastos para oferecer recomendações financeiras ou alertas de segurança.</p>
-      <h2>5. Open Banking e APIs de Pagamento</h2>
-      <p>O Open Banking está permitindo que terceiros acessem dados financeiros (com consentimento do usuário) para criar novos serviços e produtos. Isso leva a uma maior concorrência e inovação, com APIs de pagamento facilitando a integração de serviços financeiros em diversas plataformas.</p>
-      <h2>6. Biometria para Autenticação</h2>
-      <p>Impressões digitais, reconhecimento facial e de voz estão se tornando métodos comuns de autenticação para pagamentos. A biometria oferece uma camada extra de segurança e conveniência, eliminando a necessidade de senhas complexas.</p>
-      <h2>7. Pagamentos B2B Digitais</h2>
-      <p>O setor de pagamentos B2B (Business-to-Business) também está passando por uma transformação digital. Soluções que automatizam faturas, reconciliações e pagamentos estão otimizando as operações financeiras entre empresas.</p>
-      <p>O futuro dos pagamentos digitais é dinâmico e promissor. À medida que a tecnologia avança e as expectativas dos consumidores evoluem, veremos uma contínua inovação que tornará as transações financeiras mais rápidas, seguras e integradas ao nosso dia a dia.</p>
+      <p>A segurança digital é uma preocupação crescente no mundo financeiro. Com a digitalização dos serviços bancários, é essencial que você saiba como proteger suas informações e seu dinheiro online.</p>
+      <h2>1. Senhas Fortes e Únicas</h2>
+      <p>Use senhas complexas, com uma combinação de letras maiúsculas e minúsculas, números e símbolos. Nunca reutilize senhas em diferentes serviços, especialmente em contas bancárias.</p>
+      <h2>2. Autenticação de Dois Fatores (2FA)</h2>
+      <p>Ative a autenticação de dois fatores sempre que possível. Isso adiciona uma camada extra de segurança, exigindo um segundo método de verificação (como um código enviado para seu celular) além da senha.</p>
+      <h2>3. Cuidado com Phishing e Golpes</h2>
+      <p>Desconfie de e-mails, mensagens ou ligações que solicitam informações pessoais ou financeiras. Bancos nunca pedem senhas ou dados sensíveis por esses canais. Verifique sempre o remetente e a URL antes de clicar em qualquer link.</p>
+      <h2>4. Mantenha Seus Dispositivos Seguros</h2>
+      <p>Use antivírus e mantenha seu sistema operacional e aplicativos sempre atualizados. Evite acessar sua conta bancária em redes Wi-Fi públicas e não seguras.</p>
+      <h2>5. Monitore Suas Transações</h2>
+      <p>Verifique regularmente seu extrato bancário e as transações do seu cartão de crédito. Relate qualquer atividade suspeita ao seu banco imediatamente.</p>
+      <h2>6. Cuidado ao Clicar em Links</h2>
+      <p>Evite clicar em links suspeitos. Se precisar acessar seu banco, digite o endereço diretamente no navegador ou use o aplicativo oficial.</p>
+      <h2>7. Use Conexões Seguras (HTTPS)</h2>
+      <p>Sempre verifique se o site do seu banco utiliza HTTPS (indicado por um cadeado na barra de endereço). Isso garante que a comunicação entre seu navegador e o site é criptografada.</p>
+      <p>Ao seguir essas dicas, você aumenta significativamente sua segurança digital e protege suas finanças contra fraudes e ataques cibernéticos. A Zi Credit está comprometida em oferecer um ambiente seguro, mas sua colaboração é fundamental!</p>
     `,
   },
   {
-    slug: "seguranca-financeira-na-era-digital",
-    title: "Segurança Financeira na Era Digital: Proteja Seu Dinheiro Online",
-    date: "2024-07-10",
-    readTime: "6 min",
+    slug: "beneficios-do-cartao-de-credito",
+    title: "Desvendando os Benefícios do Cartão de Crédito Zi Credit",
+    author: "Equipe Zi Credit",
+    date: "25 de Julho de 2024",
+    category: "Cartões",
     image: "/placeholder.svg?height=400&width=800",
     content: `
-      <p>Com a crescente digitalização das finanças, a segurança online tornou-se uma preocupação primordial. Proteger seu dinheiro e seus dados pessoais de fraudes e ataques cibernéticos é essencial. Este artigo oferece um guia completo sobre como manter sua segurança financeira na era digital.</p>
-      <h2>1. Use Senhas Fortes e Autenticação de Dois Fatores (2FA)</h2>
-      <p>A base da segurança online começa com senhas robustas. Use combinações complexas de letras maiúsculas e minúsculas, números e símbolos. Além disso, ative a autenticação de dois fatores (2FA) sempre que possível. Isso adiciona uma camada extra de segurança, exigindo um segundo método de verificação (como um código enviado ao seu celular) além da senha.</p>
-      <h2>2. Cuidado com Phishing e Golpes Online</h2>
-      <p>Phishing é uma tática comum onde criminosos tentam obter suas informações pessoais (senhas, dados bancários) se passando por instituições legítimas. Desconfie de e-mails, mensagens ou links suspeitos. Verifique sempre o remetente e o URL antes de clicar ou fornecer qualquer informação.</p>
-      <h2>3. Mantenha Seus Softwares Atualizados</h2>
-      <p>Sistemas operacionais, navegadores e aplicativos devem ser sempre atualizados. As atualizações frequentemente incluem patches de segurança que corrigem vulnerabilidades que poderiam ser exploradas por cibercriminosos.</p>
-      <h2>4. Monitore Suas Contas Regularmente</h2>
-      <p>Verifique seus extratos bancários e de cartão de crédito regularmente para identificar qualquer atividade suspeita. Muitos bancos oferecem alertas por SMS ou e-mail para transações incomuns. Quanto mais rápido você identificar uma fraude, mais fácil será resolvê-la.</p>
-      <h2>5. Use Redes Wi-Fi Seguras</h2>
-      <p>Evite realizar transações financeiras ou acessar informações sensíveis em redes Wi-Fi públicas e desprotegidas. Essas redes são mais vulneráveis a ataques. Se precisar usá-las, considere usar uma Rede Privada Virtual (VPN) para criptografar sua conexão.</p>
-      <h2>6. Faça Backup de Dados Importantes</h2>
-      <p>Embora não seja diretamente uma medida de segurança contra fraudes, fazer backup de seus documentos e informações financeiras importantes pode protegê-lo em caso de perda de dados devido a ataques de ransomware ou falhas de hardware.</p>
-      <h2>7. Cuidado com o Excesso de Informações Pessoais Online</h2>
-      <p>Pense duas vezes antes de compartilhar informações pessoais em redes sociais ou sites não confiáveis. Criminosos podem usar esses dados para engenharia social ou roubo de identidade.</p>
-      <h2>8. Conheça Seus Direitos e Recursos</h2>
-      <p>Em caso de fraude, saiba quais são seus direitos como consumidor e os procedimentos para relatar o incidente ao seu banco e às autoridades. Agir rapidamente pode minimizar os danos.</p>
-      <p>A segurança financeira na era digital exige vigilância constante e a adoção de boas práticas. Ao seguir essas dicas, você estará fortalecendo suas defesas e protegendo seu patrimônio no ambiente online.</p>
+      <p>O cartão de crédito Zi Credit vai muito além de uma simples ferramenta de pagamento. Ele oferece uma série de benefícios que podem otimizar suas finanças e proporcionar mais conveniência e segurança no seu dia a dia.</p>
+      <h2>1. Programa de Recompensas Exclusivo</h2>
+      <p>Com o cartão Zi Credit, cada compra se transforma em pontos que podem ser trocados por produtos, serviços, passagens aéreas ou até mesmo cashback. Quanto mais você usa, mais você ganha!</p>
+      <h2>2. Cashback em Compras Selecionadas</h2>
+      <p>Receba uma porcentagem do seu dinheiro de volta em categorias específicas de gastos, como supermercados, postos de gasolina ou restaurantes. É dinheiro voltando para o seu bolso sem esforço.</p>
+      <h2>3. Seguros e Proteções</h2>
+      <p>Seu cartão Zi Credit pode oferecer seguros de viagem, proteção de compras, garantia estendida e outros benefícios que te dão mais tranquilidade em diversas situações.</p>
+      <h2>4. Controle Financeiro na Palma da Mão</h2>
+      <p>Através do nosso aplicativo, você acompanha seus gastos em tempo real, gerencia seu limite, paga faturas e organiza suas finanças de forma prática e intuitiva.</p>
+      <h2>5. Flexibilidade de Pagamento</h2>
+      <p>Com opções de parcelamento e a possibilidade de pagar o valor total ou mínimo da fatura, o cartão Zi Credit se adapta às suas necessidades financeiras, oferecendo flexibilidade para gerenciar seu fluxo de caixa.</p>
+      <h2>6. Aceitação Internacional</h2>
+      <p>Viaje e faça compras em qualquer lugar do mundo com a segurança e a conveniência do seu cartão Zi Credit, aceito em milhões de estabelecimentos.</p>
+      <h2>7. Atendimento Personalizado</h2>
+      <p>Conte com um suporte dedicado e personalizado para tirar suas dúvidas e resolver qualquer questão relacionada ao seu cartão, a qualquer hora.</p>
+      <p>Descubra um mundo de possibilidades com o cartão de crédito Zi Credit e transforme sua experiência financeira!</p>
     `,
   },
 ]
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const unwrappedParams = await params // Unwrap the promise
-  const { slug } = unwrappedParams // Access the slug
+interface BlogPostPageProps {
+  params: { slug: string }
+}
+
+export default function BlogPostPage({ params }: BlogPostPageProps) {
+  // Use React.use to unwrap the params promise
+  const unwrappedParams = React.use(Promise.resolve(params))
+  const slug = unwrappedParams.slug
 
   const post = blogPosts.find((p) => p.slug === slug)
 
@@ -98,39 +102,31 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
-      <article className="max-w-3xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50 sm:text-4xl lg:text-5xl">{post.title}</h1>
-          <div className="flex items-center space-x-4 text-gray-500 dark:text-gray-400 mt-4">
-            <div className="flex items-center gap-1">
-              <CalendarDays className="w-4 h-4" />
-              <span>{post.date}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              <span>{post.readTime} de leitura</span>
-            </div>
-          </div>
-        </div>
-        <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden mb-8">
-          <Image
-            src={post.image || "/placeholder.svg"}
-            alt={post.title}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
-            priority
-          />
+      <div className="max-w-3xl mx-auto">
+        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-primary mb-6">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Voltar para o Blog
+        </Link>
+        <img
+          src={post.image || "/placeholder.svg"}
+          alt={post.title}
+          width={800}
+          height={400}
+          className="w-full h-auto rounded-lg object-cover mb-6"
+        />
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
+        <div className="flex items-center text-gray-500 text-sm mb-6">
+          <span>Por {post.author}</span>
+          <span className="mx-2">•</span>
+          <span>{post.date}</span>
+          <span className="mx-2">•</span>
+          <span className="font-medium text-primary">{post.category}</span>
         </div>
         <div
-          className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300"
+          className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
-        <Separator className="my-8" />
-        <div className="text-center text-gray-500 dark:text-gray-400">
-          <p>Obrigado por ler! Esperamos que este artigo tenha sido útil.</p>
-        </div>
-      </article>
+      </div>
     </div>
   )
 }
