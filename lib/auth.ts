@@ -1,112 +1,105 @@
-import { supabase } from "./supabase"
-import type { User } from "@supabase/supabase-js"
-
-export interface AuthUser extends User {
-  profile?: {
-    full_name: string | null
-    phone: string | null
-    document_number: string | null
-    account_type: "personal" | "business"
-    account_status: "pending" | "active" | "suspended"
-  }
+export interface User {
+  id: string
+  email: string
+  name: string
+  created_at: string
 }
 
+export interface AuthState {
+  user: User | null
+  loading: boolean
+}
+
+// Mock users for testing
+const mockUsers = [
+  {
+    id: "1",
+    email: "usuario@exemplo.com",
+    name: "Usuário Teste",
+    password: "123456",
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "2",
+    email: "admin@zicredit.com",
+    name: "Admin Zi Credit",
+    password: "admin123",
+    created_at: new Date().toISOString(),
+  },
+]
+
 export const authService = {
-  async signUp(email: string, password: string, fullName: string) {
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            full_name: fullName,
-          },
-        },
-      })
+  async login(email: string, password: string): Promise<{ user: User; error?: string }> {
+    // Simulate network delay
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      if (error) {
-        console.error("Erro no signup:", error)
-        return { data: null, error }
+    const mockUser = mockUsers.find((u) => u.email === email && u.password === password)
+
+    if (mockUser) {
+      const user = {
+        id: mockUser.id,
+        email: mockUser.email,
+        name: mockUser.name,
+        created_at: mockUser.created_at,
       }
 
-      return { data, error: null }
-    } catch (error) {
-      console.error("Erro no signup:", error)
-      return { data: null, error }
+      // Store in localStorage
+      localStorage.setItem("zi_credit_user", JSON.stringify(user))
+
+      return { user }
     }
+
+    return { user: null as any, error: "Credenciais inválidas" }
   },
 
-  async signIn(email: string, password: string) {
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
+  async register(email: string, password: string, name: string): Promise<{ user: User; error?: string }> {
+    // Simulate network delay
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      if (error) {
-        console.error("Erro no signin:", error)
-        return { data: null, error }
-      }
-
-      return { data, error: null }
-    } catch (error) {
-      console.error("Erro no signin:", error)
-      return { data: null, error }
+    // Check if user already exists
+    const existingUser = mockUsers.find((u) => u.email === email)
+    if (existingUser) {
+      return { user: null as any, error: "Usuário já existe" }
     }
+
+    const newUser = {
+      id: Date.now().toString(),
+      email,
+      name,
+      password,
+      created_at: new Date().toISOString(),
+    }
+
+    mockUsers.push(newUser)
+
+    const user = {
+      id: newUser.id,
+      email: newUser.email,
+      name: newUser.name,
+      created_at: newUser.created_at,
+    }
+
+    // Store in localStorage
+    localStorage.setItem("zi_credit_user", JSON.stringify(user))
+
+    return { user }
   },
 
-  async signOut() {
-    try {
-      const { error } = await supabase.auth.signOut()
-      return { error }
-    } catch (error) {
-      console.error("Erro no signout:", error)
-      return { error }
-    }
+  async logout(): Promise<void> {
+    localStorage.removeItem("zi_credit_user")
   },
 
-  async getCurrentUser(): Promise<AuthUser | null> {
-    try {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser()
+  getCurrentUser(): User | null {
+    if (typeof window === "undefined") return null
 
-      if (error || !user) {
-        console.error("Erro ao buscar usuário:", error)
+    const stored = localStorage.getItem("zi_credit_user")
+    if (stored) {
+      try {
+        return JSON.parse(stored)
+      } catch {
         return null
       }
-
-      // Buscar perfil do usuário
-      const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id", user.id)
-        .single()
-
-      if (profileError) {
-        console.error("Erro ao buscar perfil:", profileError)
-        // Retorna usuário mesmo sem perfil
-        return { ...user, profile: null } as AuthUser
-      }
-
-      return { ...user, profile } as AuthUser
-    } catch (error) {
-      console.error("Erro ao buscar usuário atual:", error)
-      return null
     }
-  },
-
-  onAuthStateChange(callback: (user: AuthUser | null) => void) {
-    return supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log("Auth state changed:", event, session?.user?.id)
-
-      if (session?.user) {
-        const user = await this.getCurrentUser()
-        callback(user)
-      } else {
-        callback(null)
-      }
-    })
+    return null
   },
 }

@@ -1,101 +1,65 @@
 "use client"
 
 import type React from "react"
+
 import { createContext, useContext, useEffect, useState } from "react"
-import { authService, type AuthUser } from "@/lib/auth"
+import { type User, type AuthState, authService } from "@/lib/auth"
 
-interface AuthContextType {
-  user: AuthUser | null
+const AuthContext = createContext<{
+  user: User | null
   loading: boolean
-  signIn: (email: string, password: string) => Promise<{ error: any }>
-  signUp: (email: string, password: string, fullName: string) => Promise<{ error: any }>
-  signOut: () => Promise<void>
-  updateProfile: (updates: any) => Promise<{ error: any }>
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
+  login: (email: string, password: string) => Promise<{ error?: string }>
+  register: (email: string, password: string, name: string) => Promise<{ error?: string }>
+  logout: () => Promise<void>
+}>({
+  user: null,
+  loading: true,
+  login: async () => ({}),
+  register: async () => ({}),
+  logout: async () => {},
+})
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [authState, setAuthState] = useState<AuthState>({
+    user: null,
+    loading: true,
+  })
 
   useEffect(() => {
-    let mounted = true
-
-    const initializeUser = async () => {
-      try {
-        const currentUser = await authService.getCurrentUser()
-        if (mounted) {
-          setUser(currentUser)
-          setLoading(false)
-        }
-      } catch (error) {
-        console.error("Erro ao inicializar usuário:", error)
-        if (mounted) {
-          setUser(null)
-          setLoading(false)
-        }
-      }
-    }
-
-    initializeUser()
-
-    const {
-      data: { subscription },
-    } = authService.onAuthStateChange((user) => {
-      if (mounted) {
-        setUser(user)
-        setLoading(false)
-      }
-    })
-
-    return () => {
-      mounted = false
-      subscription.unsubscribe()
-    }
+    // Check for existing user on mount
+    const user = authService.getCurrentUser()
+    setAuthState({ user, loading: false })
   }, [])
 
-  const signIn = async (email: string, password: string) => {
-    const { error } = await authService.signIn(email, password)
+  const login = async (email: string, password: string) => {
+    const { user, error } = await authService.login(email, password)
+    if (user) {
+      setAuthState({ user, loading: false })
+    }
     return { error }
   }
 
-  const signUp = async (email: string, password: string, fullName: string) => {
-    const { error } = await authService.signUp(email, password, fullName)
+  const register = async (email: string, password: string, name: string) => {
+    const { user, error } = await authService.register(email, password, name)
+    if (user) {
+      setAuthState({ user, loading: false })
+    }
     return { error }
   }
 
-  const signOut = async () => {
-    try {
-      await authService.signOut()
-      setUser(null)
-    } catch (error) {
-      console.error("Erro ao fazer logout:", error)
-    }
-  }
-
-  const updateProfile = async (updates: any) => {
-    try {
-      const { error } = await authService.updateProfile(updates)
-      if (!error) {
-        const updatedUser = await authService.getCurrentUser()
-        setUser(updatedUser)
-      }
-      return { error }
-    } catch (error) {
-      return { error }
-    }
+  const logout = async () => {
+    await authService.logout()
+    setAuthState({ user: null, loading: false })
   }
 
   return (
     <AuthContext.Provider
       value={{
-        user,
-        loading,
-        signIn,
-        signUp,
-        signOut,
-        updateProfile,
+        user: authState.user,
+        loading: authState.loading,
+        login,
+        register,
+        logout,
       }}
     >
       {children}
@@ -103,9 +67,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   )
 }
 
-export function useAuth() {
+export const useAuth = () => {
   const context = useContext(AuthContext)
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useAuth must be used within an AuthProvider")
   }
   return context
