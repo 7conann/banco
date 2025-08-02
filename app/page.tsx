@@ -17,7 +17,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
+        <AboutSection /> 
         {/* <CelcoinSection /> */}
         <ServicesSection />
         <PricingSection />
