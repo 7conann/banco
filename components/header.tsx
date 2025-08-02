@@ -24,14 +24,14 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
-          <Link href="/beneficios" className="text-sm font-medium hover:text-primary transition-colors">
-            Benefícios
+          <Link href="/desenvolvedores" className="text-sm font-medium hover:text-primary transition-colors">
+            Desenvolvedores
           </Link>
-          <Link href="/recursos" className="text-sm font-medium hover:text-primary transition-colors">
-            Recursos
+          <Link href="/institucional" className="text-sm font-medium hover:text-primary transition-colors">
+            Institucional
           </Link>
-          <Link href="/taxas" className="text-sm font-medium hover:text-primary transition-colors">
-            Taxas
+          <Link href="/produtos" className="text-sm font-medium hover:text-primary transition-colors">
+            Produtos
           </Link>
           <Link href="/blog" className="text-sm font-medium hover:text-primary transition-colors">
             Blog
