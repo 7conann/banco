@@ -15,6 +15,7 @@ import {
   Phone,
   ArrowRight,
 } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export default function InstitucionalPage() {
   const values = [
@@ -395,6 +396,8 @@ export default function InstitucionalPage() {
           </div>
         </div>
       </section>
+          <Footer/>
+
     </div>
   )
 }

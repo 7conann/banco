@@ -8,6 +8,8 @@ import { MenuIcon, XIcon, ChevronDown, LogOut, Settings, BarChart3 } from "lucid
 import { useAuth } from "@/components/auth/auth-provider";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Photologo from "/public/images/z-Photoroom.png"
+import Image from "next/image"
 
 const productsNav = [
   {
@@ -194,7 +196,7 @@ function ProductsMenu() {
 function DevelopersMenu() {
   return (
     <HoverDropdown label="Desenvolvedores" width="w-[700px]">
-      <div className="space-y-4">
+      <div className="space-y-4 ">
         <ul className="m-0 p-0 list-none space-y-2">
           {developersNav.map((item) => (
             <li key={item.title}>
@@ -216,7 +218,7 @@ function DevelopersMenu() {
 }
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { user, logout, isAuthenticated } = useAuth();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
@@ -229,151 +231,99 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white shadow sticky top-0 z-50 border-b">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-            Z
+    <header className="fixed inset-x-0 top-4 z-50 px-4">
+      <div className="max-w-screen-xl mx-auto bg-white rounded-full shadow-lg flex items-center justify-between px-6 py-3">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+            <Image src={Photologo} alt="Zi Credit" fill className="object-contain" />
           </div>
-          <span className="text-2xl font-bold text-foreground">Zi Credit</span>
+          <span className="text-lg font-semibold text-gray-800">Zi Credit</span>
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          <div className="flex gap-4 items-center">
-            <ProductsMenu />
-            <DevelopersMenu />
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6">
+          <ProductsMenu />
+          <DevelopersMenu />
+          <Link
+            href="/institucional"
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "flex items-center text-gray-700 hover:text-blue-600 transition"
+            )}
+          >
+            Institucional
+          </Link>
+          <Link href="/suporte" className="text-gray-700 hover:text-blue-600 transition">
+            Suporte
+          </Link>
+        </nav>
 
-            <div>
-              <Link
-                href="/institucional"
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "text-sm font-medium px-2 py-1 rounded-md hover:bg-accent"
-                )}
-              >
-                Institucional
-              </Link>
-            </div>
-            <div>
-              <Link
-                href="/suporte"
-                className={cn(
-                  navigationMenuTriggerStyle(),
-                  "text-sm font-medium px-2 py-1 rounded-md hover:bg-accent"
-                )}
-              >
-                Suporte
-              </Link>
-            </div>
-          </div>
-
-       
-        </div>
-   {isClient && (
-            <div className="flex items-center gap-4">
-              {isAuthenticated ? (
-                <div className="relative">
-                  <Button variant="ghost" className="flex items-center gap-1 text-sm font-medium">
-                    Olá, {user?.username || "Usuário"} <ChevronDown className="h-4 w-4" />
-                  </Button>
-                  <div className="absolute right-0 mt-2 w-48 bg-white shadow-sm rounded-md">
-                    <Link href="/dashboard" className="block px-4 py-2 hover:bg-gray-50 text-sm">
-                      <div className="flex items-center gap-2">
-                        <BarChart3 className="h-4 w-4" /> Dashboard
-                      </div>
-                    </Link>
-                    <Link href="/settings" className="block px-4 py-2 hover:bg-gray-50 text-sm">
-                      <div className="flex items-center gap-2">
-                        <Settings className="h-4 w-4" /> Configurações
-                      </div>
-                    </Link>
-                    <div className="border-t" />
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-left px-4 py-2 hover:bg-gray-50 flex items-center gap-2 text-sm"
-                    >
-                      <LogOut className="h-4 w-4" /> Sair
-                    </button>
-                  </div>
+        {/* Desktop Actions */}
+        {isClient && (
+          <div className="hidden md:flex items-center gap-4">
+            {isAuthenticated ? (
+              <div className="relative">
+                <Button variant="ghost" className="rounded-full px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+                  Olá, {user?.username || "Usuário"} <ChevronDown className="w-4 h-4" />
+                </Button>
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg overflow-hidden">
+                  <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 hover:bg-gray-50">
+                    <BarChart3 className="w-4 h-4" /> Dashboard
+                  </Link>
+                  <Link href="/settings" className="flex items-center gap-2 px-4 py-2 hover:bg-gray-50">
+                    <Settings className="w-4 h-4" /> Configurações
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left flex items-center gap-2 px-4 py-2 hover:bg-gray-50"
+                  >
+                    <LogOut className="w-4 h-4" /> Sair
+                  </button>
                 </div>
-              ) : (
-                <>
-                  <Link href="/auth/login">
-                    <Button variant="ghost" className="text-sm font-medium">
-                      Entrar
-                    </Button>
-                  </Link>
-                  <Link href="/auth/register">
-                    <Button className="bg-primary text-primary-foreground text-sm font-medium">
-                      Criar conta
-                    </Button>
-                  </Link>
-                </>
-              )}
-            </div>
-          )}
+              </div>
+            ) : (
+              <>  
+                <Link href="/auth/login">
+                  <Button variant="ghost" className="rounded-full px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    Entrar
+                  </Button>
+                </Link>
+                <Link href="/auth/register">
+                  <Button className="rounded-full px-4 py-2 bg-yellow-500 text-white hover:bg-yellow-600">
+                    Criar conta
+                  </Button>
+                </Link>
+              </>
+            )}
+          </div>
+        )}
+
         {/* Mobile toggle */}
-        <div className="md:hidden flex items-center gap-2">
-          <div className="flex-1" />
-          <Button variant="ghost" onClick={() => setIsMobileMenuOpen((v) => !v)}>
-            {isMobileMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+        <div className="md:hidden">
+          <Button variant="ghost" onClick={() => setMobileOpen((v) => !v)}>
+            {mobileOpen ? <XIcon className="w-6 h-6 text-gray-800" /> : <MenuIcon className="w-6 h-6 text-gray-800" />}
           </Button>
         </div>
       </div>
 
-      {/* mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t shadow py-4">
-          <div className="flex flex-col gap-3 px-4">
-            <details className="group">
-              <summary className="flex items-center justify-between cursor-pointer py-2 text-sm font-medium">
-                <span>Produtos</span>
-                <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
-              </summary>
-              <div className="pl-2">
-                {productsNav.flatMap((s) => s.items).map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    className="block py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <div className="font-medium text-sm">{item.title}</div>
-                    <div className="text-xs text-muted-foreground">{item.description}</div>
-                  </Link>
-                ))}
-              </div>
-            </details>
-
-            <details className="group">
-              <summary className="flex items-center justify-between cursor-pointer py-2 text-sm font-medium">
-                <span>Desenvolvedores</span>
-                <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
-              </summary>
-              <div className="pl-2">
-                {developersNav.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    className="block py-1"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <div className="font-medium text-sm">{item.title}</div>
-                    <div className="text-xs text-muted-foreground">{item.description}</div>
-                  </Link>
-                ))}
-              </div>
-            </details>
-
-            <Link href="/institucional" className="py-2 text-sm font-medium">
+      {/* Mobile Navigation */}
+      {mobileOpen && (
+        <div className="md:hidden px-4 mt-2">
+          <div className="max-w-screen-xl mx-auto bg-white rounded-lg shadow-lg flex flex-col space-y-2 px-6 py-4">
+            <ProductsMenu />
+            <DevelopersMenu />
+            <Link href="/institucional" className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">
               Institucional
             </Link>
-            <Link href="/blog" className="py-2 text-sm font-medium">
-              Blog
-            </Link>
-            <Link href="/suporte" className="py-2 text-sm font-medium">
+            <Link href="/suporte" className="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">
               Suporte
+            </Link>
+            <Link href="/auth/login" className="px-3 py-2 rounded-full text-center text-gray-700 hover:bg-gray-100">
+              Entrar
+            </Link>
+            <Link href="/auth/register" className="px-3 py-2 rounded-full bg-yellow-500 text-white text-center hover:bg-yellow-600">
+              Criar conta
             </Link>
           </div>
         </div>

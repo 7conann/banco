@@ -16,6 +16,7 @@ import {
   CheckCircle,
   ArrowRight,
 } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export default function ProdutosPage() {
   const products = [
@@ -261,6 +262,8 @@ export default function ProdutosPage() {
           </div>
         </div>
       </section>
+      <Footer/>
+      
     </div>
   )
 }
