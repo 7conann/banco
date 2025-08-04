@@ -369,6 +369,9 @@ export function Header() {
             <Link href="/institucional" className="py-2 text-sm font-medium">
               Institucional
             </Link>
+            <Link href="/blog" className="py-2 text-sm font-medium">
+              Blog
+            </Link>
             <Link href="/suporte" className="py-2 text-sm font-medium">
               Suporte
             </Link>
