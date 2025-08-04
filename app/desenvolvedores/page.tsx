@@ -18,6 +18,7 @@ import {
   ExternalLink,
   Activity,
 } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export default function DesenvolvedoresPage() {
   const sdks = [
@@ -434,6 +435,8 @@ export default function DesenvolvedoresPage() {
           </div>
         </div>
       </section>
+                <Footer/>
+      
     </div>
   )
 }

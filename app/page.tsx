@@ -10,10 +10,11 @@ import { BenefitsSection } from "@/components/sections/benefits-section"
 import { SecuritySection } from "@/components/sections/security-section"
 import { PartnersSection } from "@/components/sections/partners-section"
 import { CTASection } from "@/components/sections/cta-section"
+import InstitucionalPage from "./institucional/page"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="">
       <Header />
       <main>
         <HeroSection />
@@ -24,8 +25,8 @@ export default function HomePage() {
         <FeaturesSection />
         <BenefitsSection />
         <SecuritySection />
-        <PartnersSection />
-        <CTASection />
+        {/* <PartnersSection /> */}
+        {/* <CTASection /> */}
       </main>
       <Footer />
     </div>
