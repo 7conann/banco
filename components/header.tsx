@@ -176,6 +176,7 @@ export function Header() {
   return (
     <header className="bg-white shadow sticky top-0 z-50 border-b">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
             Z
@@ -218,7 +219,9 @@ export function Header() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {isClient && (
+         
+        </div>
+ {isClient && (
             <div className="flex items-center gap-4">
               {isAuthenticated ? (
                 <div className="relative">
@@ -257,8 +260,6 @@ export function Header() {
               )}
             </div>
           )}
-        </div>
-
         {/* Mobile toggle */}
         <div className="md:hidden">
           <Button variant="ghost" onClick={() => setIsMobileMenuOpen((v) => !v)}>
