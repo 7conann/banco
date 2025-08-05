@@ -1,7 +1,7 @@
-import { Header } from "@/components/header"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Header } from "@/components/header";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Target,
   Heart,
@@ -14,59 +14,68 @@ import {
   Mail,
   Phone,
   ArrowRight,
-} from "lucide-react"
-import { Footer } from "@/components/footer"
+} from "lucide-react";
+import { Footer } from "@/components/footer";
+import { AboutSection } from "@/components/sections/about-section";
 
 export default function InstitucionalPage() {
   const values = [
     {
       icon: Shield,
       title: "Segurança",
-      description: "Protegemos os dados e recursos dos nossos clientes com os mais altos padrões de segurança.",
+      description:
+        "Protegemos os dados e recursos dos nossos clientes com os mais altos padrões de segurança.",
     },
     {
       icon: Heart,
       title: "Transparência",
-      description: "Operamos com total transparência em todas as nossas relações comerciais e técnicas.",
+      description:
+        "Operamos com total transparência em todas as nossas relações comerciais e técnicas.",
     },
     {
       icon: TrendingUp,
       title: "Inovação",
-      description: "Buscamos constantemente novas tecnologias para oferecer as melhores soluções.",
+      description:
+        "Buscamos constantemente novas tecnologias para oferecer as melhores soluções.",
     },
     {
       icon: Users,
       title: "Colaboração",
-      description: "Trabalhamos em parceria com nossos clientes para alcançar objetivos comuns.",
+      description:
+        "Trabalhamos em parceria com nossos clientes para alcançar objetivos comuns.",
     },
-  ]
+  ];
 
   const team = [
     {
       name: "Carlos Silva",
       role: "CEO & Fundador",
-      description: "15+ anos em fintech e banking. Ex-executivo de grandes bancos.",
+      description:
+        "15+ anos em fintech e banking. Ex-executivo de grandes bancos.",
       image: "/placeholder-user.jpg",
     },
     {
       name: "Ana Santos",
       role: "CTO",
-      description: "Especialista em arquitetura de sistemas financeiros e blockchain.",
+      description:
+        "Especialista em arquitetura de sistemas financeiros e blockchain.",
       image: "/placeholder-user.jpg",
     },
     {
       name: "Roberto Lima",
       role: "Head of Product",
-      description: "Product Manager com experiência em soluções B2B para fintechs.",
+      description:
+        "Product Manager com experiência em soluções B2B para fintechs.",
       image: "/placeholder-user.jpg",
     },
     {
       name: "Marina Costa",
       role: "Head of Compliance",
-      description: "Especialista em regulamentação financeira e gestão de riscos.",
+      description:
+        "Especialista em regulamentação financeira e gestão de riscos.",
       image: "/placeholder-user.jpg",
     },
-  ]
+  ];
 
   const partners = [
     {
@@ -89,7 +98,7 @@ export default function InstitucionalPage() {
       description: "Soluções enterprise e inteligência artificial",
       category: "Tecnologia",
     },
-  ]
+  ];
 
   const milestones = [
     {
@@ -112,33 +121,31 @@ export default function InstitucionalPage() {
       title: "Conta Dolarizada",
       description: "Primeira fintech a suportar CBDC brasileiro",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 ">
+        <div className="container mx-auto px-4 mt-15">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Sobre a <span className="text-primary">Zi Credit</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Somos uma fintech brasileira focada em fornecer infraestrutura financeira robusta e APIs inovadoras para
-              empresas que querem revolucionar o mercado.
+            <p className="text-xl text-muted-foreground mb-8">A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil e no Mundo. Com um modelo completamente online e com escritórios físicos, oferecemos uma experiência bancária prática, acessível e com taxas reduzidas.
             </p>
-            <Button size="lg" className="text-lg px-8">
+            {/* <Button size="lg" className="text-lg px-8">
               Conheça Nossa História
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            </Button> */}
           </div>
         </div>
       </section>
-
+            { <AboutSection />  }
       {/* Mission & Vision */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <Card className="border-2 border-primary/20">
@@ -152,8 +159,10 @@ export default function InstitucionalPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Democratizar o acesso a serviços financeiros através de tecnologia inovadora, fornecendo APIs robustas
-                  e soluções escaláveis que permitem a qualquer empresa criar produtos financeiros de classe mundial.
+                  Garantir que qualquer pessoa,
+                  independentemente da sua localização ou nível de experiência
+                  financeira, possa ter acesso a serviços bancários de alta
+                  qualidade, simples e econômicos.
                 </p>
               </CardContent>
             </Card>
@@ -169,20 +178,24 @@ export default function InstitucionalPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Ser a principal plataforma de infraestrutura financeira da América Latina, conectando empresas,
-                  desenvolvedores e usuários finais em um ecossistema financeiro mais inclusivo e eficiente.
+                  Ser a principal plataforma de infraestrutura financeira da
+                  América Latina, conectando empresas, desenvolvedores e
+                  usuários finais em um ecossistema financeiro mais inclusivo e
+                  eficiente.
                 </p>
               </CardContent>
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Values */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nossos Valores</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Nossos Valores
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Os princípios que guiam todas as nossas decisões e relacionamentos
             </p>
@@ -190,7 +203,10 @@ export default function InstitucionalPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card
+                key={index}
+                className="text-center hover:shadow-lg transition-shadow"
+              >
                 <CardHeader>
                   <div className="mx-auto p-4 bg-primary/10 rounded-full w-fit mb-4">
                     <value.icon className="h-8 w-8 text-primary" />
@@ -210,7 +226,9 @@ export default function InstitucionalPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nossa Jornada</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Nossa Jornada
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Marcos importantes na construção da Zi Credit
             </p>
@@ -222,7 +240,9 @@ export default function InstitucionalPage() {
                 <div key={index} className="flex gap-6 items-start">
                   <div className="flex flex-col items-center">
                     <div className="w-4 h-4 bg-primary rounded-full"></div>
-                    {index < milestones.length - 1 && <div className="w-0.5 h-16 bg-border mt-2"></div>}
+                    {index < milestones.length - 1 && (
+                      <div className="w-0.5 h-16 bg-border mt-2"></div>
+                    )}
                   </div>
                   <Card className="flex-1">
                     <CardHeader>
@@ -230,11 +250,15 @@ export default function InstitucionalPage() {
                         <Badge variant="secondary" className="text-sm">
                           {milestone.year}
                         </Badge>
-                        <CardTitle className="text-lg">{milestone.title}</CardTitle>
+                        <CardTitle className="text-lg">
+                          {milestone.title}
+                        </CardTitle>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">{milestone.description}</p>
+                      <p className="text-muted-foreground">
+                        {milestone.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </div>
@@ -250,9 +274,12 @@ export default function InstitucionalPage() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Entre em Contato</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Entre em Contato
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Estamos aqui para ajudar você a construir o futuro dos serviços financeiros
+              Estamos aqui para ajudar você a construir o futuro dos serviços
+              financeiros
             </p>
           </div>
 
@@ -266,7 +293,7 @@ export default function InstitucionalPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Quadra SHS, Quadra 6, Conjunto A, Bloco A. Bairro Asa Sul. 
+                  Quadra SHS, Quadra 6, Conjunto A, Bloco A. Bairro Asa Sul.
                   <br />
                   Brasilia - DF.
                   <br />
@@ -284,7 +311,7 @@ export default function InstitucionalPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                 contato@zicredit.com
+                  contato@zicredit.com
                   <br />
                 </p>
               </CardContent>
@@ -312,22 +339,28 @@ export default function InstitucionalPage() {
       {/* CTA Section */}
       <section className="bg-primary/5 py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Vamos construir juntos?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Vamos construir juntos?
+          </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Entre em contato conosco e descubra como podemos ajudar sua empresa a inovar no mercado financeiro.
+            Entre em contato conosco e descubra como podemos ajudar sua empresa
+            a inovar no mercado financeiro.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8">
               Falar com Especialista
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent">
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 bg-transparent"
+            >
               Ver Nossos Produtos
             </Button>
           </div>
         </div>
       </section>
-          <Footer/>
-
+      <Footer />
     </div>
-  )
+  );
 }

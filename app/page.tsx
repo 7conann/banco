@@ -21,7 +21,7 @@ export default function HomePage() {
         {/* <AboutSection />  */}
         {/* <CelcoinSection /> */}
         <ServicesSection />
-        <PricingSection />
+        {/* <PricingSection /> */}
         <FeaturesSection />
         <BenefitsSection />
         <SecuritySection />

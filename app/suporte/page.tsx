@@ -25,6 +25,7 @@ import {
   CreditCard,
 } from "lucide-react"
 import Link from "next/link"
+import { Checkbox } from "@/components/ui/checkbox"
 
 const faqCategories = [
   {
@@ -144,6 +145,42 @@ const supportChannels = [
 ]
 
 export default function SuportePage() {
+  const [step, setStep] = useState<1|2>(1);
+const [form, setForm] = useState({
+  name: "",
+  surname: "",
+  email: "",
+  phone: "",
+  company: "",
+  employees: "",
+  products: [] as string[],
+  message: "",
+});
+const productsList = [
+  "Banking as a Service",
+  "Blockchain as a Service",
+  "Investment as a Service",
+  "Soluções para Corretoras",
+  "Gateway de Pagamentos",
+  "Tesouraria Cripto",
+  "Comércio Exterior",
+  "Liquidity as a Service",
+  "Emissão de cartão",
+  "Tokenização",
+  "White Label",
+];
+const next = () => setStep(2);
+const back = () => setStep(1);
+
+const toggleProduct = (prod: string) => {
+  setForm(f => ({
+    ...f,
+    products: f.products.includes(prod)
+      ? f.products.filter(p => p !== prod)
+      : [...f.products, prod],
+  }));
+};
+
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("conta")
   const [contactForm, setContactForm] = useState({
@@ -305,68 +342,108 @@ export default function SuportePage() {
         </section>
 
         {/* Contact Form */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mx-auto">
-              <Card>
-                <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">Não encontrou o que procura?</CardTitle>
-                  <p className="text-gray-600">Envie sua dúvida e nossa equipe entrará em contato</p>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleContactSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Nome</Label>
-                        <Input
-                          id="name"
-                          value={contactForm.name}
-                          onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                          required
+   <section className="py-16">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-2xl mx-auto">
+      <Card>
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl">Fale com nossos especialistas</CardTitle>
+          <p className="text-gray-600">
+            Nossa equipe entrará em contato para entender sua necessidade...
+          </p>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleContactSubmit} className="space-y-6">
+
+            {step === 1 && (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <Label htmlFor="name"  className="mb-2">Nome*</Label>
+                    <Input id="name" value={form.name}
+                           onChange={e => setForm(f => ({...f, name: e.target.value}))}
+                           required />
+                  </div>
+                  <div>
+                    <Label htmlFor="surname" className="mb-2">Sobrenome*</Label>
+                    <Input id="surname" value={form.surname}
+                           onChange={e => setForm(f => ({...f, surname: e.target.value}))}
+                           required />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="email" className="mb-2">E‐mail corporativo*</Label>
+                  <Input id="email" type="email" value={form.email}
+                         onChange={e => setForm(f => ({...f, email: e.target.value}))}
+                         required />
+                </div>
+                <div>
+                  <Label htmlFor="phone" className="mb-2">Numero de Telefone</Label>
+                  <Input id="phone" value={form.phone}
+                         onChange={e => setForm(f => ({...f, phone: e.target.value}))} />
+                </div>
+                <div>
+                  <Label htmlFor="company" className="mb-2">Nome da Empresa*</Label>
+                  <Input id="company" value={form.company}
+                         onChange={e => setForm(f => ({...f, company: e.target.value}))}
+                         required />
+                </div>
+                <div>
+                  <Label htmlFor="employees" className="mb-2">Número de Funcionários*</Label>
+                  <Input id="employees" type="number" value={form.employees}
+                         onChange={e => setForm(f => ({...f, employees: e.target.value}))}
+                         required />
+                </div>
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                <div>
+                  <p className="mb-2">
+                    Marque os produtos que deseja conhecer*:
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {productsList.map(prod => (
+                      <label key={prod} className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={form.products.includes(prod)}
+                          onCheckedChange={() => toggleProduct(prod)}
                         />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">E-mail</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={contactForm.email}
-                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                          required
-                        />
-                      </div>
-                    </div>
+                        <span className="text-sm">{prod}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="message" className="mb-2">
+                    Conte mais sobre sua operação
+                  </Label>
+                  <Textarea id="message" rows={5} value={form.message}
+                            onChange={e => setForm(f => ({...f, message: e.target.value}))}
+                            required />
+                </div>
+              </>
+            )}
 
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Assunto</Label>
-                      <Input
-                        id="subject"
-                        value={contactForm.subject}
-                        onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Mensagem</Label>
-                      <Textarea
-                        id="message"
-                        rows={5}
-                        value={contactForm.message}
-                        onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                        required
-                      />
-                    </div>
-
-                    <Button type="submit" className="w-full">
-                      Enviar Mensagem
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+            <div className="flex justify-between">
+              {step > 1 
+                ? <Button variant="outline" onClick={back}>Voltar</Button>
+                : <div/>
+              }
+              {step < 2
+                ? <Button onClick={next}>Avançar</Button>
+                : <Button type="submit">Enviar</Button>
+              }
             </div>
-          </div>
-        </section>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+
       </main>
       <Footer />
     </div>

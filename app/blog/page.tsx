@@ -109,7 +109,7 @@ export default function BlogPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1 py-8 md:py-12 lg:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-15">
           <h1 className="text-4xl font-bold text-center mb-8">Nosso Blog</h1>
           <p className="text-xl text-center text-gray-600 mb-12">
             Fique por dentro das últimas notícias e tendências do mundo financeiro.
