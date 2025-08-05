@@ -301,7 +301,7 @@ export default function ProdutosPage() {
                       </ul>
                     </div>
                     <Button asChild className="w-full mt-6">
-                      <Link href={`#${product.id}`} scroll={false}>
+                      <Link href={`/produtos/${product.id}`}>
                         Saiba Mais
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>

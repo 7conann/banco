@@ -21,17 +21,17 @@ const productsNav = [
   {
     title: "Infraestrutura Financeira",
     items: [
-      { title: "Banking as a Service", href: "/produtos#banking-as-a-service", description: "Estrutura bancária multimoeda via API." },
-      { title: "Investment as a Service", href: "/produtos#investment-as-a-service", description: "Distribuição de investimentos integrada." },
-      { title: "Onboarding e Compliance", href: "/produtos#onboarding-compliance", description: "Gestão de risco e conformidade." },
-      { title: "Emissão de Cartões", href: "/produtos#emissao-cartoes", description: "Cartões físicos e virtuais white-label." },
+      { title: "Banking as a Service", href: "/produtos/banking-as-a-service", description: "Estrutura bancária multimoeda via API." },
+      { title: "Investment as a Service", href: "/produtos/investment-as-a-service", description: "Distribuição de investimentos integrada." },
+      { title: "Onboarding e Compliance", href: "/produtos/onboarding-compliance", description: "Gestão de risco e conformidade." },
+      { title: "Emissão de Cartões", href: "/produtos/emissao-cartoes", description: "Cartões físicos e virtuais white-label." },
     ],
   },
   {
     title: "Soluções Prontas",
     items: [
-      { title: "Azipay", href: "/produtos#azipay", description: "Gateway de pagamentos com BRL." },
-      { title: "Conta Empresarial", href: "/produtos#conta-empresarial", description: "Conta PJ com gestão completa." },
+      { title: "Azipay", href: "/produtos/azipay", description: "Gateway de pagamentos com BRL." },
+      { title: "Conta Empresarial", href: "/produtos/conta-empresarial", description: "Conta PJ com gestão completa." },
     ],
   },
 ];

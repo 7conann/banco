@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { CreditCard, Shield, Zap, Globe, DollarSign, FileText, Users, Briefcase, Package, Settings, Gavel, Box, } from "lucide-react"
+import Link from "next/link"
 
 export function ServicesSection() {
   const services = [
@@ -187,6 +189,13 @@ export function ServicesSection() {
                   {feature}
                 </Badge>
               ))}
+            </div>
+            <div className="mt-6">
+              <Button asChild className="w-full">
+                <Link href={`/produtos/${service.title.toLowerCase().replace(/\s+/g, '-').replace('ç', 'c')}`}>
+                  Saiba Mais
+                </Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
