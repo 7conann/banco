@@ -8,76 +8,31 @@ import { MenuIcon, XIcon, ChevronDown, LogOut, Settings, BarChart3 } from "lucid
 import { useAuth } from "@/components/auth/auth-provider";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import Photologo from "/public/images/z-Photoroom.png"
-import Image from "next/image"
+import Photologo from "/public/images/z-Photoroom.png";
+import Image from "next/image";
+
+const institucionalNav = [
+  { title: "Sobre Nós", href: "/institucional#sobre-nos" },
+  { title: "Blog", href: "/blog" },
+  { title: "Documentação", href: "/institucional#documentacao" },
+];
 
 const productsNav = [
   {
     title: "Infraestrutura Financeira",
     items: [
-      {
-        title: "Banking as a Service",
-        href: "/produtos#banking-as-a-service",
-        description: "Estrutura bancária multimoeda via API.",
-      },
-      {
-        title: "Investment as a Service",
-        href: "/produtos#investment-as-a-service",
-        description: "Distribuição de investimentos integrada.",
-      },
-      {
-        title: "Onboarding e Compliance",
-        href: "/produtos#onboarding-compliance",
-        description: "Gestão de risco e conformidade.",
-      },
-      {
-        title: "Emissão de Cartões",
-        href: "/produtos#emissao-cartoes",
-        description: "Cartões físicos e virtuais white-label.",
-      },
+      { title: "Banking as a Service", href: "/produtos#banking-as-a-service", description: "Estrutura bancária multimoeda via API." },
+      { title: "Investment as a Service", href: "/produtos#investment-as-a-service", description: "Distribuição de investimentos integrada." },
+      { title: "Onboarding e Compliance", href: "/produtos#onboarding-compliance", description: "Gestão de risco e conformidade." },
+      { title: "Emissão de Cartões", href: "/produtos#emissao-cartoes", description: "Cartões físicos e virtuais white-label." },
     ],
   },
   {
     title: "Soluções Prontas",
     items: [
-      {
-        title: "Azipay",
-        href: "/produtos#azipay",
-        description: "Gateway de pagamentos com BRL.",
-      },
-      
-      {
-        title: "Conta Empresarial",
-        href: "/produtos#conta-empresarial",
-        description: "Conta PJ com gestão completa.",
-      },
+      { title: "Azipay", href: "/produtos#azipay", description: "Gateway de pagamentos com BRL." },
+      { title: "Conta Empresarial", href: "/produtos#conta-empresarial", description: "Conta PJ com gestão completa." },
     ],
-  },
-];
-
-const developersNav = [
-  {
-    title: "Documentação da API",
-    href: "/desenvolvedores#api-docs",
-    description:
-      "Acesse nossa documentação completa para integrar nossos serviços financeiros.",
-  },
-  {
-    title: "SDKs e Bibliotecas",
-    href: "/desenvolvedores#sdks",
-    description:
-      "Ferramentas e bibliotecas para facilitar sua integração em diversas linguagens.",
-  },
-  {
-    title: "Suporte para Desenvolvedores",
-    href: "/desenvolvedores#suporte",
-    description:
-      "Conte com nossa equipe especializada para tirar suas dúvidas e resolver problemas.",
-  },
-  {
-    title: "Status da API",
-    href: "/desenvolvedores#status",
-    description: "Monitore o status de nossos serviços em tempo real.",
   },
 ];
 
@@ -120,9 +75,7 @@ function HoverDropdown({
   };
 
   useEffect(() => {
-    return () => {
-      clearClose();
-    };
+    return () => clearClose();
   }, []);
 
   return (
@@ -142,14 +95,28 @@ function HoverDropdown({
         className={cn(
           "absolute left-0 top-full mt-2 z-50 overflow-hidden transition-all duration-200 ease-out",
           width,
-          open
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 translate-y-1 pointer-events-none"
+          open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-1 pointer-events-none"
         )}
       >
         <div className="p-6 bg-white rounded-md shadow-sm">{children}</div>
       </div>
     </div>
+  );
+}
+
+function InstitucionalMenu() {
+  return (
+    <HoverDropdown label="Institucional" width="w-[200px]">
+      <ul className="space-y-2">
+        {institucionalNav.map((item) => (
+          <li key={item.title}>
+            <Link href={item.href} className="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm">
+              {item.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </HoverDropdown>
   );
 }
 
@@ -159,50 +126,19 @@ function ProductsMenu() {
       <div className="grid grid-cols-2 gap-8">
         {productsNav.map((section) => (
           <div key={section.title} className="space-y-4">
-            <div className="text-xs font-semibold uppercase tracking-wider">
-              {section.title}
-            </div>
-            <ul className="m-0 p-0 list-none space-y-2">
+            <div className="text-xs font-semibold uppercase tracking-wider">{section.title}</div>
+            <ul className="space-y-2">
               {section.items.map((item) => (
                 <li key={item.title}>
-                  <Link
-                    href={item.href}
-                    className="block no-underline px-3 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm"
-                  >
+                  <Link href={item.href} className="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm">
                     <div className="font-medium">{item.title}</div>
-                    <div className="text-xs text-muted-foreground">
-                      {item.description}
-                    </div>
+                    <div className="text-xs text-muted-foreground">{item.description}</div>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
         ))}
-      </div>
-    </HoverDropdown>
-  );
-}
-
-function DevelopersMenu() {
-  return (
-    <HoverDropdown label="Desenvolvedores" width="w-[700px]">
-      <div className="space-y-4 ">
-        <ul className="m-0 p-0 list-none space-y-2">
-          {developersNav.map((item) => (
-            <li key={item.title}>
-              <Link
-                href={item.href}
-                className="block no-underline px-3 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm"
-              >
-                <div className="font-medium">{item.title}</div>
-                <div className="text-xs text-muted-foreground">
-                  {item.description}
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
     </HoverDropdown>
   );
@@ -227,25 +163,19 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
-            <Image src={Photologo} alt="Zi Credit" fill className="object-contain" />
+            <Image src={Photologo} alt="Credit" fill className="object-contain" />
           </div>
           <span className="text-lg font-semibold text-gray-800">Credit</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
+          <InstitucionalMenu />
           <ProductsMenu />
-          <DevelopersMenu />
-          <Link
-            href="/institucional"
-            className={cn(
-              navigationMenuTriggerStyle(),
-              "flex items-center text-gray-700 hover:text-blue-600 transition"
-            )}
-          >
-            Institucional
+          <Link href="/taxas" className={cn(navigationMenuTriggerStyle(), "flex items-center text-gray-700 transition")}>
+            Taxas
           </Link>
-          <Link href="/suporte" className="text-gray-700 hover:text-blue-600 transition">
+          <Link href="/suporte" className="text-gray-700 transition">
             Suporte
           </Link>
         </nav>
@@ -274,7 +204,7 @@ export function Header() {
                 </div>
               </div>
             ) : (
-              <>  
+              <>
                 <Link href="/auth/login">
                   <Button variant="ghost" className="rounded-full px-4 py-2 text-gray-700 hover:bg-gray-100">
                     Entrar
@@ -292,7 +222,7 @@ export function Header() {
 
         {/* Mobile toggle */}
         <div className="md:hidden">
-          <Button variant="ghost" onClick={() => setMobileOpen((v) => !v)}>
+          <Button variant="ghost" onClick={() => setMobileOpen(v => !v)}>
             {mobileOpen ? <XIcon className="w-6 h-6 text-gray-800" /> : <MenuIcon className="w-6 h-6 text-gray-800" />}
           </Button>
         </div>
@@ -302,20 +232,16 @@ export function Header() {
       {mobileOpen && (
         <div className="md:hidden px-4 mt-2">
           <div className="max-w-screen-xl mx-auto bg-white rounded-lg shadow-lg flex flex-col space-y-2 px-6 py-4">
+            <Link href="/institucional" className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Institucional</Link>
             <ProductsMenu />
-            <DevelopersMenu />
-            <Link href="/institucional" className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">
-              Institucional
-            </Link>
-            <Link href="/suporte" className="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">
-              Suporte
-            </Link>
-            <Link href="/auth/login" className="px-3 py-2 rounded-full text-center text-gray-700 hover:bg-gray-100">
-              Entrar
-            </Link>
-            <Link href="/auth/register" className="px-3 py-2 rounded-full bg-yellow-500 text-white text-center hover:bg-yellow-600">
-              Criar conta
-            </Link>
+            <Link href="/taxas" className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Taxas</Link>
+            <Link href="/suporte" className="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Suporte</Link>
+            {!isAuthenticated && (
+              <>
+                <Link href="/auth/login" className="px-3 py-2 rounded-full text-center text-gray-700 hover:bg-gray-100">Entrar</Link>
+                <Link href="/auth/register" className="px-3 py-2 rounded-full bg-yellow-500 text-white text-center hover:bg-yellow-600">Criar conta</Link>
+              </>
+            )}
           </div>
         </div>
       )}
