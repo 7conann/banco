@@ -100,34 +100,7 @@ export default function ProdutosPage() {
       ],
       benefits: ["Taxas competitivas", "Aprovação alta", "Integração rápida", "Suporte ao Real Digital"],
     },
-    {
-      id: "white-label",
-      title: "White Label",
-      description: "Solução completa para criar sua própria fintech",
-      icon: Smartphone,
-      features: [
-        "App mobile personalizado",
-        "Dashboard web",
-        "Marca própria",
-        "Funcionalidades modulares",
-        "Suporte técnico",
-      ],
-      benefits: ["Time-to-market reduzido", "Custos otimizados", "Escalabilidade garantida", "Suporte completo"],
-    },
-    {
-      id: "tokenizacao-rwas",
-      title: "Tokenização de RWAs",
-      description: "Emissão e gestão de tokens de ativos do mundo real",
-      icon: Globe,
-      features: [
-        "Tokenização de imóveis",
-        "Ativos financeiros",
-        "Commodities",
-        "Smart contracts",
-        "Marketplace integrado",
-      ],
-      benefits: ["Liquidez aumentada", "Fracionamento de ativos", "Transparência blockchain", "Custos reduzidos"],
-    },
+    
     {
       id: "conta-empresarial",
       title: "Conta Empresarial",

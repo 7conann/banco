@@ -45,16 +45,7 @@ const productsNav = [
         href: "/produtos#azipay",
         description: "Gateway de pagamentos com BRL.",
       },
-      {
-        title: "White Label",
-        href: "/produtos#white-label",
-        description: "Crie sua própria solução financeira.",
-      },
-      {
-        title: "Tokenização de RWAs",
-        href: "/produtos#tokenizacao-rwas",
-        description: "Emissão de ativos do mundo real.",
-      },
+      
       {
         title: "Conta Empresarial",
         href: "/produtos#conta-empresarial",
@@ -238,7 +229,7 @@ export function Header() {
           <div className="relative w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
             <Image src={Photologo} alt="Zi Credit" fill className="object-contain" />
           </div>
-          <span className="text-lg font-semibold text-gray-800">Zi Credit</span>
+          <span className="text-lg font-semibold text-gray-800">Credit</span>
         </Link>
 
         {/* Desktop Navigation */}

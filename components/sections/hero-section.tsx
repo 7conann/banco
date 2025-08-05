@@ -42,11 +42,10 @@ export function HeroSection() {
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Destrave seu{' '}
+                A maneira inteligente de ter um{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                  potencial
+                  banco digital.
                 </span>{' '}
-                financeiro.
               </motion.h1>
 
               <motion.p

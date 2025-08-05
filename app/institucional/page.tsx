@@ -93,28 +93,23 @@ export default function InstitucionalPage() {
 
   const milestones = [
     {
-      year: "2020",
+      year: "2024",
       title: "Fundação da Zi Credit",
       description: "Início das operações com foco em soluções B2B",
     },
     {
-      year: "2021",
+      year: "2024",
       title: "Primeira API Lançada",
       description: "Banking as a Service disponível para parceiros",
     },
     {
-      year: "2022",
+      year: "2025",
       title: "Expansão Internacional",
       description: "Suporte a múltiplas moedas e operações globais",
     },
     {
-      year: "2023",
-      title: "Tokenização de Ativos",
-      description: "Lançamento da plataforma de RWA tokenization",
-    },
-    {
-      year: "2024",
-      title: "Real Digital",
+      year: "2025",
+      title: "Conta Dolarizada",
       description: "Primeira fintech a suportar CBDC brasileiro",
     },
   ]
@@ -250,70 +245,6 @@ export default function InstitucionalPage() {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nossa Equipe</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Profissionais experientes dedicados a transformar o mercado financeiro
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="mx-auto mb-4">
-                    <img
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      className="w-24 h-24 rounded-full object-cover mx-auto"
-                    />
-                  </div>
-                  <CardTitle className="text-lg">{member.name}</CardTitle>
-                  <Badge variant="secondary" className="w-fit mx-auto">
-                    {member.role}
-                  </Badge>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{member.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Partners */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nossos Parceiros</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Trabalhamos com as melhores empresas do mercado
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {partners.map((partner, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center gap-3">
-                      <Handshake className="h-6 w-6 text-primary" />
-                      {partner.name}
-                    </CardTitle>
-                    <Badge variant="outline">{partner.category}</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{partner.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Info */}
       <section className="py-20 bg-muted/30">
@@ -335,11 +266,11 @@ export default function InstitucionalPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Av. Paulista, 1000
+                  Quadra SHS, Quadra 6, Conjunto A, Bloco A. Bairro Asa Sul. 
                   <br />
-                  São Paulo - SP
+                  Brasilia - DF.
                   <br />
-                  01310-100
+                  70316-102
                 </p>
               </CardContent>
             </Card>
@@ -353,9 +284,8 @@ export default function InstitucionalPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  contato@zicredit.com.br
+                 contato@zicredit.com
                   <br />
-                  suporte@zicredit.com.br
                 </p>
               </CardContent>
             </Card>
@@ -369,7 +299,7 @@ export default function InstitucionalPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  +55 (11) 3000-0000
+                  +55 (61) 981743930
                   <br />
                   Seg-Sex: 9h às 18h
                 </p>

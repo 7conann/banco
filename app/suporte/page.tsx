@@ -127,7 +127,7 @@ const supportChannels = [
   },
   {
     title: "Telefone",
-    description: "(61) 98174-3930",
+    description: "+55 (61) 98174-3930",
     icon: Phone,
     availability: "Seg-Sex 8h-18h",
     action: "Ligar Agora",
