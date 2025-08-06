@@ -1,4 +1,4 @@
-import { CreditCard, Users, FileText, Zap, Shield, Globe, Wallet, Building, DollarSign, Receipt } from 'lucide-react'
+import { CreditCard, Users, FileText, Zap, Shield, Globe, Wallet, Building, DollarSign } from 'lucide-react'
 import { Badge } from "@/components/ui/badge"
 
 export function ServicesSection() {
@@ -19,17 +19,10 @@ export function ServicesSection() {
     },
     {
       icon: <Zap className="w-8 h-8 text-yellow-600" />,
-      title: "PIX",
-      description: "Pagamentos instantâneos 24/7 com segurança e praticidade para seus clientes.",
+      title: "Boleto PIX",
+      description: "Emissão de boletos com pagamento via PIX instantâneo ou método tradicional com máxima flexibilidade.",
       badge: "Rapidez",
       badgeColor: "bg-yellow-100 text-yellow-800"
-    },
-    {
-      icon: <Receipt className="w-8 h-8 text-yellow-600" />,
-      title: "Boleto",
-      description: "Emissão e gestão de boletos bancários com registro automático e conciliação facilitada.",
-      badge: "Tradicional",
-      badgeColor: "bg-gray-100 text-gray-800"
     },
     {
       icon: <FileText className="w-8 h-8 text-yellow-600" />,
@@ -87,7 +80,7 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
               <div className="flex items-start justify-between mb-4">

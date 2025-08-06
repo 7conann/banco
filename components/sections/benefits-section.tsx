@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Smartphone, HeadphonesIcon, DollarSign, Layers, CreditCard, Users, FileText, Shield } from "lucide-react"
+import { Smartphone, HeadphonesIcon, DollarSign, Layers } from 'lucide-react'
 
 const benefits = [
   {
@@ -27,30 +27,6 @@ const benefits = [
     description: "Integração fácil com outras plataformas para contratar seguros, investimentos e empréstimos.",
     badge: "Integração",
   },
-  {
-    icon: CreditCard,
-    title: "Conta Nominal",
-    description: "Gestão simplificada para múltiplos beneficiários com maior privacidade e facilidade administrativa.",
-    badge: "Gestão",
-  },
-  {
-    icon: Users,
-    title: "Split de Pagamento",
-    description: "Divisão automática de pagamentos entre beneficiários, ideal para marketplaces e parcerias.",
-    badge: "Automação",
-  },
-  {
-    icon: FileText,
-    title: "Boleto PIX e Híbrido",
-    description: "Pagamentos instantâneos com segurança PIX ou método tradicional, conforme preferência do cliente.",
-    badge: "Flexibilidade",
-  },
-  {
-    icon: Shield,
-    title: "Conta Escrow",
-    description: "Conta de custódia para transações complexas, garantindo segurança até cumprimento das condições.",
-    badge: "Segurança",
-  },
 ]
 
 export function BenefitsSection() {
@@ -64,7 +40,7 @@ export function BenefitsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => (
             <Card key={index} className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
