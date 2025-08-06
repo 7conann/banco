@@ -8,7 +8,6 @@ import { MenuIcon, XIcon, ChevronDown, LogOut, Settings, BarChart3 } from "lucid
 import { useAuth } from "@/components/auth/auth-provider";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import Photologo from "/public/images/z-Photoroom.png";
 import Image from "next/image";
 
 const institucionalNav = [
@@ -164,7 +163,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
-            <Image src={Photologo} alt="Credit" fill className="object-contain" />
+            <Image src="/images/z-Photoroom.png" alt="Credit" fill className="object-contain" />
           </div>
           <span className="text-lg font-semibold text-gray-800">Credit</span>
         </Link>
