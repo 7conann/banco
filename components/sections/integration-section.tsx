@@ -1,5 +1,7 @@
-import { Code, Zap, Shield } from 'lucide-react'
-import { Button } from "@/components/ui/button"
+"use client";
+import React from "react";
+import { Code, Zap, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function IntegrationSection() {
   return (
@@ -70,22 +72,30 @@ export function IntegrationSection() {
               </div>
             </div>
             
-            <div className="bg-gray-800 rounded-lg p-6 font-mono text-sm overflow-x-auto">
-              <div className="text-green-400">
-                <span className="text-blue-400">curl</span> -X POST https://api.zicredit.com/v1/payments \<br/>
-                &nbsp;&nbsp;<span className="text-yellow-400">-H</span> <span className="text-green-300">"Authorization: Bearer YOUR_API_KEY"</span> \<br/>
-                &nbsp;&nbsp;<span className="text-yellow-400">-H</span> <span className="text-green-300">"Content-Type: application/json"</span> \<br/>
-                &nbsp;&nbsp;<span className="text-yellow-400">-d</span> <span className="text-green-300">'{'</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"amount": 100.00,</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"currency": "USD",</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"method": "pix",</span><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"description": "Payment example"</span><br/>
-                &nbsp;&nbsp;<span className="text-green-300">}'</span>
-              </div>
-            </div>
+       <div className="bg-gray-800 rounded-lg p-6 font-mono text-sm overflow-x-auto">
+  <pre className="text-green-400">
+    <code>
+      <span className="text-blue-400">curl</span> -X POST https://api.zicredit.com/v1/payments {'{'}<br />
+      &nbsp;&nbsp;<span className="text-yellow-400">-H</span>{' '}
+      <span className="text-green-300">"Authorization: Bearer YOUR_API_KEY"</span>{' '}
+      {'{'}<br />
+      &nbsp;&nbsp;<span className="text-yellow-400">-H</span>{' '}
+      <span className="text-green-300">"Content-Type: application/json"</span>{' '}
+      {'{'}<br />
+      &nbsp;&nbsp;<span className="text-yellow-400">-d</span>{' '}
+      <span className="text-green-300">{'{'}</span><br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"amount": 100.00,</span><br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"currency": "USD",</span><br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"method": "pix",</span><br />
+      &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-300">"description": "Payment example"</span><br />
+      &nbsp;&nbsp;<span className="text-green-300">{'}'}</span>
+    </code>
+  </pre>
+</div>
+
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
