@@ -5,6 +5,8 @@ import { CheckCircle } from 'lucide-react';
 import Image from "next/image";
 import { Target, Heart, Users, Globe, TrendingUp, Shield, Handshake, Building, Mail, Phone, ArrowRight } from 'lucide-react';
 import { AboutSection } from "@/components/sections/about-section";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function InstitucionalPage() {
   const values = [
