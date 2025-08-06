@@ -1,21 +1,9 @@
 import { Header } from "@/components/header";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Target,
-  Heart,
-  Users,
-  Globe,
-  TrendingUp,
-  Shield,
-  Handshake,
-  Building,
-  Mail,
-  Phone,
-  ArrowRight,
-} from "lucide-react";
 import { Footer } from "@/components/footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle } from 'lucide-react';
+import Image from "next/image";
+import { Target, Heart, Users, Globe, TrendingUp, Shield, Handshake, Building, Mail, Phone, ArrowRight } from 'lucide-react';
 import { AboutSection } from "@/components/sections/about-section";
 
 export default function InstitucionalPage() {
@@ -124,242 +112,262 @@ export default function InstitucionalPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background">
       <Header />
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 ">
-        <div className="container mx-auto px-4 mt-15">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Sobre a <span className="text-primary">Zi Credit</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil e no Mundo. Com um modelo completamente online e com escritórios físicos, oferecemos uma experiência bancária prática, acessível e com taxas reduzidas.
-            </p>
-            {/* <Button size="lg" className="text-lg px-8">
-              Conheça Nossa História
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button> */}
-          </div>
-        </div>
-      </section>
-            { <AboutSection />  }
-      {/* Mission & Vision */}
-      {/* <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <Card className="border-2 border-primary/20">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Target className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle className="text-2xl">Nossa Missão</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Garantir que qualquer pessoa,
-                  independentemente da sua localização ou nível de experiência
-                  financeira, possa ter acesso a serviços bancários de alta
-                  qualidade, simples e econômicos.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-secondary/20">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-secondary/10 rounded-lg">
-                    <Globe className="h-8 w-8 text-secondary" />
-                  </div>
-                  <CardTitle className="text-2xl">Nossa Visão</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Ser a principal plataforma de infraestrutura financeira da
-                  América Latina, conectando empresas, desenvolvedores e
-                  usuários finais em um ecossistema financeiro mais inclusivo e
-                  eficiente.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Values */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Nossos Valores
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Os princípios que guiam todas as nossas decisões e relacionamentos
+      <main className="flex-grow">
+        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 pt-32">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">A maneira inteligente de ter um Banco Digital.</h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil, EUA, Europa e no Mundo.
             </p>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-shadow"
-              >
-                <CardHeader>
-                  <div className="mx-auto p-4 bg-primary/10 rounded-full w-fit mb-4">
-                    <value.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">{value.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Nossa Jornada
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Marcos importantes na construção da Zi Credit
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="flex gap-6 items-start">
-                  <div className="flex flex-col items-center">
-                    <div className="w-4 h-4 bg-primary rounded-full"></div>
-                    {index < milestones.length - 1 && (
-                      <div className="w-0.5 h-16 bg-border mt-2"></div>
-                    )}
-                  </div>
-                  <Card className="flex-1">
-                    <CardHeader>
-                      <div className="flex items-center gap-3">
-                        <Badge variant="secondary" className="text-sm">
-                          {milestone.year}
-                        </Badge>
-                        <CardTitle className="text-lg">
-                          {milestone.title}
-                        </CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">
-                        {milestone.description}
-                      </p>
-                    </CardContent>
-                  </Card>
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold">Sobre o nosso BaaS</h2>
+              <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Com um modelo completamente online e com Escritórios físicos, o Zi Credit oferece uma experiência bancária prática, acessível e com taxas reduzidas.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 className="text-2xl font-semibold mb-4">Plataforma 100% Digital</h3>
+                    <p className="text-muted-foreground mb-4">Com Escritórios físicos, o Zi Credit proporciona uma plataforma totalmente online, com acesso a todos os serviços bancários através de um aplicativo intuitivo e de fácil navegação. A conveniência de gerenciar as finanças diretamente do smartphone ou computador oferece uma experiência mais ágil e moderna.</p>
+                    <h3 className="text-2xl font-semibold mb-4">Atendimento Personalizado e Rápido</h3>
+                    <p className="text-muted-foreground">O Zi Credit se destaca pela qualidade do atendimento ao cliente. Através de chatbots inteligentes e suporte humano disponível 24/7, os usuários podem resolver qualquer problema de forma rápida e eficiente.</p>
                 </div>
+                <div className="grid grid-cols-1 gap-6">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Diferenciais da Zi Credit</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                            <p className="flex items-start"><CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" /> Isenção de Tarifas Abusivas: Política de tarifas transparentes e justas.</p>
+                            <p className="flex items-start"><CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" /> Integração com o Ecossistema de Fintechs: Contrate seguros, investimentos e empréstimos sem burocracia.</p>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold">Nossos Parceiros</h2>
+                    <p className="text-muted-foreground mt-2 max-w-3xl mx-auto">Oferecemos uma infraestrutura completa e pioneira para conectar empresas de todos os segmentos a oportunidades do mercado financeiro, com soluções incorporadas às necessidades de seus clientes.</p>
+                </div>
+                <div className="max-w-4xl mx-auto">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Parceria com Banco Celcoin</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="mb-4">Ao se tornar parceiro do Banco Celcoin, o Banco Zi Credit pode contar com diversas vantagens, como:</p>
+                            <ul className="space-y-3">
+                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Soluções Financeiras Personalizadas.</li>
+                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Tecnologia de Ponta para processos rápidos e seguros.</li>
+                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Atendimento Diferenciado e focado no cliente.</li>
+                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Parcerias Estratégicas que abrem portas para novas oportunidades.</li>
+                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Solidez e Confiança de um parceiro com reputação no mercado.</li>
+                            </ul>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </section>
+
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 ">
+          <div className="container mx-auto px-4 mt-15">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Sobre a <span className="text-primary">Zi Credit</span>
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8">A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil e no Mundo. Com um modelo completamente online e com escritórios físicos, oferecemos uma experiência bancária prática, acessível e com taxas reduzidas.
+              </p>
+              {/* <Button size="lg" className="text-lg px-8">
+                Conheça Nossa História
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button> */}
+            </div>
+          </div>
+        </section>
+        { <AboutSection />  }
+
+        {/* Values */}
+        <section className="py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Nossos Valores
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Os princípios que guiam todas as nossas decisões e relacionamentos
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <Card
+                  key={index}
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
+                  <CardHeader>
+                    <div className="mx-auto p-4 bg-primary/10 rounded-full w-fit mb-4">
+                      <value.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl">{value.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{value.description}</p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Team */}
+        {/* Timeline */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Nossa Jornada
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Marcos importantes na construção da Zi Credit
+              </p>
+            </div>
 
-      {/* Contact Info */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Entre em Contato
+            <div className="max-w-4xl mx-auto">
+              <div className="space-y-8">
+                {milestones.map((milestone, index) => (
+                  <div key={index} className="flex gap-6 items-start">
+                    <div className="flex flex-col items-center">
+                      <div className="w-4 h-4 bg-primary rounded-full"></div>
+                      {index < milestones.length - 1 && (
+                        <div className="w-0.5 h-16 bg-border mt-2"></div>
+                      )}
+                    </div>
+                    <Card className="flex-1">
+                      <CardHeader>
+                        <div className="flex items-center gap-3">
+                          <Badge variant="secondary" className="text-sm">
+                            {milestone.year}
+                          </Badge>
+                          <CardTitle className="text-lg">
+                            {milestone.title}
+                          </CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground">
+                          {milestone.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Team */}
+
+        {/* Contact Info */}
+        <section className="py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Entre em Contato
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Estamos aqui para ajudar você a construir o futuro dos serviços
+                financeiros
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto p-3 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Building className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>Escritório</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Quadra SHS, Quadra 6, Conjunto A, Bloco A. Bairro Asa Sul.
+                    <br />
+                    Brasilia - DF.
+                    <br />
+                    70316-102
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto p-3 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Mail className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>Email</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    contato@zicredit.com
+                    <br />
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto p-3 bg-primary/10 rounded-lg w-fit mb-4">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>Telefone</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    +55 (61) 981743930
+                    <br />
+                    Seg-Sex: 9h às 18h
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-primary/5 py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Vamos construir juntos?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Estamos aqui para ajudar você a construir o futuro dos serviços
-              financeiros
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Entre em contato conosco e descubra como podemos ajudar sua empresa
+              a inovar no mercado financeiro.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="text-lg px-8">
+                Falar com Especialista
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-8 bg-transparent"
+              >
+                Ver Nossos Produtos
+              </Button>
+            </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Card className="text-center">
-              <CardHeader>
-                <div className="mx-auto p-3 bg-primary/10 rounded-lg w-fit mb-4">
-                  <Building className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Escritório</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Quadra SHS, Quadra 6, Conjunto A, Bloco A. Bairro Asa Sul.
-                  <br />
-                  Brasilia - DF.
-                  <br />
-                  70316-102
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="mx-auto p-3 bg-primary/10 rounded-lg w-fit mb-4">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Email</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  contato@zicredit.com
-                  <br />
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <div className="mx-auto p-3 bg-primary/10 rounded-lg w-fit mb-4">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Telefone</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  +55 (61) 981743930
-                  <br />
-                  Seg-Sex: 9h às 18h
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-primary/5 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Vamos construir juntos?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Entre em contato conosco e descubra como podemos ajudar sua empresa
-            a inovar no mercado financeiro.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8">
-              Falar com Especialista
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 bg-transparent"
-            >
-              Ver Nossos Produtos
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
       <Footer />
     </div>
   );

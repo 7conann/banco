@@ -1,133 +1,121 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { CreditCard, CheckCircle, ArrowRight, Code, UserCheck, Shield, Clock } from "lucide-react"
-import Link from "next/link"
+"use client";
+
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle, Shield, Users, Clock } from 'lucide-react';
+import Link from "next/link";
 
 export default function ContaNominalPage() {
-  const features = [
-    "Identificação do titular",
-    "Facilidade de administração",
-    "Menor burocracia",
-    "Privacidade para investidores"
-  ]
-
-  const advantages = [
-    {
-      icon: UserCheck,
-      title: "Identificação Clara",
-      description: "Titular claramente identificado para maior transparência"
-    },
-    {
-      icon: Shield,
-      title: "Privacidade Garantida",
-      description: "Proteção da identidade dos investidores quando necessário"
-    },
-    {
-      icon: Clock,
-      title: "Processo Simplificado",
-      description: "Abertura rápida com menos burocracia administrativa"
-    }
-  ]
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-teal-50 to-cyan-50 py-20">
-        <div className="container mx-auto px-4 mt-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex items-center justify-center mb-6">
-              <div className="p-4 bg-teal-100 rounded-lg mr-4">
-                <CreditCard className="h-12 w-12 text-teal-600" />
-              </div>
-              <Badge className="bg-teal-600 text-white">Solução Especializada</Badge>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Conta <span className="text-teal-600">Nominal</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Conta bancária para depósitos e transações relacionadas a fundos específicos, sem titular formalmente vinculado
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8">
-                Abrir Conta Nominal
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent">
-                Falar com Especialista
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Advantages */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Vantagens da Conta Nominal</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Solução ideal para gestão de fundos específicos com maior flexibilidade
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-yellow-400 to-yellow-500 py-20 pt-32">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Conta Nominal</h1>
+            <p className="text-lg md:text-xl text-black/80 max-w-3xl mx-auto">
+              Conta bancária para depósitos específicos sem titular formalmente vinculado
             </p>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {advantages.map((advantage, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <advantage.icon className="h-8 w-8 text-teal-600" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4">{advantage.title}</h3>
-                  <p className="text-gray-600">{advantage.description}</p>
+        {/* O que é */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-8">O que é uma Conta Nominal?</h2>
+              <p className="text-lg text-gray-600 text-center mb-12">
+                É um tipo de conta bancária usada principalmente para depósitos e transações relacionadas a fundos específicos, 
+                geralmente vinculados a uma pessoa ou entidade, sem que a conta possua um titular formalmente vinculado a ela. 
+                Na prática, ela não é diretamente associada a uma pessoa física ou jurídica de forma explícita, 
+                mas pode ser movimentada por um responsável legal ou administrador da conta.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Vantagens */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">Vantagens da Conta Nominal</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <Card>
+                <CardHeader>
+                  <Users className="w-12 h-12 text-yellow-500 mb-4" />
+                  <CardTitle>Identificação do Titular</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    A identificação do titular não é vinculada diretamente à conta bancária, 
+                    mas sim ao fundo ou objetivo para o qual ela é aberta.
+                  </p>
                 </CardContent>
               </Card>
-            ))}
+
+              <Card>
+                <CardHeader>
+                  <Shield className="w-12 h-12 text-yellow-500 mb-4" />
+                  <CardTitle>Transações Seguras</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    A movimentação de valores é registrada de forma que se saiba quem são os beneficiários finais, 
+                    mas sem que o público tenha acesso a essas informações.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <Clock className="w-12 h-12 text-yellow-500 mb-4" />
+                  <CardTitle>Facilidade de Administração</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Pode ser usada para facilitar a gestão de grandes volumes de dinheiro, 
+                    especialmente em situações onde há necessidade de uma conta centralizada.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CheckCircle className="w-12 h-12 text-yellow-500 mb-4" />
+                  <CardTitle>Menor Burocracia</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600">
+                    Simplifica o processo de gestão de valores sem a necessidade de uma estrutura complexa 
+                    de múltiplas contas, economizando tempo e recursos administrativos.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
+        </section>
 
-          <Card className="max-w-4xl mx-auto">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Características Principais</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {features.map((feature, index) => (
-                  <li key={index} className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-teal-600 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Simplifique a gestão de fundos
-          </h2>
-          <p className="text-xl text-teal-100 mb-8 max-w-2xl mx-auto">
-            Conta nominal com todas as vantagens de flexibilidade e privacidade que você precisa.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-teal-600 hover:bg-gray-100 text-lg px-8">
-              Falar com Especialista
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8">
-              Agendar Demo
-            </Button>
+        {/* CTA */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">Pronto para começar?</h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Abra sua Conta Nominal e tenha mais privacidade e facilidade na gestão dos seus fundos.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black">
+                <Link href="/auth/register">Abrir Conta Nominal</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/suporte">Falar com Especialista</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </main>
       <Footer />
     </div>
-  )
+  );
 }

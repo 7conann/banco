@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { MenuIcon, XIcon, ChevronDown, LogOut, Settings, BarChart3 } from "lucide-react";
+import { MenuIcon, XIcon, ChevronDown, LogOut, Settings, BarChart3 } from 'lucide-react';
 import { useAuth } from "@/components/auth/auth-provider";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -18,20 +18,22 @@ const institucionalNav = [
 
 const productsNav = [
   {
-    title: "Infraestrutura Financeira",
+    title: "Contas e Pagamentos",
     items: [
-      { title: "Banking as a Service", href: "/produtos/banking-as-a-service", description: "Estrutura bancária multimoeda via API." },
-      { title: "Investment as a Service", href: "/produtos/investment-as-a-service", description: "Distribuição de investimentos integrada." },
-      { title: "Onboarding e Compliance", href: "/produtos/onboarding-compliance", description: "Gestão de risco e conformidade." },
+      { title: "Conta Nominal", href: "/produtos/conta-nominal", description: "Conta bancária para depósitos específicos." },
+      { title: "ZIPAY (PIX-TED)", href: "/produtos/zipay", description: "Pagamentos instantâneos e gestão dolarizada." },
+      { title: "Boleto (PIX e Híbrido)", href: "/produtos/boleto", description: "Boletos com pagamento via PIX." },
+      { title: "Split de Pagamento", href: "/produtos/split-pagamento", description: "Divisão automática de pagamentos." },
     ],
   },
   {
-    title: "Soluções Prontas",
+    title: "Soluções Avançadas",
     items: [
-      { title: "Azipay", href: "/produtos/azipay", description: "Gateway de pagamentos com BRL." },
-      { title: "Conta Empresarial", href: "/produtos/conta-empresarial", description: "Conta PJ com gestão completa." },
-{ title: "Emissão de Cartões", href: "/produtos/emissao-cartoes", description: "Cartões físicos e virtuais white-label." },
-
+      { title: "Conta Escrow", href: "/produtos/conta-escrow", description: "Conta de custódia para transações seguras." },
+      { title: "Conta Dolarizada", href: "/produtos/conta-dolarizada", description: "Conta em criptoativos USDT/USDC." },
+      { title: "Cartão", href: "/produtos/cartao", description: "Cartão pré-pago com conversão cripto." },
+      { title: "CCB", href: "/produtos/ccb", description: "Cédula de Crédito Bancário." },
+      { title: "Criptomoedas", href: "/produtos/criptomoedas", description: "Negociação e custódia de criptoativos." },
     ],
   },
 ];
@@ -98,7 +100,7 @@ function HoverDropdown({
           open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-1 pointer-events-none"
         )}
       >
-        <div className="p-6 bg-white rounded-md shadow-sm">{children}</div>
+        <div className="p-6 bg-white rounded-md shadow-sm border">{children}</div>
       </div>
     </div>
   );
@@ -126,13 +128,13 @@ function ProductsMenu() {
       <div className="grid grid-cols-2 gap-8">
         {productsNav.map((section) => (
           <div key={section.title} className="space-y-4">
-            <div className="text-xs font-semibold uppercase tracking-wider">{section.title}</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-gray-600">{section.title}</div>
             <ul className="space-y-2">
               {section.items.map((item) => (
                 <li key={item.title}>
                   <Link href={item.href} className="block px-3 py-2 rounded-md hover:bg-gray-100 text-sm">
-                    <div className="font-medium">{item.title}</div>
-                    <div className="text-xs text-muted-foreground">{item.description}</div>
+                    <div className="font-medium text-gray-900">{item.title}</div>
+                    <div className="text-xs text-gray-500">{item.description}</div>
                   </Link>
                 </li>
               ))}
@@ -163,7 +165,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
-            <Image src="/images/z-Photoroom.png" alt="Credit" fill className="object-contain" />
+            <Image src="/images/z-Photoroom.png" alt="Zi Credit" fill className="object-contain" />
           </div>
           <span className="text-lg font-semibold text-gray-800">Credit</span>
         </Link>
@@ -175,7 +177,7 @@ export function Header() {
           <Link href="/taxas" className={cn(navigationMenuTriggerStyle(), "flex items-center text-gray-700 transition")}>
             Taxas
           </Link>
-          <Link href="/suporte" className="text-gray-700 transition">
+          <Link href="/suporte" className="text-gray-700 hover:text-gray-900 transition">
             Suporte
           </Link>
         </nav>
@@ -233,7 +235,7 @@ export function Header() {
         <div className="md:hidden px-4 mt-2">
           <div className="max-w-screen-xl mx-auto bg-white rounded-lg shadow-lg flex flex-col space-y-2 px-6 py-4">
             <Link href="/institucional" className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Institucional</Link>
-            <ProductsMenu />
+            <Link href="/produtos" className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Produtos</Link>
             <Link href="/taxas" className="flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Taxas</Link>
             <Link href="/suporte" className="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100">Suporte</Link>
             {!isAuthenticated && (

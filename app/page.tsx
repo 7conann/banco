@@ -10,7 +10,7 @@ import { BenefitsSection } from "@/components/sections/benefits-section"
 import { SecuritySection } from "@/components/sections/security-section"
 import { PartnersSection } from "@/components/sections/partners-section"
 import { CTASection } from "@/components/sections/cta-section"
-import InstitucionalPage from "./institucional/page"
+import { IntegrationSection } from "@/components/sections/integration-section"
 
 export default function HomePage() {
   return (
@@ -27,6 +27,7 @@ export default function HomePage() {
         <SecuritySection />
         {/* <PartnersSection /> */}
         {/* <CTASection /> */}
+        <IntegrationSection />
       </main>
       <Footer />
     </div>
