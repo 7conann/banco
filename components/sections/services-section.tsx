@@ -54,9 +54,9 @@ export function ServicesSection() {
     },
     {
       icon: <CreditCard className="w-8 h-8 text-yellow-600" />,
-      title: "Cartão",
-      description: "Emissão de cartões físicos e virtuais com controle total sobre limites e funcionalidades.",
-      badge: "Conveniência",
+      title: "Cartão em Criptomoedas",
+      description: "Cartão pré-pago com conversão cripto integrada para pagamentos globais sem IOF.",
+      badge: "Inovação",
       badgeColor: "bg-teal-100 text-teal-800"
     },
     {

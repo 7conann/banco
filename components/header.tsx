@@ -31,9 +31,8 @@ const productsNav = [
     items: [
       { title: "Conta Escrow", href: "/produtos/conta-escrow", description: "Conta de custódia para transações seguras." },
       { title: "Conta Dolarizada", href: "/produtos/conta-dolarizada", description: "Conta em criptoativos USDT/USDC." },
-      { title: "Cartão", href: "/produtos/cartao", description: "Cartão pré-pago com conversão cripto." },
+      { title: "Cartão em Criptomoedas", href: "/produtos/cartao", description: "Cartão pré-pago com conversão cripto integrada." },
       { title: "CCB", href: "/produtos/ccb", description: "Cédula de Crédito Bancário." },
-      { title: "Criptomoedas", href: "/produtos/criptomoedas", description: "Negociação e custódia de criptoativos." },
     ],
   },
 ];
