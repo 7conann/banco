@@ -10,7 +10,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.82 0.15 80); /* Cor amarela exata da imagem */
+  --primary: #F0B100; /* Cor amarela exata da imagem */
   --primary-foreground: oklch(0.145 0 0); /* Cor de texto para contraste */
   --secondary: oklch(0.6 0.118 184.704);
   --secondary-foreground: oklch(0.205 0 0);

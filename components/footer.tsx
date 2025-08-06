@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#282829] text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -20,7 +20,7 @@ export function Footer() {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Phone size={16} className="text-yellow-400" />
-                <span className="text-gray-400">(61) 98174-3930</span>
+                <span className="text-gray-400"> +55 (61) 98174-3930</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail size={16} className="text-yellow-400" />
@@ -87,7 +87,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400">© 2024 Zi Credit. Todos os direitos reservados.</p>
+          <p className="text-gray-400">© 2025 Zi Credit. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
