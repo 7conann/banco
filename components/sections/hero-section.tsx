@@ -8,7 +8,6 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 // importa o logo gerado pelo Photoroom
-import Photologo from "/public/images/z-Photoroom.png"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -111,7 +110,7 @@ export function HeroSection() {
               animate={{ scale: [1, 1.015, 1] }}
               transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
             >
-              <Image src={Photologo} alt="Logo Z" fill className="object-contain" />
+              <Image src="/images/z-Photoroom.png" alt="Logo Z" fill className="object-contain" />
             </motion.div>
           </div>
         </div>
