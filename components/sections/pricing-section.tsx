@@ -144,8 +144,8 @@ export function PricingSection() {
               <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
                 <p className="text-sm text-gray-700">
                   <strong>*Obs.:</strong> Movimentação acima de U$ 10.000,00 =
-                  U$ 9,90 Mensalidade. Movimentação acima de U$ 100.000,00 =
-                  U$ 14,90 Mensalidade. Envio do Cartão Incluso.
+                  U$ 9,90 Mensalidade. <br /> Movimentação acima de U$ 100.000,00 =
+                  U$ 14,90 Mensalidade. <br /> Envio do Cartão Incluso.
                 </p>
               </div>
             </CardContent>
