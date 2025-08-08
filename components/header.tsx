@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, memo } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
@@ -39,7 +39,7 @@ const productsNav = [
 
 const navItemClass = "px-2 py-1 rounded-md hover:bg-accent transition-colors text-sm font-medium flex items-center gap-1";
 
-function HoverDropdown({
+const HoverDropdown = memo(function HoverDropdown({
   label,
   children,
   width = "w-[900px]",
@@ -103,9 +103,9 @@ function HoverDropdown({
       </div>
     </div>
   );
-}
+});
 
-function InstitucionalMenu() {
+const InstitucionalMenu = memo(function InstitucionalMenu() {
   return (
     <HoverDropdown label="Institucional" width="w-[200px]">
       <ul className="space-y-2">
@@ -119,9 +119,9 @@ function InstitucionalMenu() {
       </ul>
     </HoverDropdown>
   );
-}
+});
 
-function ProductsMenu() {
+const ProductsMenu = memo(function ProductsMenu() {
   return (
     <HoverDropdown label="Produtos" width="w-[900px]">
       <div className="grid grid-cols-2 gap-8">
@@ -143,9 +143,9 @@ function ProductsMenu() {
       </div>
     </HoverDropdown>
   );
-}
+});
 
-export function Header() {
+export const Header = memo(function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { user, logout, isAuthenticated } = useAuth();
   const router = useRouter();
@@ -164,7 +164,14 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
-            <Image src="/images/z-Photoroom.png" alt="Zi Credit" fill className="object-contain" />
+            <Image 
+              src="/images/z-Photoroom.png" 
+              alt="Zi Credit" 
+              fill 
+              className="object-contain"
+              priority
+              sizes="32px"
+            />
           </div>
           <span className="text-lg font-semibold text-gray-800">Credit</span>
         </Link>
@@ -248,4 +255,4 @@ export function Header() {
       )}
     </header>
   );
-}
+});

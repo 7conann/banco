@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, memo, useCallback } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Search, Calendar, Clock } from "lucide-react"
+import { Search, Calendar, Clock } from 'lucide-react'
 import Link from "next/link"
 
 // Mock data - em produção viria de uma API ou CMS
@@ -80,6 +80,32 @@ const articles = [
 
 const categories = ["Todos", "Tendências", "Pagamentos", "Segurança", "Investimentos", "Recompensas"]
 
+const ArticleCard = memo(function ArticleCard({ article }: { article: typeof articles[0] }) {
+  return (
+    <Card className="overflow-hidden shadow-lg">
+      <Link href={`/blog/${article.id}`}>
+        <img
+          src={article.image || "/placeholder.svg"}
+          alt={article.title}
+          className="w-full h-48 object-cover"
+          loading="lazy"
+        />
+        <CardContent className="p-4">
+          <Badge className="mb-2">{article.category}</Badge>
+          <h3 className="text-lg font-bold text-gray-900 mb-2">{article.title}</h3>
+          <p className="text-sm text-gray-700 mb-4 line-clamp-3">{article.excerpt}</p>
+          <div className="flex items-center text-xs text-gray-500">
+            <Calendar className="w-3 h-3 mr-1" />
+            <span>{article.date}</span>
+            <Clock className="w-3 h-3 ml-3 mr-1" />
+            <span>{article.readTime}</span>
+          </div>
+        </CardContent>
+      </Link>
+    </Card>
+  )
+})
+
 export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("Todos")
@@ -103,7 +129,15 @@ export default function BlogPage() {
     return filtered
   }, [searchTerm, selectedCategory])
 
-  const featuredArticle = articles.find((article) => article.featured) || articles[0]
+  const featuredArticle = useMemo(() => articles.find((article) => article.featured) || articles[0], [])
+
+  const handleCategoryChange = useCallback((category: string) => {
+    setSelectedCategory(category)
+  }, [])
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value)
+  }, [])
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -124,6 +158,7 @@ export default function BlogPage() {
                     src={featuredArticle.image || "/placeholder.svg"}
                     alt={featuredArticle.title}
                     className="w-full h-64 object-cover"
+                    loading="eager"
                   />
                   <CardContent className="p-6">
                     <Badge className="mb-2">{featuredArticle.category}</Badge>
@@ -151,7 +186,7 @@ export default function BlogPage() {
                   placeholder="Buscar artigos..."
                   className="pl-10 pr-4 py-2 rounded-md border border-gray-300 w-full"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={handleSearchChange}
                 />
               </div>
               <div className="flex flex-wrap gap-2">
@@ -159,7 +194,7 @@ export default function BlogPage() {
                   <Button
                     key={category}
                     variant={selectedCategory === category ? "default" : "outline"}
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                     className={selectedCategory === category ? "bg-primary text-primary-foreground" : ""}
                   >
                     {category}
@@ -173,26 +208,7 @@ export default function BlogPage() {
           <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.length > 0 ? (
               filteredArticles.map((article) => (
-                <Card key={article.id} className="overflow-hidden shadow-lg">
-                  <Link href={`/blog/${article.id}`}>
-                    <img
-                      src={article.image || "/placeholder.svg"}
-                      alt={article.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <CardContent className="p-4">
-                      <Badge className="mb-2">{article.category}</Badge>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{article.title}</h3>
-                      <p className="text-sm text-gray-700 mb-4 line-clamp-3">{article.excerpt}</p>
-                      <div className="flex items-center text-xs text-gray-500">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        <span>{article.date}</span>
-                        <Clock className="w-3 h-3 ml-3 mr-1" />
-                        <span>{article.readTime}</span>
-                      </div>
-                    </CardContent>
-                  </Link>
-                </Card>
+                <ArticleCard key={article.id} article={article} />
               ))
             ) : (
               <div className="col-span-full text-center text-gray-600 text-lg">

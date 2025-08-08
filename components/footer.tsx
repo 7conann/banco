@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin } from 'lucide-react'
+import { memo } from "react"
 
-export function Footer() {
+export const Footer = memo(function Footer() {
   return (
     <footer className="bg-[#282829] text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -92,4 +93,4 @@ export function Footer() {
       </div>
     </footer>
   )
-}
+});
