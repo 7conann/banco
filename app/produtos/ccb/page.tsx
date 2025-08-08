@@ -19,7 +19,7 @@ export default function CcbPage() {
 
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
               {/* Left column - Text content */}
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
