@@ -20,8 +20,8 @@ export function IntegrationSection() {
         {/* Cards de integração */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <div className="text-center">
-            <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Code className="w-10 h-10 text-yellow-600" />
+            <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+              <Code className="w-10 h-10 text-black" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">APIs REST</h3>
             <p className="text-gray-600">
@@ -30,8 +30,8 @@ export function IntegrationSection() {
           </div>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Zap className="w-10 h-10 text-yellow-600" />
+            <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+              <Zap className="w-10 h-10 text-black" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">SDKs Prontos</h3>
             <p className="text-gray-600">
@@ -40,8 +40,8 @@ export function IntegrationSection() {
           </div>
 
           <div className="text-center">
-            <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Shield className="w-10 h-10 text-yellow-600" />
+            <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+              <Shield className="w-10 h-10 text-black" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Segurança</h3>
             <p className="text-gray-600">
@@ -63,10 +63,10 @@ export function IntegrationSection() {
                 integrar nossos serviços em questão de minutos.
               </p>
               <div className="flex gap-4">
-                <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
+                <Button className="bg-primary hover:bg-white text-black font-semibold">
                   Ver Documentação
                 </Button>
-                <Button variant="outline" className="border-gray-600 text-white hover:bg-gray-800">
+                <Button className="bg-white hover:bg-primary text-black font-semibold">
                   Falar com Consultor
                 </Button>
               </div>

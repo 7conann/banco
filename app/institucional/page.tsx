@@ -117,77 +117,16 @@ export default function InstitucionalPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-grow">
-        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 pt-32">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">A maneira inteligente de ter um Banco Digital.</h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil, EUA, Europa e no Mundo.
-            </p>
-          </div>
-        </section>
-
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold">Sobre o nosso BaaS</h2>
-              <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Com um modelo completamente online e com Escritórios físicos, o Zi Credit oferece uma experiência bancária prática, acessível e com taxas reduzidas.</p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h3 className="text-2xl font-semibold mb-4">Plataforma 100% Digital</h3>
-                    <p className="text-muted-foreground mb-4">Com Escritórios físicos, o Zi Credit proporciona uma plataforma totalmente online, com acesso a todos os serviços bancários através de um aplicativo intuitivo e de fácil navegação. A conveniência de gerenciar as finanças diretamente do smartphone ou computador oferece uma experiência mais ágil e moderna.</p>
-                    <h3 className="text-2xl font-semibold mb-4">Atendimento Personalizado e Rápido</h3>
-                    <p className="text-muted-foreground">O Zi Credit se destaca pela qualidade do atendimento ao cliente. Através de chatbots inteligentes e suporte humano disponível 24/7, os usuários podem resolver qualquer problema de forma rápida e eficiente.</p>
-                </div>
-                <div className="grid grid-cols-1 gap-6">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Diferenciais da Zi Credit</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                            <p className="flex items-start"><CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" /> Isenção de Tarifas Abusivas: Política de tarifas transparentes e justas.</p>
-                            <p className="flex items-start"><CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" /> Integração com o Ecossistema de Fintechs: Contrate seguros, investimentos e empréstimos sem burocracia.</p>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 bg-gray-50">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold">Nossos Parceiros</h2>
-                    <p className="text-muted-foreground mt-2 max-w-3xl mx-auto">Oferecemos uma infraestrutura completa e pioneira para conectar empresas de todos os segmentos a oportunidades do mercado financeiro, com soluções incorporadas às necessidades de seus clientes.</p>
-                </div>
-                <div className="max-w-4xl mx-auto">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Parceria com Banco Celcoin</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="mb-4">Ao se tornar parceiro do Banco Celcoin, o Banco Zi Credit pode contar com diversas vantagens, como:</p>
-                            <ul className="space-y-3">
-                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Soluções Financeiras Personalizadas.</li>
-                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Tecnologia de Ponta para processos rápidos e seguros.</li>
-                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Atendimento Diferenciado e focado no cliente.</li>
-                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Parcerias Estratégicas que abrem portas para novas oportunidades.</li>
-                                <li className="flex items-start"><CheckCircle className="h-5 w-5 text-primary mr-2 flex-shrink-0" /> Solidez e Confiança de um parceiro com reputação no mercado.</li>
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-        </section>
+        
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 ">
+        <section className="bg-[#282829] from-primary/10 to-secondary/10 py-20 ">
           <div className="container mx-auto px-4 mt-15">
             <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
                 Sobre a <span className="text-primary">Zi Credit</span>
               </h1>
-              <p className="text-xl text-muted-foreground mb-8">A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil e no Mundo. Com um modelo completamente online e com escritórios físicos, oferecemos uma experiência bancária prática, acessível e com taxas reduzidas.
+              <p className="text-xl text-white mb-8">A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil e no Mundo. Com um modelo completamente online e com escritórios físicos, oferecemos uma experiência bancária prática, acessível e com taxas reduzidas.
               </p>
               {/* <Button size="lg" className="text-lg px-8">
                 Conheça Nossa História

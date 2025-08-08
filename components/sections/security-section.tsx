@@ -3,13 +3,13 @@ import { ArrowRight } from "lucide-react"
 
 export function SecuritySection() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center items-center">
           <div className="relative">
             
           
-            <div className="inline-block bg-yellow-400/20 text-yellow-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div className="inline-block bg-primary text-black px-4 py-2 rounded-full text-sm font-medium mb-4">
               SEM BARREIRAS. SEM COMPLICAÇÃO
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

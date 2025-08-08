@@ -9,10 +9,10 @@ export default function ContaEscrowPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 pt-32">
+        <section className="bg-primary py-20 pt-32">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Conta Escrow</h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-black max-w-3xl mx-auto">
               Uma conta de custódia onde o dinheiro é mantido por uma terceira parte neutra até que todas as condições acordadas sejam cumpridas.
             </p>
           </div>

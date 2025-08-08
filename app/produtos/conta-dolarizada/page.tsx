@@ -9,10 +9,10 @@ export default function ContaDolarizadaPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 pt-32">
+        <section className="bg-primary py-20 pt-32">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Conta Dolarizada (em Criptoativos)</h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-black max-w-3xl mx-auto">
               Proteja seu patrimônio com uma conta lastreada em criptomoedas estáveis como USDT ou USDC, garantindo paridade com o Dólar Americano.
             </p>
           </div>
@@ -37,28 +37,28 @@ export default function ContaDolarizadaPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                      <CheckCircle className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold">Acesso a Cold Wallets</h3>
                         <p className="text-sm text-muted-foreground">Permite que empresas se financiem por meio de uma operação estruturada, com a cédula sendo uma garantia de pagamento sem rastreabilidade.</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                      <CheckCircle className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold">Taxas de Juros Menores</h3>
                         <p className="text-sm text-muted-foreground">Em comparação com outros tipos de lastros, as criptomoedas podem ter taxas de juros mais baixas.</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                      <CheckCircle className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold">Possibilidade de Negociação</h3>
                         <p className="text-sm text-muted-foreground">USDT ou USDC podem ser negociados no mercado, oferecendo maior flexibilidade.</p>
                       </div>
                     </div>
                      <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                      <CheckCircle className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold">Segurança e Confiança</h3>
                         <p className="text-sm text-muted-foreground">Uma forma estruturada e legalmente garantida de contrair dívida, se tornando um ótimo investimento contra a volatilidade.</p>

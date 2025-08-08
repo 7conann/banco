@@ -13,7 +13,7 @@ export default function ContaNominalPage() {
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-yellow-400 to-yellow-500 py-20 pt-32">
+        <section className="bg-primary py-20 pt-32">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Conta Nominal</h1>
             <p className="text-lg md:text-xl text-black/80 max-w-3xl mx-auto">
@@ -38,13 +38,13 @@ export default function ContaNominalPage() {
         </section>
 
         {/* Vantagens */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Vantagens da Conta Nominal</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <Card>
                 <CardHeader>
-                  <Users className="w-12 h-12 text-yellow-500 mb-4" />
+                  <Users className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Identificação do Titular</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -57,7 +57,7 @@ export default function ContaNominalPage() {
 
               <Card>
                 <CardHeader>
-                  <Shield className="w-12 h-12 text-yellow-500 mb-4" />
+                  <Shield className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Transações Seguras</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -70,7 +70,7 @@ export default function ContaNominalPage() {
 
               <Card>
                 <CardHeader>
-                  <Clock className="w-12 h-12 text-yellow-500 mb-4" />
+                  <Clock className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Facilidade de Administração</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -83,7 +83,7 @@ export default function ContaNominalPage() {
 
               <Card>
                 <CardHeader>
-                  <CheckCircle className="w-12 h-12 text-yellow-500 mb-4" />
+                  <CheckCircle className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Menor Burocracia</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -100,12 +100,12 @@ export default function ContaNominalPage() {
         {/* CTA */}
         <section className="py-16">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">Pronto para começar?</h2>
+            <h2 className="text-3xl font-bold mb-4">Vire Zi Credit hoje?</h2>
             <p className="text-lg text-gray-600 mb-8">
               Abra sua Conta Nominal e tenha mais privacidade e facilidade na gestão dos seus fundos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black">
+              <Button asChild size="lg" className="bg-primary hover:bg-white text-black">
                 <Link href="/auth/register">Abrir Conta Nominal</Link>
               </Button>
               <Button asChild size="lg" variant="outline">

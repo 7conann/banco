@@ -53,15 +53,15 @@ function TaxaCard({ title, taxas, observacao }: { title: string; taxas: any[]; o
                 )}
               </div>
               <div className="text-right ml-4">
-                <div className="font-bold text-yellow-600 text-lg">{taxa.valor}</div>
+                <div className="font-bold text-primary text-lg">{taxa.valor}</div>
               </div>
             </div>
           ))}
         </div>
         {observacao && (
-          <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
+          <div className="mt-6 p-4 bg-primary rounded-lg">
             <p className="text-sm text-gray-600">
-              <span className="font-semibold text-yellow-700">*Obs.:</span> {observacao}
+              <span className="font-semibold text-white">*Obs.:</span> {observacao}
             </p>
           </div>
         )}
@@ -75,9 +75,9 @@ export default function TaxasPage() {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       <main className="flex-grow">
-        <section className="bg-gradient-to-r from-yellow-400 to-yellow-500 py-20 pt-32">
+        <section className="bg-primary py-20 pt-32">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Taxas e Planos</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Taxas Zi Credit</h1>
             <p className="text-lg md:text-xl text-black/80 max-w-3xl mx-auto">
               Transparência total sobre nossos custos. Escolha o plano que melhor se adapta à sua necessidade.
             </p>
@@ -124,7 +124,7 @@ export default function TaxasPage() {
                         <tr key={index} className="border-b border-gray-100 last:border-b-0">
                           <td className="py-4 px-2 font-semibold text-gray-900">{plano.nivel}</td>
                           <td className="py-4 px-2 text-gray-700">{plano.movimentacao}</td>
-                          <td className="py-4 px-2 font-bold text-yellow-600">{plano.cashback}</td>
+                          <td className="py-4 px-2 font-bold text-primary">{plano.cashback}</td>
                           <td className="py-4 px-2 text-gray-700">{plano.suporte}</td>
                           <td className="py-4 px-2 text-gray-700">{plano.cartaoPF}</td>
                           <td className="py-4 px-2 text-gray-700">{plano.cartaoPJ}</td>

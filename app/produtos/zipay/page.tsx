@@ -13,9 +13,9 @@ export default function ZipayPage() {
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-yellow-400 to-yellow-500 py-20 pt-32">
+        <section className="bg-primary py-20 pt-32">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">ZIPAY (PIX-TED)</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Zipay</h1>
             <p className="text-lg md:text-xl text-black/80 max-w-3xl mx-auto">
               Solução de conta digital focada em pagamentos instantâneos e gestão de fundos em Dólar e Criptomoedas
             </p>
@@ -26,7 +26,7 @@ export default function ZipayPage() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-8">O que é o ZIPAY?</h2>
+              <h2 className="text-3xl font-bold text-center mb-8">O que é o Zipay?</h2>
               <p className="text-lg text-gray-600 text-center mb-12">
                 Zipay é uma solução de conta digital focada em pagamentos instantâneos e na gestão de fundos em Dólar e em Criptomoedas. Por meio de integração nativa com Pix e TED, além de uma API própria para conversão e custódia automática de saldos em USDT e USDC, a Zipay permite que empresas e pessoas físicas operem com a paridade do dólar americano sem sair do ambiente de sua conta.
               </p>
@@ -35,14 +35,14 @@ export default function ZipayPage() {
         </section>
 
         {/* Vantagens */}
-        <section className="py-16 bg-gray-50">
+        <section>
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Vantagens do ZIPAY</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Pagamentos Instantâneos via PIX */}
               <Card>
                 <CardHeader>
-                  <Zap className="w-12 h-12 text-yellow-500 mb-4" />
+                  <Zap className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Pagamentos Instantâneos via PIX</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -57,7 +57,7 @@ export default function ZipayPage() {
               {/* Transferências Tradicionais (TED) */}
               <Card>
                 <CardHeader>
-                  <Clock className="w-12 h-12 text-yellow-500 mb-4" />
+                  <Clock className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Transferências Tradicionais (TED)</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -71,7 +71,7 @@ export default function ZipayPage() {
               {/* Conta Dolarizada em Criptoativos */}
               <Card>
                 <CardHeader>
-                  <DollarSign className="w-12 h-12 text-yellow-500 mb-4" />
+                  <DollarSign className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Conta Dolarizada em Criptoativos</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -86,7 +86,7 @@ export default function ZipayPage() {
               {/* API de Integração Direta */}
               <Card>
                 <CardHeader>
-                  <Smartphone className="w-12 h-12 text-yellow-500 mb-4" />
+                  <Smartphone className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>API de Integração Direta</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -101,7 +101,7 @@ export default function ZipayPage() {
               {/* Administração e Conciliação Simplificadas */}
               <Card>
                 <CardHeader>
-                  <BarChart3 className="w-12 h-12 text-yellow-500 mb-4" />
+                  <BarChart3 className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Administração e Conciliação Simplificadas</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -116,7 +116,7 @@ export default function ZipayPage() {
               {/* Privacidade e Compliance */}
               <Card>
                 <CardHeader>
-                  <Shield className="w-12 h-12 text-yellow-500 mb-4" />
+                  <Shield className="w-12 h-12 text-primary mb-4" />
                   <CardTitle>Privacidade e Compliance</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -138,7 +138,7 @@ export default function ZipayPage() {
               Experimente o ZIPAY e tenha pagamentos instantâneos com gestão dolarizada.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black">
+              <Button asChild size="lg" className="bg-primary hover:bg-white text-black">
                 <Link href="/auth/register">Começar com ZIPAY</Link>
               </Button>
               <Button asChild size="lg" variant="outline">

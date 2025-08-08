@@ -45,10 +45,10 @@ export function BenefitsSection() {
             <Card key={index} className="border-gray-200 hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center">
-                    <benefit.icon className="w-6 h-6 text-yellow-600" />
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                    <benefit.icon className="w-6 h-6 text-black" />
                   </div>
-                  <Badge variant="secondary" className="text-xs">
+                  <Badge className="text-xs bg-primary">
                     {benefit.badge}
                   </Badge>
                 </div>

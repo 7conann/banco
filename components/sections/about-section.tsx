@@ -8,15 +8,15 @@ export function AboutSection() {
    
     
 
-        <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+        <div className="bg-primary rounded-2xl p-8 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">Nossa Missão</h3>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-white mb-6">
                 Garantir que qualquer pessoa, independentemente da sua localização ou nível de experiência financeira,
                 possa ter acesso a serviços bancários de alta qualidade, simples e econômicos.
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-white">
                 Oferecemos uma infraestrutura completa e pioneira para conectar empresas de todos os segmentos a
                 oportunidades do mercado financeiro, com soluções incorporadas às necessidades de seus clientes.
               </p>

@@ -14,7 +14,7 @@ const produtos = [
     category: "Contas"
   },
   {
-    title: "ZIPAY (PIX-TED)",
+    title: "ZIPAY",
     description: "Pagamentos instantâneos e gestão de fundos em Dólar e Criptomoedas.",
     href: "/produtos/zipay",
     category: "Pagamentos"
@@ -50,7 +50,7 @@ const produtos = [
     category: "Cartões"
   },
   {
-    title: "CCB",
+    title: "CCB - Linha de Crédito",
     description: "Cédula de Crédito Bancário para empréstimos e financiamentos.",
     href: "/produtos/ccb",
     category: "Crédito"

@@ -41,25 +41,25 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="py-20 bg-gray-900">
+    <section className="py-20 bg-primary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-block bg-yellow-400/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-medium mb-4">
+          <div className="inline-block bg-black text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
             TECNOLOGIA QUE IMPULSIONA
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Mais vendas, menos preocupações</h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">Transforme a maneira como você vende na internet.</p>
+          <p className="text-xl text-white max-w-2xl mx-auto">Transforme a maneira como você vende na internet.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors">
+            <Card key={index} className="bg-white border-black hover:bg-gray-750 transition-colors">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center mb-6">
-                  <feature.icon className="w-6 h-6 text-yellow-400" />
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-6">
+                  <feature.icon className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-semibold text-black mb-4">{feature.title}</h3>
+                <p className="text-black leading-relaxed">{feature.description}</p>
               </CardContent>
             </Card>
           ))}

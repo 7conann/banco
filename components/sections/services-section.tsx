@@ -4,67 +4,67 @@ import { Badge } from "@/components/ui/badge"
 export function ServicesSection() {
   const services = [
     {
-      icon: <Building className="w-8 h-8 text-yellow-600" />,
+      icon: <Building className="w-8 h-8 text-black" />,
       title: "Conta Nominal",
       description: "Gestão simplificada para múltiplos beneficiários com maior privacidade e facilidade administrativa.",
       badge: "Gestão",
-      badgeColor: "bg-blue-100 text-blue-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <Wallet className="w-8 h-8 text-yellow-600" />,
-      title: "ZiPay (PIX - TED)",
+      icon: <Wallet className="w-8 h-8 text-black" />,
+      title: "ZiPay",
       description: "Solução completa de pagamentos instantâneos via PIX e transferências TED para seu negócio.",
       badge: "Pagamentos",
-      badgeColor: "bg-green-100 text-green-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <Zap className="w-8 h-8 text-yellow-600" />,
+      icon: <Zap className="w-8 h-8 text-black" />,
       title: "Boleto PIX",
       description: "Emissão de boletos com pagamento via PIX instantâneo ou método tradicional com máxima flexibilidade.",
       badge: "Rapidez",
-      badgeColor: "bg-yellow-100 text-yellow-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <FileText className="w-8 h-8 text-yellow-600" />,
+      icon: <FileText className="w-8 h-8 text-black" />,
       title: "Boleto Híbrido",
       description: "Pagamentos instantâneos com segurança PIX ou método tradicional, conforme preferência do cliente.",
       badge: "Flexibilidade",
-      badgeColor: "bg-purple-100 text-purple-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <Users className="w-8 h-8 text-yellow-600" />,
+      icon: <Users className="w-8 h-8 text-black" />,
       title: "Split de Pagamento",
       description: "Divisão automática de pagamentos entre beneficiários, ideal para marketplaces e parcerias.",
       badge: "Automação",
-      badgeColor: "bg-orange-100 text-orange-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <Shield className="w-8 h-8 text-yellow-600" />,
+      icon: <Shield className="w-8 h-8 text-black" />,
       title: "Conta Escrow",
       description: "Conta de custódia para transações complexas, garantindo segurança até cumprimento das condições.",
       badge: "Segurança",
-      badgeColor: "bg-red-100 text-red-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <Globe className="w-8 h-8 text-yellow-600" />,
+      icon: <Globe className="w-8 h-8 text-black" />,
       title: "Conta Dolarizada",
       description: "Conta com saldo alocado em criptomoedas lastreadas em dólar (USDT/USDC) para proteção cambial.",
       badge: "Internacional",
-      badgeColor: "bg-indigo-100 text-indigo-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <CreditCard className="w-8 h-8 text-yellow-600" />,
+      icon: <CreditCard className="w-8 h-8 text-black" />,
       title: "Cartão em Criptomoedas",
       description: "Cartão pré-pago com conversão cripto integrada para pagamentos globais sem IOF.",
       badge: "Inovação",
-      badgeColor: "bg-teal-100 text-teal-800"
+      badgeColor: "bg-primary text-black"
     },
     {
-      icon: <DollarSign className="w-8 h-8 text-yellow-600" />,
+      icon: <DollarSign className="w-8 h-8 text-black" />,
       title: "CCB",
       description: "Cédula de Crédito Bancário para operações de crédito estruturadas e personalizadas.",
       badge: "Crédito",
-      badgeColor: "bg-pink-100 text-pink-800"
+      badgeColor: "bg-primary text-black"
     }
   ]
 

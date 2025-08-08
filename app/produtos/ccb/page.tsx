@@ -9,10 +9,10 @@ export default function CcbPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 pt-32">
+        <section className="bg-primary py-20 pt-32">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Emissão de CCB (Cédula de Crédito Bancário)</h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-black max-w-3xl mx-auto">
               Um título de crédito para empresas garantirem empréstimos ou financiamentos, com a possibilidade de negociação com bancos e outras instituições.
             </p>
           </div>
@@ -31,36 +31,36 @@ export default function CcbPage() {
                 </Button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Acesso ao Crédito</CardTitle>
+                    <CardTitle className="text-white">Acesso ao Crédito</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">Permite que empresas se financiem através de uma operação estruturada, usando a cédula como garantia.</p>
+                    <p className="text-sm text-black">Permite que empresas se financiem através de uma operação estruturada, usando a cédula como garantia.</p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Taxas de Juros Menores</CardTitle>
+                    <CardTitle className="text-white">Taxas de Juros Menores</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">Por serem garantidas por ativos, as CCBs podem oferecer taxas de juros mais competitivas.</p>
+                    <p className="text-sm text-black">Por serem garantidas por ativos, as CCBs podem oferecer taxas de juros mais competitivas.</p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Possibilidade de Negociação</CardTitle>
+                    <CardTitle className="text-white">Possibilidade de Negociação</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">A CCB pode ser negociada no mercado, oferecendo maior flexibilidade para a empresa.</p>
+                    <p className="text-sm text-black">A CCB pode ser negociada no mercado, oferecendo maior flexibilidade para a empresa.</p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Segurança e Confiança</CardTitle>
+                    <CardTitle className="text-white">Segurança e Confiança</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">Oferece uma forma estruturada e legalmente garantida de contrair dívida, atraindo investidores.</p>
+                    <p className="text-sm text-black">Oferece uma forma estruturada e legalmente garantida de contrair dívida, atraindo investidores.</p>
                   </CardContent>
                 </Card>
               </div>

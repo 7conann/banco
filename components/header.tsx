@@ -21,7 +21,7 @@ const productsNav = [
     title: "Contas e Pagamentos",
     items: [
       { title: "Conta Nominal", href: "/produtos/conta-nominal", description: "Conta bancária para depósitos específicos." },
-      { title: "ZIPAY (PIX-TED)", href: "/produtos/zipay", description: "Pagamentos instantâneos e gestão dolarizada." },
+      { title: "ZIPAY", href: "/produtos/zipay", description: "Pagamentos instantâneos e gestão dolarizada." },
       { title: "Boleto (PIX e Híbrido)", href: "/produtos/boleto", description: "Boletos com pagamento via PIX." },
       { title: "Split de Pagamento", href: "/produtos/split-pagamento", description: "Divisão automática de pagamentos." },
     ],

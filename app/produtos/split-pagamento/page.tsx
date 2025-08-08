@@ -9,10 +9,10 @@ export default function SplitPagamentoPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 pt-32">
+        <section className="bg-primary py-20 pt-32">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Split de Pagamento</h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white max-w-3xl mx-auto">
               Divida o valor de um pagamento entre diferentes beneficiários de maneira automática, ideal para marketplaces e plataformas de vendas.
             </p>
           </div>
@@ -31,36 +31,36 @@ export default function SplitPagamentoPage() {
                 </Button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Automatização do Repasse</CardTitle>
+                    <CardTitle className="text-white">Automatização do Repasse</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">Pagamentos divididos automaticamente entre vendedores, parceiros, etc., sem intervenção manual.</p>
+                    <p className="text-sm text-black">Pagamentos divididos automaticamente entre vendedores, parceiros, etc., sem intervenção manual.</p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Gestão Simplificada</CardTitle>
+                    <CardTitle className="text-white">Gestão Simplificada</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">Ideal para empresas que recebem dinheiro em nome de terceiros, como em marketplaces.</p>
+                    <p className="text-sm text-black">Ideal para empresas que recebem dinheiro em nome de terceiros, como em marketplaces.</p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Redução de Erros</CardTitle>
+                    <CardTitle className="text-white">Redução de Erros</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">Minimiza a chance de erros humanos nos repasses, garantindo pagamentos corretos e pontuais.</p>
+                    <p className="text-sm text-black">Minimiza a chance de erros humanos nos repasses, garantindo pagamentos corretos e pontuais.</p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-primary">
                   <CardHeader>
-                    <CardTitle>Tributação Correta</CardTitle>
+                    <CardTitle className="text-white">Tributação Correta</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">A tributação é devidamente separada entre as partes, chegando corretamente na conta destino.</p>
+                    <p className="text-sm text-black">A tributação é devidamente separada entre as partes, chegando corretamente na conta destino.</p>
                   </CardContent>
                 </Card>
               </div>

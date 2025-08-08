@@ -85,10 +85,10 @@ export default function SuportePage() {
     <div className="min-h-screen">
       <Header />
       <main className="pt-20">
-        <section className="py-16 bg-gradient-to-br from-yellow-50 to-orange-50">
+        <section className="py-16 bg-primary">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Fale com nossos especialistas</h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Nossa equipe entrará em contato para entender sua necessidade.
             </p>
           </div>

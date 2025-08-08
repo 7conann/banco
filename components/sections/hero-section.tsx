@@ -21,13 +21,13 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen pb-12 overflow-hidden" style={{
-      backgroundImage: 'url(/images/building-hero.png)',
+      backgroundImage: 'url(/images/ZIII.png)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'
     }}>
       {/* Overlay escuro para opacidade */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
@@ -39,10 +39,6 @@ export function HeroSection() {
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center space-x-2 text-blue-400">
-                <Star className="w-4 h-4 fill-current" />
-                <span className="text-sm font-medium">Infratech Financeira</span>
-              </div>
             </motion.div>
 
             <div className="space-y-6">
@@ -53,17 +49,17 @@ export function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 A maneira{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                <span className="text-black ">
                   inteligente
                 </span>{' '}
                 de ter um{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                  banco digital.
+                <span className="text-black">
+                  Banco Digital.
                 </span>
               </motion.h1>
 
               <motion.p
-                className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed"
+                className="text-lg md:text-xl text-white max-w-2xl leading-relaxed"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -81,7 +77,7 @@ export function HeroSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-6 text-lg rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+                className="bg-white hover:bg-primary text-black px-8 py-6 text-lg rounded-lg font-semibold transition-all duration-300 hover:scale-105"
               >
                 <Link href="/auth/register">
                   Criar minha conta
@@ -92,7 +88,7 @@ export function HeroSection() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="bg-transparent border-gray-400 text-white hover:bg-white/10 hover:border-yellow-500 px-8 py-6 text-lg rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+                className="bg-transparent border-gray-400 text-black hover:bg-white hover:border-yellow-500 px-8 py-6 text-lg rounded-lg font-semibold transition-all duration-300 hover:scale-105"
               >
                 <Link href="/suporte">Fale com um consultor</Link>
               </Button>
@@ -108,8 +104,8 @@ export function HeroSection() {
                 const [value, label] = item.split('|')
                 return (
                   <div key={label} className="text-center lg:text-left">
-                    <div className="text-3xl font-bold text-yellow-400">{value}</div>
-                    <div className="text-sm text-gray-400">{label}</div>
+                    <div className="text-3xl font-bold text-black">{value}</div>
+                    <div className="text-sm text-white">{label}</div>
                   </div>
                 )
               })}
@@ -124,7 +120,6 @@ export function HeroSection() {
               animate={{ scale: [1, 1.015, 1] }}
               transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
             >
-              <Image src="/images/z-Photoroom.png" alt="Logo Z" fill className="object-contain" />
             </motion.div>
           </div>
         </div>
