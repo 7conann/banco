@@ -1,8 +1,7 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, ArrowRight, FileText } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 
 export default function CcbPage() {
   return (
@@ -18,51 +17,90 @@ export default function CcbPage() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-12 items-start">
+              {/* Left column - Text content */}
               <div>
-                <h2 className="text-3xl font-bold mb-4">Financiamento Estruturado para seu Negócio</h2>
-                <p className="text-muted-foreground mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
+                  Financiamento Estruturado para seu Negócio
+                </h2>
+                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   A Cédula de Crédito Bancário (CCB) é uma ferramenta poderosa para empresas que buscam acesso a crédito de forma segura e com melhores condições.
                 </p>
-                <Button>
-                  Saiba mais sobre CCB <ArrowRight className="ml-2 h-4 w-4" />
+                <Button className="bg-primary hover:bg-primary/90 text-black font-semibold px-6 py-3 rounded-lg inline-flex items-center">
+                  Saiba mais sobre CCB
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Acesso ao Crédito</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">Permite que empresas se financiem através de uma operação estruturada, usando a cédula como garantia.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Taxas de Juros Menores</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">Por serem garantidas por ativos, as CCBs podem oferecer taxas de juros mais competitivas.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Possibilidade de Negociação</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">A CCB pode ser negociada no mercado, oferecendo maior flexibilidade para a empresa.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Segurança e Confiança</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">Oferece uma forma estruturada e legalmente garantida de contrair dívida, atraindo investidores.</p>
-                  </CardContent>
-                </Card>
+
+              {/* Right column - White panel with benefits list */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <h3 className="text-xl font-bold mb-6 text-black">
+                  Vantagens da CCB
+                </h3>
+                
+                <div className="space-y-6">
+                  {/* Benefit 1 */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
+                      <CheckCircle className="w-4 h-4 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">
+                        Acesso ao Crédito
+                      </h4>
+                      <p className="text-gray-600 text-sm">
+                        Permite que empresas se financiem através de uma operação estruturada, com a cédula sendo uma garantia de pagamento sem rastreabilidade.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Benefit 2 */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
+                      <CheckCircle className="w-4 h-4 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">
+                        Taxas de Juros Menores
+                      </h4>
+                      <p className="text-gray-600 text-sm">
+                        Em comparação com outros tipos de lastros, as CCBs podem ter taxas de juros mais baixas.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Benefit 3 */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
+                      <CheckCircle className="w-4 h-4 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">
+                        Possibilidade de Negociação
+                      </h4>
+                      <p className="text-gray-600 text-sm">
+                        CCB pode ser negociada no mercado, oferecendo maior flexibilidade.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Benefit 4 */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
+                      <CheckCircle className="w-4 h-4 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">
+                        Segurança e Confiança
+                      </h4>
+                      <p className="text-gray-600 text-sm">
+                        Uma forma estruturada e legalmente garantida de contrair dívida, se tornando um ótimo investimento contra a volatilidade.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
