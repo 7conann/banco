@@ -163,7 +163,7 @@ export const Header = memo(function Header() {
       <div className="max-w-screen-xl mx-auto bg-white rounded-full shadow-lg flex items-center justify-between px-6 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <div className="relative w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+          <div className="relative w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
             <Image 
               src="/images/z-Photoroom.png" 
               alt="Zi Credit" 

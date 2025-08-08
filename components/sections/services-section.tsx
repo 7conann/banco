@@ -1,7 +1,13 @@
+'use client'
 import { CreditCard, Users, FileText, Zap, Shield, Globe, Wallet, Building, DollarSign } from 'lucide-react'
 import { Badge } from "@/components/ui/badge"
 
 export function ServicesSection() {
+  
+  const partners = [
+    "BINANCE","METAMASK","CELCOIN","COINBASE","TRUST","BV",
+    "BRASIL BITCOIN","EXODUS","INVESTIMENTOS","AZIFY","PHANTOM","BTG PACTUAL"
+  ]
   const services = [
     {
       icon: <Building className="w-8 h-8 text-black" />,
@@ -69,8 +75,19 @@ export function ServicesSection() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className=" bg-gray-50">
+            <div className=" bg-primary py-4 overflow-hidden z-20">
+        <div className="flex items-center">
+          <div className="flex animate-scroll">
+            {[...partners, ...partners, ...partners].map((partner, i) => (
+              <span key={i} className="text-black font-bold px-8 whitespace-nowrap text-base sm:text-lg">
+                {partner}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="mt-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Nossos Serviços
@@ -84,7 +101,7 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
               <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
                   {service.icon}
                 </div>
                 <Badge className={service.badgeColor}>
@@ -103,6 +120,11 @@ export function ServicesSection() {
           ))}
         </div>
       </div>
+            <style jsx>{`
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+        .animate-scroll { animation: scroll 30s linear infinite; }
+      `}</style>
     </section>
+    
   )
 }

@@ -1,73 +1,59 @@
 "use client"
 
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Star } from 'lucide-react'
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
+  useEffect(() => setIsVisible(true), [])
 
   const partners = [
-    "BINANCE", "METAMASK", "CELCOIN", "COINBASE", "TRUST", "BV", 
-    "BRASIL BITCOIN", "EXODUS", "INVESTIMENTOS", "AZIFY", "PHANTOM", "BTG PACTUAL"
+    "BINANCE","METAMASK","CELCOIN","COINBASE","TRUST","BV",
+    "BRASIL BITCOIN","EXODUS","INVESTIMENTOS","AZIFY","PHANTOM","BTG PACTUAL"
   ]
 
   return (
-    <section className="relative min-h-screen pb-12 overflow-hidden" style={{
-      backgroundImage: 'url(/images/ZIII.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}>
-      {/* Overlay escuro para opacidade */}
-      <div className="absolute inset-0"></div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-          {/* Conteúdo à esquerda */}
+    <section
+      className={`
+        relative overflow-hidden
+        bg-primary               /* mobile: amarelo sólido */
+        bg-none
+        lg:bg-[url('/images/ZIII.png')] /* desktop: imagem */
+        lg:bg-no-repeat lg:bg-contain lg:bg-right /* não estoura e alinha à direita */
+        pt-20 lg:pt-28              /* desce por causa da navbar */
+        pb-2 lg:pb-8                /* menos espaço embaixo */
+      `}
+    >
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Texto */}
           <div className="space-y-8">
-            <motion.div
-              className="flex items-center space-x-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-              transition={{ duration: 0.6 }}
-            >
-            </motion.div>
-
-            <div className="space-y-6">
+            <div className="space-y-2">
               <motion.h1
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+                className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                A maneira{' '}
-                <span className="text-black ">
-                  inteligente
-                </span>{' '}
-                de ter um{' '}
-                <span className="text-black">
-                  Banco Digital.
-                </span>
+                A maneira <span className="text-black">inteligente</span> de ter um{" "}
+                <span className="text-black">Banco Digital.</span>
               </motion.h1>
 
               <motion.p
-                className="text-lg md:text-xl text-white max-w-2xl leading-relaxed"
+                className="text-base md:text-xl text-white max-w-2xl leading-relaxed"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Zi Credit modular com APIs, soluções plugáveis, multimoedas e produtos feitos sob demanda para o seu negócio.
+                Zi Credit modular com APIs, soluções plugáveis, multimoedas e produtos
+                feitos sob demanda para o seu negócio.
               </motion.p>
             </div>
 
+            {/* Botões */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
               initial={{ opacity: 0, y: 30 }}
@@ -84,6 +70,7 @@ export function HeroSection() {
                   <ArrowRight className="ml-2 w-6 h-6" />
                 </Link>
               </Button>
+
               <Button
                 asChild
                 size="lg"
@@ -94,66 +81,53 @@ export function HeroSection() {
               </Button>
             </motion.div>
 
+            {/* Métricas (mais próximas do rodapé) */}
             <motion.div
-              className="grid grid-cols-3 gap-8 pt-8"
+              className="grid grid-cols-3 gap-6 sm:gap-8 pt-3"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              {['100%|Digital', '24/7|Suporte', '0|Tarifas Abusivas'].map((item) => {
-                const [value, label] = item.split('|')
+              {["100%|Digital","24/7|Suporte","0|Tarifas Abusivas"].map((item) => {
+                const [value, label] = item.split("|")
                 return (
                   <div key={label} className="text-center lg:text-left">
-                    <div className="text-3xl font-bold text-black">{value}</div>
-                    <div className="text-sm text-white">{label}</div>
+                    <div className="text-2xl md:text-3xl font-bold text-black">{value}</div>
+                    <div className="text-xs sm:text-sm text-white">{label}</div>
                   </div>
                 )
               })}
             </motion.div>
           </div>
 
-          {/* Logo Z gigante à direita */}
-          <div className="relative h-full flex items-center justify-center">
+          {/* Logo grande — some no mobile */}
+          <div className="hidden lg:flex items-center justify-center">
             <motion.div
-              className="relative w-96 h-96"
+              className="relative w-80 h-80 xl:w-96 xl:h-96"
               initial={{ scale: 1 }}
               animate={{ scale: [1, 1.015, 1] }}
-              transition={{ duration: 6, ease: 'easeInOut', repeat: Infinity }}
-            >
-            </motion.div>
+              transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
+            />
           </div>
         </div>
       </div>
 
-      {/* Partners Carousel */}
-      <div className="absolute bottom-0 left-0 right-0 bg-yellow-400 py-4 overflow-hidden z-20">
+      {/* Partners sticky no rodapé */}
+      {/* <div className="absolute bottom-0 left-0 right-0 bg-yellow-400 py-4 overflow-hidden z-20">
         <div className="flex items-center">
-          <span className="text-black font-semibold px-6 whitespace-nowrap">ALGUNS DE NOSSOS PARCEIROS:</span>
           <div className="flex animate-scroll">
-            {[...partners, ...partners, ...partners].map((partner, index) => (
-              <span
-                key={index}
-                className="text-black font-bold px-8 whitespace-nowrap text-lg"
-              >
+            {[...partners, ...partners, ...partners].map((partner, i) => (
+              <span key={i} className="text-black font-bold px-8 whitespace-nowrap text-base sm:text-lg">
                 {partner}
               </span>
             ))}
           </div>
         </div>
-      </div>
-      
+      </div> */}
+
       <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.333%);
-          }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+        .animate-scroll { animation: scroll 30s linear infinite; }
       `}</style>
     </section>
   )

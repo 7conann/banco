@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { memo } from "react"
+import Image from "next/image";
 
 export const Footer = memo(function Footer() {
   return (
@@ -9,9 +10,16 @@ export const Footer = memo(function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                <span className="text-black font-bold text-lg">Z</span>
-              </div>
+           <div className="relative w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                   <Image 
+                     src="/images/z-Photoroom.png" 
+                     alt="Zi Credit" 
+                     fill 
+                     className="object-contain"
+                     priority
+                     sizes="32px"
+                   />
+                 </div>
               <span className="text-xl font-bold">Zi Credit</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
