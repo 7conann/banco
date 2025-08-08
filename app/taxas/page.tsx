@@ -33,7 +33,7 @@ const vantagens = [
   { nivel: "Zi Extreme", movimentacao: "Acima U$ 1 milhão", cashback: "3%", suporte: "Suporte Personalizado + Benefícios", cartaoPF: "Black", cartaoPJ: "Business Black" },
 ];
 
-function TaxaCard({ title, taxas, observacao }: { title: string; taxas: any[]; observacao?: string }) {
+function TaxaCard({ title, taxas, observacao, isCartao = false }: { title: string; taxas: any[]; observacao?: string; isCartao?: boolean }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden max-w-4xl mx-auto">
       <div className="bg-gray-50 px-6 py-4 border-b border-gray-100">
@@ -51,21 +51,41 @@ function TaxaCard({ title, taxas, observacao }: { title: string; taxas: any[]; o
             <div key={index} className="grid grid-cols-2 gap-4 py-3 border-b border-gray-100 last:border-b-0 text-center">
               <div className="text-center">
                 <div className="font-medium text-gray-900">{taxa.transacao}</div>
-                {taxa.observacao && (
+                {!isCartao && taxa.observacao && (
                   <div className="text-sm text-gray-500 mt-1">{taxa.observacao}</div>
                 )}
               </div>
               <div className="text-center">
                 <div className="font-bold text-primary text-lg">{taxa.valor}</div>
+                {isCartao && taxa.observacao && (
+                  <div className="text-sm text-gray-500 mt-1">{taxa.observacao}</div>
+                )}
               </div>
             </div>
           ))}
         </div>
         {observacao && (
           <div className="mt-6 p-4 bg-primary rounded-lg">
-            <p className="text-sm text-gray-600 text-center">
-              <span className="font-semibold text-white">*Obs.:</span> {observacao}
-            </p>
+            <div className="text-sm text-gray-600 text-center">
+              <span className="font-semibold text-white">*Obs.:</span>{' '}
+              {title === "Cartão Zi Credit" ? (
+                <>
+                  Movimentação acima de U$ 10.000,00 = U$ 9,90 Mensalidade.
+                  <br />
+                  Movimentação acima de U$ 100.000,00 = U$ 14,90 Mensalidade.
+                  <br />
+                  Envio do Cartão Incluso.
+                </>
+              ) : (
+                <>
+                  Movimentação acima de U$ 10.000,00 = U$ 4,90 Mensalidade.
+                  <br />
+                  Movimentação acima de U$ 100.000,00 = U$ 0,00 Mensalidade.
+                  <br />
+                  Os 3 primeiros meses, valor de 2,00%*.
+                </>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -92,13 +112,14 @@ export default function TaxasPage() {
             <TaxaCard 
               title="Conta Zi Credit" 
               taxas={contaTaxas}
-              observacao="Movimentação acima de U$ 10.000,00 = U$ 4,90 Mensalidade. Movimentação acima de U$ 100.000,00 = U$ 0,00 Mensalidade. Os 3 primeiros meses, valor de 2,00%*."
+              observacao="conta"
             />
             
             <TaxaCard 
               title="Cartão Zi Credit" 
               taxas={cartaoTaxas}
-              observacao="Movimentação acima de U$ 10.000,00 = U$ 9,90 Mensalidade. Movimentação acima de U$ 100.000,00 = U$ 14,90 Mensalidade. Envio do Cartão Incluso."
+              observacao="cartao"
+              isCartao={true}
             />
 
             {/* Clube de Vantagens */}
