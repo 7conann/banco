@@ -62,7 +62,7 @@ export function IntegrationSection() {
                 Com documentação clara e exemplos práticos, você pode começar a 
                 integrar nossos serviços em questão de minutos.
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4 ">
                 <Button className="bg-primary hover:bg-white text-black font-semibold">
                   Ver Documentação
                 </Button>
