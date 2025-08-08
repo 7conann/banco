@@ -1,7 +1,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, ArrowRight } from 'lucide-react';
 
 export default function SplitPagamentoPage() {
@@ -21,48 +20,59 @@ export default function SplitPagamentoPage() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="text-center md:text-left">
                 <h2 className="text-3xl font-bold mb-4">Por que usar o Split de Pagamento?</h2>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-6 max-w-lg mx-auto md:mx-0">
                   Nossa solução de split de pagamento é essencial para negócios que precisam repassar valores a múltiplos participantes, como marketplaces, plataformas de serviços ou soluções de financiamento. Evite a subtributação e automatize o fluxo financeiro.
                 </p>
-                <Button>
+                <Button className="mx-auto md:mx-0">
                   Entenda como funciona <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Automatização do Repasse</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">Pagamentos divididos automaticamente entre vendedores, parceiros, etc., sem intervenção manual.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Gestão Simplificada</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">Ideal para empresas que recebem dinheiro em nome de terceiros, como em marketplaces.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Redução de Erros</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">Minimiza a chance de erros humanos nos repasses, garantindo pagamentos corretos e pontuais.</p>
-                  </CardContent>
-                </Card>
-                <Card className="bg-primary">
-                  <CardHeader>
-                    <CardTitle className="text-white">Tributação Correta</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-black">A tributação é devidamente separada entre as partes, chegando corretamente na conta destino.</p>
-                  </CardContent>
-                </Card>
+              
+              <div className="bg-white rounded-2xl p-8 shadow-lg">
+                <h3 className="text-xl font-bold mb-6 text-gray-900">Vantagens do Split de Pagamento</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
+                      <CheckCircle className="h-5 w-5 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Automatização do Repasse</h4>
+                      <p className="text-gray-600 text-sm">Pagamentos divididos automaticamente entre vendedores, parceiros, etc., sem intervenção manual.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
+                      <CheckCircle className="h-5 w-5 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Gestão Simplificada</h4>
+                      <p className="text-gray-600 text-sm">Ideal para empresas que recebem dinheiro em nome de terceiros, como em marketplaces.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
+                      <CheckCircle className="h-5 w-5 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Redução de Erros</h4>
+                      <p className="text-gray-600 text-sm">Minimiza a chance de erros humanos nos repasses, garantindo pagamentos corretos e pontuais.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
+                      <CheckCircle className="h-5 w-5 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1">Tributação Correta</h4>
+                      <p className="text-gray-600 text-sm">A tributação é devidamente separada entre as partes, chegando corretamente na conta destino.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

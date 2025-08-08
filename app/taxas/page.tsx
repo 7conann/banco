@@ -35,24 +35,27 @@ const vantagens = [
 
 function TaxaCard({ title, taxas, observacao }: { title: string; taxas: any[]; observacao?: string }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden max-w-4xl mx-auto">
       <div className="bg-gray-50 px-6 py-4 border-b border-gray-100">
         <h2 className="text-xl font-bold text-gray-900 text-center">{title}</h2>
       </div>
       <div className="p-6">
         <div className="text-center mb-6">
-          <h3 className="text-lg font-semibold text-gray-800">Transações e Valores</h3>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <h3 className="text-lg font-semibold text-gray-800">Transação</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Valores</h3>
+          </div>
         </div>
         <div className="space-y-4">
           {taxas.map((taxa, index) => (
-            <div key={index} className="flex justify-between items-start py-3 border-b border-gray-100 last:border-b-0">
-              <div className="flex-1">
+            <div key={index} className="grid grid-cols-2 gap-4 py-3 border-b border-gray-100 last:border-b-0 text-center">
+              <div className="text-center">
                 <div className="font-medium text-gray-900">{taxa.transacao}</div>
                 {taxa.observacao && (
                   <div className="text-sm text-gray-500 mt-1">{taxa.observacao}</div>
                 )}
               </div>
-              <div className="text-right ml-4">
+              <div className="text-center">
                 <div className="font-bold text-primary text-lg">{taxa.valor}</div>
               </div>
             </div>
@@ -60,7 +63,7 @@ function TaxaCard({ title, taxas, observacao }: { title: string; taxas: any[]; o
         </div>
         {observacao && (
           <div className="mt-6 p-4 bg-primary rounded-lg">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 text-center">
               <span className="font-semibold text-white">*Obs.:</span> {observacao}
             </p>
           </div>
@@ -99,7 +102,7 @@ export default function TaxasPage() {
             />
 
             {/* Clube de Vantagens */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden max-w-4xl mx-auto">
               <div className="bg-gray-50 px-6 py-4 border-b border-gray-100">
                 <h2 className="text-xl font-bold text-gray-900 text-center">Clube de Vantagens</h2>
               </div>
@@ -111,23 +114,23 @@ export default function TaxasPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-200">
-                        <th className="text-left py-3 px-2 font-semibold text-gray-900">Nível</th>
-                        <th className="text-left py-3 px-2 font-semibold text-gray-900">Movimentação</th>
-                        <th className="text-left py-3 px-2 font-semibold text-gray-900">Cashback</th>
-                        <th className="text-left py-3 px-2 font-semibold text-gray-900">Vantagem</th>
-                        <th className="text-left py-3 px-2 font-semibold text-gray-900">Cartão PF</th>
-                        <th className="text-left py-3 px-2 font-semibold text-gray-900">Cartão PJ</th>
+                        <th className="text-center py-3 px-2 font-semibold text-gray-900">Nível</th>
+                        <th className="text-center py-3 px-2 font-semibold text-gray-900">Movimentação</th>
+                        <th className="text-center py-3 px-2 font-semibold text-gray-900">Cashback</th>
+                        <th className="text-center py-3 px-2 font-semibold text-gray-900">Vantagem</th>
+                        <th className="text-center py-3 px-2 font-semibold text-gray-900">Cartão PF</th>
+                        <th className="text-center py-3 px-2 font-semibold text-gray-900">Cartão PJ</th>
                       </tr>
                     </thead>
                     <tbody>
                       {vantagens.map((plano, index) => (
                         <tr key={index} className="border-b border-gray-100 last:border-b-0">
-                          <td className="py-4 px-2 font-semibold text-gray-900">{plano.nivel}</td>
-                          <td className="py-4 px-2 text-gray-700">{plano.movimentacao}</td>
-                          <td className="py-4 px-2 font-bold text-primary">{plano.cashback}</td>
-                          <td className="py-4 px-2 text-gray-700">{plano.suporte}</td>
-                          <td className="py-4 px-2 text-gray-700">{plano.cartaoPF}</td>
-                          <td className="py-4 px-2 text-gray-700">{plano.cartaoPJ}</td>
+                          <td className="py-4 px-2 font-semibold text-gray-900 text-center">{plano.nivel}</td>
+                          <td className="py-4 px-2 text-gray-700 text-center">{plano.movimentacao}</td>
+                          <td className="py-4 px-2 font-bold text-primary text-center">{plano.cashback}</td>
+                          <td className="py-4 px-2 text-gray-700 text-center">{plano.suporte}</td>
+                          <td className="py-4 px-2 text-gray-700 text-center">{plano.cartaoPF}</td>
+                          <td className="py-4 px-2 text-gray-700 text-center">{plano.cartaoPJ}</td>
                         </tr>
                       ))}
                     </tbody>
