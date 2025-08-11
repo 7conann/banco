@@ -43,8 +43,8 @@ export default function CcbPage() {
                 <div className="space-y-6">
                   {/* Benefit 1 */}
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
-                      <CheckCircle className="w-4 h-4 text-black" />
+                    <div>
+                      <CheckCircle className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-black mb-1">
@@ -58,8 +58,8 @@ export default function CcbPage() {
 
                   {/* Benefit 2 */}
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
-                      <CheckCircle className="w-4 h-4 text-black" />
+                    <div>
+                      <CheckCircle className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-black mb-1">
@@ -73,8 +73,8 @@ export default function CcbPage() {
 
                   {/* Benefit 3 */}
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
-                      <CheckCircle className="w-4 h-4 text-black" />
+                    <div>
+                      <CheckCircle className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-black mb-1">
@@ -88,8 +88,8 @@ export default function CcbPage() {
 
                   {/* Benefit 4 */}
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-6 h-6 bg-primary rounded-full flex items-center justify-center mt-1">
-                      <CheckCircle className="w-4 h-4 text-black" />
+                    <div>
+                      <CheckCircle className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-black mb-1">

@@ -47,8 +47,6 @@ export default function SuportePage() {
     "Comércio Exterior",
     "Liquidity as a Service",
     "Emissão de cartão",
-    "Tokenização",
-    "White Label"
   ]
 
   const handleProductChange = (product: string, checked: boolean, type: 'pf' | 'pj') => {

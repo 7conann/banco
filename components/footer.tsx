@@ -47,22 +47,42 @@ export const Footer = memo(function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link href="/conta-zi" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Conta Zi Credit
+                  Conta Nomminal
                 </Link>
               </li>
               <li>
                 <Link href="/conta-nominal" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Conta Nominal
+                  Zipay
                 </Link>
               </li>
               <li>
                 <Link href="/conta-escrow" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Conta Escrow
+                  Boleto (Pix e Hibrido)
                 </Link>
               </li>
               <li>
                 <Link href="/ccb" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  CCB - Linha de Crédito
+                 Split de pagamento
+                </Link>
+              </li>
+              <li>
+                <Link href="/ccb" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                 Conta Escrow
+                </Link>
+              </li>
+              <li>
+                <Link href="/ccb" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                Conta Dolarizada
+                </Link>
+              </li>
+              <li>
+                <Link href="/ccb" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                 Cartão em Criptomoedas
+                </Link>
+              </li>
+              <li>
+                <Link href="/ccb" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                 CCB
                 </Link>
               </li>
             </ul>
