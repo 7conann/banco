@@ -338,10 +338,7 @@ const FullPagePreview = memo(function FullPagePreview({
           </div>
         </div>
       </div>
-
-      {/* Conteúdo do artigo */}
-      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <header className="mb-12 text-center bg-primary py-16 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+    <header className="mb-12 text-center bg-primary py-16 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
           <Badge className="mb-4 text-sm bg-black text-white">{article.category}</Badge>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">{article.title}</h1>
 
@@ -363,6 +360,9 @@ const FullPagePreview = memo(function FullPagePreview({
             {article.excerpt}
           </p>
         </header>
+      {/* Conteúdo do artigo */}
+      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {contentTopics.map((topic, index) => (

@@ -50,35 +50,7 @@ export default function BlogPostPage({ params }: Props) {
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
-      <div className="max-w-3xl mx-auto">
-        <Link href="/blog" className="inline-flex items-center text-gray-600 hover:text-primary mb-6">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Voltar para o Blog
-        </Link>
-
-        <img
-          src={post.image || "/placeholder.svg"}
-          alt={post.title}
-          width={800}
-          height={400}
-          className="w-full h-auto rounded-lg object-cover mb-6"
-        />
-
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
-
-        <div className="flex items-center text-gray-500 text-sm mb-6">
-          <span>Por {post.author}</span>
-          <span className="mx-2">•</span>
-          <span>{post.date}</span>
-          <span className="mx-2">•</span>
-          <span className="font-medium text-primary">{post.category}</span>
-        </div>
-
-        <div
-          className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      </div>
+      
     </div>
   );
 }
