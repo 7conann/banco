@@ -130,3 +130,33 @@
   background-image: radial-gradient(circle at 25% 25%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 75% 75%, rgba(255, 152, 0, 0.1) 0%, transparent 50%);
 }
+/* animação que você já usa */
+@keyframes scroll { 
+  0% { transform: translateX(0); } 
+  100% { transform: translateX(-33.333%); } 
+}
+.animate-scroll { animation: scroll 30s linear infinite; }
+
+/* portal */
+.portal-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;        /* ajuste como quiser */
+  height: 100px;
+  background: #ffffff;  /* cor do “quadrado vermelho” do seu exemplo */
+  box-shadow: 10px 10px 45px rgb(252, 252, 252);
+  z-index: 10;        /* sem 'px' */
+  pointer-events: none;
+}
+.portal-left{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;        /* ajuste como quiser */
+  height: 100%;
+  background: #ffffff;  /* cor do “quadrado vermelho” do seu exemplo */
+  box-shadow: 90px 90px 95px rgb(255, 255, 255);
+  z-index: 10;        /* sem 'px' */
+  pointer-events: none;
+}
