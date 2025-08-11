@@ -40,9 +40,9 @@ export default function CartaoPage() {
                   </div>
                 </div>
                 <div className="bg-gray-50 p-8 rounded-2xl">
-                  <div className="bg-gradient-to-r from-black to-gray-800 rounded-xl p-6 text-white relative overflow-hidden">
+                  <div className="bg-gradient-to-r from-black to-gray-800 rounded-xl p-10 md:p-12 text-white relative overflow-hidden">
                     <div className="absolute top-4 right-4">
-                      <div className="w-12 h-8 bg-primary rounded flex items-center justify-center">
+                      <div className="w-24 h-8 bg-primary rounded flex items-center justify-center">
                         <span className="text-black font-bold text-xs">MASTERCARD</span>
                       </div>
                     </div>

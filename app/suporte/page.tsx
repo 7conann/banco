@@ -84,8 +84,8 @@ export default function SuportePage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-20">
-        <section className="py-16 bg-primary">
+      <main className="">
+        <section className="py-16 bg-primary pt-30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Fale com nossos especialistas</h1>
             <p className="text-xl text-black">

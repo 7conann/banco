@@ -14,7 +14,7 @@ export function ServicesSection() {
     { src: '/parceiros/trust.jpg', alt: 'Trust Wallet' },
     { src: '/parceiros/Banco_BV_Logo.svg.png', alt: 'Banco BV' },
     { src: '/parceiros/Btg-logo-blue.svg.png', alt: 'BTG Pactual' },
-    { src: '/parceiros/phantom.avif', alt: 'Phantom' }, // ajuste o nome exato se for diferente
+    { src: '/parceiros/phantom.png', alt: 'Phantom' }, // ajuste o nome exato se for diferente
     { src: '/parceiros/xp-investimentos.png', alt: 'XP Investimentos' },
     { src: '/parceiros/0x0.png', alt: '0x0' },
   ]
@@ -87,7 +87,7 @@ export function ServicesSection() {
 
   return (
     <section className="bg-gray-50">
-  <div className="relative bg-white overflow-hidden h-40">
+  <div className="relative bg-white overflow-hidden h-28">
   <div className="flex items-center h-full">
     <div className="flex items-center gap-10 animate-scroll ">
       {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((p, i) => (
@@ -98,7 +98,7 @@ export function ServicesSection() {
           width={120}
           height={100}
           draggable={false}
-          className="h-8 sm:h-15 w-auto object-contain opacity-90 hover:opacity-100 transition"
+          className="h-10 sm:h-13 w-auto object-contain opacity-90 hover:opacity-100 transition"
           priority={i < 6}
         />
       ))}
@@ -109,8 +109,6 @@ export function ServicesSection() {
   {/* portal à direita cobrindo as logos */}
   <div className="portal-right" />
 </div>
-
-
       <div className="mt-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -121,7 +119,7 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {services.map((service, index) => (
             <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
               <div className="flex items-start justify-between mb-4">
@@ -142,6 +140,7 @@ export function ServicesSection() {
               </p>
             </div>
           ))}
+          
         </div>
       </div>
 
