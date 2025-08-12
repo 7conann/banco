@@ -1,23 +1,16 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState, useMemo, memo, useCallback } from "react";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  Search,
-  Calendar,
-  Clock,
-  ArrowLeft,
-  Share2,
-  Bookmark,
-} from "lucide-react";
-import Link from "next/link";
+import { useState, useMemo, memo, useCallback } from "react"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Search, Calendar, Clock, ArrowLeft, Share2, Bookmark } from "lucide-react"
+import Link from "next/link"
 
 const articles = [
   {
@@ -89,8 +82,7 @@ Adotando princípios de sustentabilidade e impacto social como diferencial de ma
   {
     id: "pix-revolucionou-pagamentos-brasil",
     title: "Como o PIX Revolucionou os Pagamentos no Brasil",
-    excerpt:
-      "Entenda como o sistema de pagamentos instantâneos mudou o cenário financeiro brasileiro.",
+    excerpt: "Entenda como o sistema de pagamentos instantâneos mudou o cenário financeiro brasileiro.",
     content: `Como o PIX Revolucionou os Pagamentos no Brasil
 O PIX, criado pelo Banco Central em novembro de 2020, transformou a forma como os brasileiros realizam transações financeiras.
  Com ele, pagamentos e transferências são instantâneos, gratuitos (para pessoas físicas) e podem ser feitos 24 horas por dia, 7 dias por semana.
@@ -264,42 +256,50 @@ Essa abordagem torna a experiência de consumo mais inteligente, transparente e 
     tags: ["Cashback", "Economia", "Vantagens", "Recompensas", "Zi Credit"],
     featured: false,
   },
-];
+]
 
-
-const categories = [
-  "Todos",
-  "Tendências",
-  "Pagamentos",
-  "Segurança",
-  "Investimentos",
-  "Recompensas",
-];
+const categories = ["Todos", "Tendências", "Pagamentos", "Segurança", "Investimentos", "Recompensas"]
 
 const ArticleCard = memo(function ArticleCard({
   article,
   onPreview,
 }: {
-  article: (typeof articles)[0];
-  onPreview: (article: (typeof articles)[0]) => void;
+  article: (typeof articles)[0]
+  onPreview: (article: (typeof articles)[0]) => void
 }) {
+  const [imageLoading, setImageLoading] = useState(true)
+
   return (
     <Card className="overflow-hidden shadow-lg cursor-pointer hover:shadow-xl transition-shadow">
       <div onClick={() => onPreview(article)}>
-        <img
-          src={article.image || "/placeholder.svg"}
-          alt={article.title}
-  className="w-full h-48 object-cover object-center"
-          loading="lazy"
-        />
+        <div className="relative w-full h-48 bg-gray-100">
+          {imageLoading && (
+            <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-primary rounded-full animate-spin"></div>
+            </div>
+          )}
+          <img
+            src={article.image || "/placeholder.svg"}
+            alt={article.title}
+            className={`w-full h-full object-cover object-center transition-opacity duration-300 ${
+              imageLoading ? "opacity-0" : "opacity-100"
+            }`}
+            loading="lazy"
+            decoding="async"
+            onLoad={(e) => {
+              setImageLoading(false)
+              ;(e.target as HTMLImageElement).style.opacity = "1"
+            }}
+            onError={(e) => {
+              setImageLoading(false)
+              ;(e.target as HTMLImageElement).src = "/placeholder.svg?height=192&width=384&text=Imagem+não+encontrada"
+            }}
+          />
+        </div>
         <CardContent className="p-4">
           <Badge className="mb-2">{article.category}</Badge>
-          <h3 className="text-lg font-bold text-gray-900 mb-2">
-            {article.title}
-          </h3>
-          <p className="text-sm text-gray-700 mb-4 line-clamp-3">
-            {article.excerpt}
-          </p>
+          <h3 className="text-lg font-bold text-gray-900 mb-2">{article.title}</h3>
+          <p className="text-sm text-gray-700 mb-4 line-clamp-3">{article.excerpt}</p>
           <div className="flex items-center text-xs text-gray-500">
             <Calendar className="w-3 h-3 mr-1" />
             <span>{article.date}</span>
@@ -309,33 +309,30 @@ const ArticleCard = memo(function ArticleCard({
         </CardContent>
       </div>
     </Card>
-  );
-});
+  )
+})
 
 const FullPagePreview = memo(function FullPagePreview({
   article,
   onClose,
 }: {
-  article: (typeof articles)[0];
-  onClose: () => void;
+  article: (typeof articles)[0]
+  onClose: () => void
 }) {
   const organizeContentIntoTopics = (content: string) => {
-    const paragraphs = content.split("\n\n").filter((p) => p.trim().length > 0);
-    const topics = [];
+    const paragraphs = content.split("\n\n").filter((p) => p.trim().length > 0)
+    const topics = []
 
     for (let i = 0; i < paragraphs.length; i += 2) {
-      const title =
-        paragraphs[i]?.split(".")[0] ||
-        paragraphs[i]?.split(":")[0] ||
-        `Tópico ${Math.floor(i / 2) + 1}`;
-      const content = paragraphs.slice(i, i + 2).join("\n\n");
-      topics.push({ title: title.trim(), content: content.trim() });
+      const title = paragraphs[i]?.split(".")[0] || paragraphs[i]?.split(":")[0] || `Tópico ${Math.floor(i / 2) + 1}`
+      const content = paragraphs.slice(i, i + 2).join("\n\n")
+      topics.push({ title: title.trim(), content: content.trim() })
     }
 
-    return topics;
-  };
+    return topics
+  }
 
-  const contentTopics = organizeContentIntoTopics(article.content);
+  const contentTopics = organizeContentIntoTopics(article.content)
 
   return (
     <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
@@ -363,12 +360,8 @@ const FullPagePreview = memo(function FullPagePreview({
         </div>
       </div>
       <header className="mb-12 text-center bg-primary py-16  px-4 sm:px-6 lg:px-8">
-        <Badge className="mb-4 text-sm bg-black text-white">
-          {article.category}
-        </Badge>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">
-          {article.title}
-        </h1>
+        <Badge className="mb-4 text-sm bg-black text-white">{article.category}</Badge>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">{article.title}</h1>
 
         {/* Meta informações */}
         <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-black/70 mb-6">
@@ -397,14 +390,10 @@ const FullPagePreview = memo(function FullPagePreview({
               className="p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="mb-4">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  {topic.title}
-                </h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">{topic.title}</h3>
               </div>
               <div className="prose prose-gray max-w-none">
-                <div className="text-gray-700 leading-relaxed text-base whitespace-pre-line">
-                  {topic.content}
-                </div>
+                <div className="text-gray-700 leading-relaxed text-base whitespace-pre-line">{topic.content}</div>
               </div>
             </Card>
           ))}
@@ -412,16 +401,10 @@ const FullPagePreview = memo(function FullPagePreview({
 
         {/* Tags */}
         <div className="mb-12 pt-8 border-t border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-            Tags Relacionadas
-          </h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Tags Relacionadas</h3>
           <div className="flex flex-wrap justify-center gap-3">
             {article.tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="text-sm px-3 py-1"
-              >
+              <Badge key={tag} variant="secondary" className="text-sm px-3 py-1">
                 {tag}
               </Badge>
             ))}
@@ -430,39 +413,29 @@ const FullPagePreview = memo(function FullPagePreview({
 
         {/* Call to action */}
         <div className="mt-12 p-8 bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Gostou do conteúdo?
-          </h3>
-          <p className="text-gray-600 mb-6 text-lg">
-            Descubra como o Zi Credit pode transformar suas finanças
-          </p>
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">Gostou do conteúdo?</h3>
+          <p className="text-gray-600 mb-6 text-lg">Descubra como o Zi Credit pode transformar suas finanças</p>
           <Link href="/suporte">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 px-8 py-3">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 px-8 py-3">
               Criar minha conta
             </Button>
           </Link>
         </div>
       </article>
     </div>
-  );
-});
+  )
+})
 
 export default function BlogPage() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
-  const [previewArticle, setPreviewArticle] = useState<
-    (typeof articles)[0] | null
-  >(null);
+  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("Todos")
+  const [previewArticle, setPreviewArticle] = useState<(typeof articles)[0] | null>(null)
 
   const filteredArticles = useMemo(() => {
-    let filtered = articles;
+    let filtered = articles
 
     if (selectedCategory !== "Todos") {
-      filtered = filtered.filter(
-        (article) => article.category === selectedCategory
-      );
+      filtered = filtered.filter((article) => article.category === selectedCategory)
     }
 
     if (searchTerm) {
@@ -470,43 +443,31 @@ export default function BlogPage() {
         (article) =>
           article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
           article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          article.tags.some((tag) =>
-            tag.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-      );
+          article.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
+      )
     }
 
-    return filtered;
-  }, [searchTerm, selectedCategory]);
-
-  const featuredArticle = useMemo(
-    () => articles.find((article) => article.featured) || articles[0],
-    []
-  );
+    return filtered
+  }, [searchTerm, selectedCategory])
 
   const handleCategoryChange = useCallback((category: string) => {
-    setSelectedCategory(category);
-  }, []);
+    setSelectedCategory(category)
+  }, [])
 
-  const handleSearchChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchTerm(e.target.value);
-    },
-    []
-  );
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value)
+  }, [])
 
   const handlePreview = useCallback((article: (typeof articles)[0]) => {
-    setPreviewArticle(article);
-  }, []);
+    setPreviewArticle(article)
+  }, [])
 
   const handleClosePreview = useCallback(() => {
-    setPreviewArticle(null);
-  }, []);
+    setPreviewArticle(null)
+  }, [])
 
   if (previewArticle) {
-    return (
-      <FullPagePreview article={previewArticle} onClose={handleClosePreview} />
-    );
+    return <FullPagePreview article={previewArticle} onClose={handleClosePreview} />
   }
 
   return (
@@ -516,12 +477,8 @@ export default function BlogPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-15">
           <h1 className="text-4xl font-bold text-center mb-8">Nosso Blog</h1>
           <p className="text-xl text-center text-gray-600 mb-12">
-            Fique por dentro das últimas notícias e tendências do mundo
-            financeiro.
+            Fique por dentro das últimas notícias e tendências do mundo financeiro.
           </p>
-
-          {/* Featured Article Section */}
-       
 
           {/* Search and Filter Section */}
           <section className="mb-12">
@@ -540,15 +497,9 @@ export default function BlogPage() {
                 {categories.map((category) => (
                   <Button
                     key={category}
-                    variant={
-                      selectedCategory === category ? "default" : "outline"
-                    }
+                    variant={selectedCategory === category ? "default" : "outline"}
                     onClick={() => handleCategoryChange(category)}
-                    className={
-                      selectedCategory === category
-                        ? "bg-primary text-primary-foreground"
-                        : ""
-                    }
+                    className={selectedCategory === category ? "bg-primary text-primary-foreground" : ""}
                   >
                     {category}
                   </Button>
@@ -561,11 +512,7 @@ export default function BlogPage() {
           <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.length > 0 ? (
               filteredArticles.map((article) => (
-                <ArticleCard
-                  key={article.id}
-                  article={article}
-                  onPreview={handlePreview}
-                />
+                <ArticleCard key={article.id} article={article} onPreview={handlePreview} />
               ))
             ) : (
               <div className="col-span-full text-center text-gray-600 text-lg">
@@ -578,5 +525,5 @@ export default function BlogPage() {
 
       <Footer />
     </div>
-  );
+  )
 }
