@@ -78,7 +78,7 @@ function TaxaCard({ title, taxas, observacao, isCartao = false }: { title: strin
                 </>
               ) : (
                 <>
-                  Movimentação acima de U$ 10.000,00 = U$ 4,90 Mensalidade.
+                  Movimentação acima de U$ 10.000,00 = U$ 9,90 Mensalidade.
                   <br />
                   Movimentação acima de U$ 100.000,00 = U$ 0,00 Mensalidade.
                   <br />

@@ -1,13 +1,24 @@
 'use client'
+import Image from 'next/image'
 import { CreditCard, Users, FileText, Zap, Shield, Globe, Wallet, Building, DollarSign } from 'lucide-react'
 import { Badge } from "@/components/ui/badge"
 
 export function ServicesSection() {
-  
-  const partners = [
-    "BINANCE","METAMASK","CELCOIN","COINBASE","TRUST","BV",
-    "BRASIL BITCOIN","EXODUS","INVESTIMENTOS","AZIFY","PHANTOM","BTG PACTUAL"
+
+  // use caminhos relativos ao /public
+  const partnerLogos = [
+    { src: '/parceiros/binance.png', alt: 'Binance' },
+    { src: '/parceiros/metamask.png', alt: 'MetaMask' },
+    { src: '/parceiros/celcoin.png', alt: 'Celcoin' },
+    { src: '/parceiros/coinbase.webp', alt: 'Coinbase' },
+    { src: '/parceiros/trust.jpg', alt: 'Trust Wallet' },
+    { src: '/parceiros/Banco_BV_Logo.svg.png', alt: 'Banco BV' },
+    { src: '/parceiros/Btg-logo-blue.svg.png', alt: 'BTG Pactual' },
+    { src: '/parceiros/phantom.avif', alt: 'Phantom' }, // ajuste o nome exato se for diferente
+    { src: '/parceiros/xp-investimentos.png', alt: 'XP Investimentos' },
+    { src: '/parceiros/0x0.png', alt: '0x0' },
   ]
+
   const services = [
     {
       icon: <Building className="w-8 h-8 text-black" />,
@@ -75,18 +86,31 @@ export function ServicesSection() {
   ]
 
   return (
-    <section className=" bg-gray-50">
-            <div className=" bg-primary py-4 overflow-hidden z-20">
-        <div className="flex items-center">
-          <div className="flex animate-scroll">
-            {[...partners, ...partners, ...partners].map((partner, i) => (
-              <span key={i} className="text-black font-bold px-8 whitespace-nowrap text-base sm:text-lg">
-                {partner}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+    <section className="bg-gray-50">
+  <div className="relative bg-white overflow-hidden h-40">
+  <div className="flex items-center h-full">
+    <div className="flex items-center gap-10 animate-scroll ">
+      {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((p, i) => (
+        <Image
+          key={i}
+          src={p.src}
+          alt={p.alt}
+          width={120}
+          height={100}
+          draggable={false}
+          className="h-8 sm:h-15 w-auto object-contain opacity-90 hover:opacity-100 transition"
+          priority={i < 6}
+        />
+      ))}
+    </div>
+  </div>
+  <div className="portal-left" />
+
+  {/* portal à direita cobrindo as logos */}
+  <div className="portal-right" />
+</div>
+
+
       <div className="mt-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -108,11 +132,11 @@ export function ServicesSection() {
                   {service.badge}
                 </Badge>
               </div>
-              
+
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 {service.title}
               </h3>
-              
+
               <p className="text-gray-600 text-sm leading-relaxed">
                 {service.description}
               </p>
@@ -120,11 +144,14 @@ export function ServicesSection() {
           ))}
         </div>
       </div>
-            <style jsx>{`
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+
+      <style jsx>{`
+        @keyframes scroll { 
+          0% { transform: translateX(0); } 
+          100% { transform: translateX(-33.333%); } 
+        }
         .animate-scroll { animation: scroll 30s linear infinite; }
       `}</style>
     </section>
-    
   )
 }
