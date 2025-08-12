@@ -65,7 +65,7 @@ export function HeroSection() {
                 size="lg"
                 className="bg-white hover:bg-primary text-black px-8 py-6 text-lg rounded-lg font-semibold transition-all duration-300 hover:scale-105"
               >
-                <Link href="/auth/register">
+                <Link href="/suporte">
                   Criar minha conta
                   <ArrowRight className="ml-2 w-6 h-6" />
                 </Link>
@@ -83,17 +83,17 @@ export function HeroSection() {
 
             {/* Métricas (mais próximas do rodapé) */}
             <motion.div
-              className="grid grid-cols-5 gap-6 sm:gap-2 pt-3"
+              className="grid grid-cols-4 gap-6 sm:gap-2 pt-3"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              {["100%|Digital","24/7|Suporte","0|Tarifas Abusivas","0|iof", "Pix -> usdt| api de integração"].map((item) => {
+              {["100%|Digital","24/7|Suporte","0|iof", "Pix -> usdt| api de integração"].map((item) => {
                 const [value, label] = item.split("|")
                 return (
                   <div key={label} className="text-start lg:text-start">
-                    <div className="text-2xl md:text-2xl font-bold text-black text-center">{value}</div>
-                    <div className="text-xs sm:text-sm text-white text-center">{label}</div>
+                    <div className="text-2xl md:text-2xl font-bold text-black text-start">{value}</div>
+                    <div className="text-xs sm:text-sm text-white text-start">{label}</div>
                   </div>
                 )
               })}

@@ -7,12 +7,14 @@ import { type User, type AuthState, authService } from "@/lib/auth"
 
 const AuthContext = createContext<{
   user: User | null
+  username: string | null
   loading: boolean
   login: (email: string, password: string) => Promise<{ error?: string }>
   register: (email: string, password: string, name: string) => Promise<{ error?: string }>
   logout: () => Promise<void>
 }>({
   user: null,
+  username: null,
   loading: true,
   login: async () => ({}),
   register: async () => ({}),

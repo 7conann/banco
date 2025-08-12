@@ -139,7 +139,7 @@ export default function ZipayPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-primary hover:bg-white text-black">
-                <Link href="/auth/register">Começar com ZIPAY</Link>
+                <Link href="/suporte">Começar com ZIPAY</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/suporte">Falar com Especialista</Link>

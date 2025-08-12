@@ -223,12 +223,12 @@ export const Header = memo(function Header() {
               </>
             ) : (
               <>
-                <Link href="/auth/login">
+                <Link href="/suporte">
                   <Button variant="ghost" className="rounded-full px-4 py-2 text-gray-700 hover:bg-gray-100">
                     Entrar
                   </Button>
                 </Link>
-                <Link href="/auth/register">
+                <Link href="/suporte">
                   <Button className="rounded-full px-4 py-2 bg-yellow-500 text-white hover:bg-yellow-600">
                     Criar conta
                   </Button>
