@@ -34,8 +34,8 @@ export default function SplitPagamentoPage() {
                 <h3 className="text-xl font-bold mb-6 text-gray-900">Vantagens do Split de Pagamento</h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-black" />
+                    <div>
+                      <CheckCircle className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Automatização do Repasse</h4>
@@ -44,8 +44,8 @@ export default function SplitPagamentoPage() {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-black" />
+                    <div>
+                      <CheckCircle className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Gestão Simplificada</h4>
@@ -54,8 +54,8 @@ export default function SplitPagamentoPage() {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-black" />
+                    <div>
+                      <CheckCircle className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Redução de Erros</h4>
@@ -64,8 +64,8 @@ export default function SplitPagamentoPage() {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary rounded-full p-2 flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-black" />
+                    <div>
+                      <CheckCircle className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Tributação Correta</h4>

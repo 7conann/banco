@@ -33,7 +33,7 @@ export const Footer = memo(function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail size={16} className="text-yellow-400" />
-                <span className="text-gray-400">contato@zicredit.com</span>
+                <span className="text-gray-400">sac@zicredit.com.br</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin size={16} className="text-yellow-400" />
@@ -46,23 +46,43 @@ export const Footer = memo(function Footer() {
             <h3 className="text-lg font-semibold mb-4">Produtos</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/conta-zi" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Conta Zi Credit
-                </Link>
-              </li>
-              <li>
-                <Link href="/conta-nominal" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                <Link href="/produtos/conta-nominal" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Conta Nominal
                 </Link>
               </li>
               <li>
-                <Link href="/conta-escrow" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Conta Escrow
+                <Link href="/produtos/zipay" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  Zipay
                 </Link>
               </li>
               <li>
-                <Link href="/ccb" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  CCB - Linha de Crédito
+                <Link href="/produtos/boleto" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  Boleto (Pix e Hibrido)
+                </Link>
+              </li>
+              <li>
+                <Link href="/produtos/split-pagamento" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                 Split de pagamento
+                </Link>
+              </li>
+              <li>
+                <Link href="/produtos/conta-escrow" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                 Conta Escrow
+                </Link>
+              </li>
+              <li>
+                <Link href="/produtos/conta-dolarizada" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                Conta Dolarizada
+                </Link>
+              </li>
+              <li>
+                <Link href="/produtos/cartao" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                 Cartão em Criptomoedas
+                </Link>
+              </li>
+              <li>
+                <Link href="/produtos/ccb" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                 CCB
                 </Link>
               </li>
             </ul>
@@ -72,23 +92,28 @@ export const Footer = memo(function Footer() {
             <h3 className="text-lg font-semibold mb-4">Empresa</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/sobre" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                <Link href="/institucional#sobre-nos" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   Sobre Nós
                 </Link>
               </li>
               <li>
-                <Link href="/parceiros" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Parceiros
+                <Link href="/blog" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  blog
                 </Link>
               </li>
               <li>
-                <Link href="/seguranca" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Segurança
+                <Link href="/documentação" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  documentação 
+                </Link>
+              </li>
+              <li>
+                <Link href="/taxas" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  taxas
                 </Link>
               </li>
               <li>
                 <Link href="/suporte" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  Suporte
+                  suporte
                 </Link>
               </li>
             </ul>

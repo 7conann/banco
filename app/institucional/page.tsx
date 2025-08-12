@@ -120,11 +120,11 @@ export default function InstitucionalPage() {
         
 
         {/* Hero Section */}
-        <section className="bg-[#282829] from-primary/10 to-secondary/10 py-20 ">
+        <section className="bg-primary py-20 ">
           <div className="container mx-auto px-4 mt-15">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-                Sobre a <span className="text-primary">Zi Credit</span>
+                Sobre a <span className="text-black">Zi Credit</span>
               </h1>
               <p className="text-xl text-white mb-8">A Zi Credit é um banco digital inovador que busca transformar a maneira como os clientes gerenciam suas finanças no Brasil e no Mundo. Com um modelo completamente online e com escritórios físicos, oferecemos uma experiência bancária prática, acessível e com taxas reduzidas.
               </p>
@@ -259,7 +259,7 @@ export default function InstitucionalPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    contato@zicredit.com
+                   sac@zicredit.com.br
                     <br />
                   </p>
                 </CardContent>
