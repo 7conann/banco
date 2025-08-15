@@ -98,22 +98,22 @@ export const Footer = memo(function Footer() {
               </li>
               <li>
                 <Link href="/blog" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  blog
+                  Blog
                 </Link>
               </li>
               <li>
                 <Link href="/documentação" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  documentação 
+                  Documentação 
                 </Link>
               </li>
               <li>
                 <Link href="/taxas" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  taxas
+                  Taxas
                 </Link>
               </li>
               <li>
                 <Link href="/suporte" className="text-gray-400 hover:text-yellow-400 transition-colors">
-                  suporte
+                  Suporte
                 </Link>
               </li>
             </ul>
