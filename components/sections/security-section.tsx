@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export function SecuritySection() {
   return (
@@ -19,10 +20,13 @@ export function SecuritySection() {
               Suas transações passam pelas melhores adquirentes, garantindo a maior taxa de aprovação do mercado, e que
               apenas transações seguras sejam processadas.
             </p>
-            <Button className="bg-yellow-400 hover:bg-yellow-500 text-black">
+            <Link href="/suporte" className="text-primary font-semibold">
+                  <Button className="bg-yellow-400 hover:bg-yellow-500 text-black">
               Começar agora
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            </Link>
+        
           </div>
         </div>
       </div>
