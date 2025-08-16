@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, DollarSign } from 'lucide-react';
+import Link from "next/link";
 
 export default function ContaDolarizadaPage() {
   return (
@@ -26,9 +27,11 @@ export default function ContaDolarizadaPage() {
                 <p className="text-muted-foreground mb-6">
                   Uma conta dolarizada em criptoativos é quando seu saldo está alocado em uma criptomoeda estável, geralmente lastreada em USDT ou USDC. É a solução utilizada por empresas para garantir paridade com o Dólar Americano e se proteger da volatilidade de moedas fiduciárias.
                 </p>
-                <Button>
-                  Abra sua conta dolarizada <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/suporte">
+                  <Button>
+                    Abra sua conta dolarizada <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
               <div>
                 <Card className="shadow-lg">

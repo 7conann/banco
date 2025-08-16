@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import Link from "next/link";
 
 export default function SplitPagamentoPage() {
   return (
@@ -25,9 +26,11 @@ export default function SplitPagamentoPage() {
                 <p className="text-muted-foreground mb-6 max-w-lg mx-auto md:mx-0">
                   Nossa solução de split de pagamento é essencial para negócios que precisam repassar valores a múltiplos participantes, como marketplaces, plataformas de serviços ou soluções de financiamento. Evite a subtributação e automatize o fluxo financeiro.
                 </p>
-                <Button className="mx-auto md:mx-0">
-                  Entenda como funciona <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/suporte">
+                  <Button className="mx-auto md:mx-0">
+                    Entenda como funciona <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
               
               <div className="bg-white rounded-2xl p-8 shadow-lg">

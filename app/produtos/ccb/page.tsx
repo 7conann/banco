@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import Link from "next/link";
 
 export default function CcbPage() {
   return (
@@ -28,10 +29,12 @@ export default function CcbPage() {
                 <p className="text-gray-600 mb-8 text-lg leading-relaxed">
                   A Cédula de Crédito Bancário (CCB) é uma ferramenta poderosa para empresas que buscam acesso a crédito de forma segura e com melhores condições.
                 </p>
-                <Button className="bg-primary hover:bg-primary/90 text-black font-semibold px-6 py-3 rounded-lg inline-flex items-center">
-                  Saiba mais sobre CCB
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href="/suporte">
+                  <Button className="bg-primary hover:bg-primary/90 text-black font-semibold px-6 py-3 rounded-lg inline-flex items-center">
+                    Saiba mais sobre CCB
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
 
               {/* Right column - White panel with benefits list */}

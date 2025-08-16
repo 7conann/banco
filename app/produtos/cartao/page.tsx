@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, ArrowRight, CreditCard, Shield, Globe, Zap, DollarSign, Smartphone, Star, TrendingUp, Users, Clock, Banknote, Lock, Wallet } from 'lucide-react';
+import Link from "next/link";
 
 export default function CartaoPage() {
   return (
@@ -29,14 +30,18 @@ export default function CartaoPage() {
                     criptoativos como USDT ou USDC.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className="bg-primary hover:bg-primary text-black font-semibold px-8 py-3">
-                      Solicitar Cartão
-                      <CreditCard className="ml-2 h-5 w-5" />
-                    </Button>
-                    <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3">
-                      Saiba Mais
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
+                    <Link href="/suporte">
+                      <Button size="lg" className="bg-primary hover:bg-primary text-black font-semibold px-8 py-3">
+                        Solicitar Cartão
+                        <CreditCard className="ml-2 h-5 w-5" />
+                      </Button>
+                    </Link>
+                    <Link href="/suporte">
+                      <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3">
+                        Saiba Mais
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
                 <div className="bg-gray-50 p-8 rounded-2xl">
@@ -302,14 +307,18 @@ export default function CartaoPage() {
                 sem IOF e com total segurança.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary hover:bg-white text-black font-semibold px-10 py-4 text-lg">
-                  Solicitar Cartão Agora
-                  <CreditCard className="ml-2 h-6 w-6" />
-                </Button>
-                <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-10 py-4 text-lg">
-                  Falar com Especialista
-                  <ArrowRight className="ml-2 h-6 w-6" />
-                </Button>
+                <Link href="/suporte">
+                  <Button size="lg" className="bg-primary hover:bg-white text-black font-semibold px-10 py-4 text-lg">
+                    Solicitar Cartão Agora
+                    <CreditCard className="ml-2 h-6 w-6" />
+                  </Button>
+                </Link>
+                <Link href="/suporte">
+                  <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-10 py-4 text-lg">
+                    Falar com Especialista
+                    <ArrowRight className="ml-2 h-6 w-6" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
