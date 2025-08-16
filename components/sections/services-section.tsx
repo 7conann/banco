@@ -10,7 +10,7 @@ export function ServicesSection() {
     { src: '/parceiros/binance.png', alt: 'Binance' },
     { src: '/parceiros/metamask.png', alt: 'MetaMask' },
     { src: '/parceiros/celcoin.png', alt: 'Celcoin' },
-    { src: '/parceiros/coinbase (2).png', alt: 'Coinbase' },
+    { src: '/parceiros/coinbase.png', alt: 'Coinbase' },
     { src: '/parceiros/trust.jpg', alt: 'Trust Wallet' },
     { src: '/parceiros/Banco_BV_Logo.svg.png', alt: 'Banco BV' },
     { src: '/parceiros/Btg-logo-blue.svg.png', alt: 'BTG Pactual' },
