@@ -16,6 +16,11 @@ export function ServicesSection() {
     { src: "/parceiros/phantom.png", alt: "Phantom" }, // ajuste o nome exato se for diferente
     { src: "/parceiros/xp-investimentos.png", alt: "XP Investimentos" },
     { src: "/parceiros/0x0.png", alt: "0x0" },
+        { src: "/parceiros/0x0.png", alt: "0x0" },
+
+            { src: "/parceiros/0x0.png", alt: "0x0" },
+            { src: "/parceiros/0x0.png", alt: "0x0" },
+
   ]
 
   const services = [
