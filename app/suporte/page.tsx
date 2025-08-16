@@ -74,7 +74,7 @@ export default function SuportePage() {
     setIsLoadingPf(true)
 
     try {
-      const response = await fetch("/api/send-support-email", {
+      const response = await fetch("/send-email.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ export default function SuportePage() {
     setIsLoadingPj(true)
 
     try {
-      const response = await fetch("/api/send-support-email", {
+      const response = await fetch("/send-email.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,12 +1,18 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  
+// next.config.mjs
+export default {
+  // Necessário para exportar site estático (gera a pasta /out)
+  output: 'export',
+
   experimental: {
     optimizeCss: false,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
 
   images: {
+    // Obrigatório no export estático
+    unoptimized: true,
+
+    // Pode manter suas preferências:
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
@@ -14,33 +20,11 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-
+trailingSlash: true,
   compress: true,
 
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'DENY' },
-          { key: 'X-XSS-Protection', value: '1; mode=block' },
-        ],
-      },
-      {
-        source: '/images/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
-        source: '/blog/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=3600' },
-        ],
-      },
-    ]
-  },
+  // ⚠️ Headers/redirects/rewrites não funcionam com `output: 'export'`.
+  // Aplique isso no servidor (ex.: .htaccess na Locaweb) se precisar.
 
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
@@ -53,13 +37,11 @@ const nextConfig = {
             chunks: 'all',
           },
         },
-      }
+      };
     }
-    return config
+    return config;
   },
 
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-}
-
-export default nextConfig
+};

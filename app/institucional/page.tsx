@@ -7,6 +7,7 @@ import { Target, Heart, Users, Globe, TrendingUp, Shield, Handshake, Building, M
 import { AboutSection } from "@/components/sections/about-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function InstitucionalPage() {
   const values = [
@@ -295,16 +296,11 @@ export default function InstitucionalPage() {
               a inovar no mercado financeiro.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8">
-                Falar com Especialista
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 bg-transparent"
-              >
-                Ver Nossos Produtos
-              </Button>
+              <Link href="/suporte">
+                <Button size="lg" className="text-lg px-8">
+                  Falar com Especialista
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
