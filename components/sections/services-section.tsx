@@ -16,10 +16,18 @@ export function ServicesSection() {
     { src: "/parceiros/phantom.png", alt: "Phantom" }, // ajuste o nome exato se for diferente
     { src: "/parceiros/xp-investimentos.png", alt: "XP Investimentos" },
     { src: "/parceiros/0x0.png", alt: "0x0" },
-        { src: "/parceiros/0x0.png", alt: "0x0" },
+    { src: "/parceiros/binance.png", alt: "Binance" },
+    { src: "/parceiros/metamask.png", alt: "MetaMask" },
+    { src: "/parceiros/celcoin.png", alt: "Celcoin" },
+     { src: "/parceiros/coinbase.png", alt: "Coinbase" },
+    { src: "/parceiros/trust.jpg", alt: "Trust Wallet" },
+    { src: "/parceiros/Banco_BV_Logo.svg.png", alt: "Banco BV" },
+    { src: "/parceiros/Btg-logo-blue.svg.png", alt: "BTG Pactual" },
+    { src: "/parceiros/phantom.png", alt: "Phantom" }, // ajuste o nome exato se for diferente
+    { src: "/parceiros/xp-investimentos.png", alt: "XP Investimentos" },
+    { src: "/parceiros/0x0.png", alt: "0x0" },
+    
 
-            { src: "/parceiros/0x0.png", alt: "0x0" },
-            { src: "/parceiros/0x0.png", alt: "0x0" },
 
   ]
 
