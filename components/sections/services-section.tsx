@@ -152,7 +152,7 @@ export function ServicesSection() {
           
           @media (max-width: 768px) {
             .animate-scroll {
-              animation: scroll-mobile 15s linear infinite;
+              animation: scroll-mobile 30s linear infinite;
             }
           }
           
