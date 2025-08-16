@@ -88,7 +88,7 @@ export function HeroSection() {
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              {["100%|Digital","24/7|Suporte","0|iof", "Pix -> usdt| api de integração"].map((item) => {
+              {["100%|Digital","24/7|Suporte","0|iof", "Pix -> USDT| api de integração"].map((item) => {
                 const [value, label] = item.split("|")
                 return (
                   <div key={label} className="text-start lg:text-start">
