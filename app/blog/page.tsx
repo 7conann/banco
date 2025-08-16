@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Search, Calendar, Clock, ArrowLeft, Share2, Bookmark } from "lucide-react"
+import Link from "next/link"
 
 const articles = [
   {
@@ -70,7 +71,7 @@ Incorporando o Open Finance para acessar dados e oferecer crédito competitivo;
 Integrando-se a ecossistemas digitais (como fintechs, e-commerce ou super apps);
 
 Adotando princípios de sustentabilidade e impacto social como diferencial de marca.`,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/blog/Tendências Bancárias para 2024 (1).png",
     author: "Equipe Zi Credit",
     date: "15 de Janeiro, 2024",
     readTime: "8 min",
@@ -116,7 +117,7 @@ Inovação Contínua
 PIX Saque e PIX Troco permitem retirar dinheiro em estabelecimentos comerciais.
 
 PIX Parcelado traz alternativa ao cartão de crédito`,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/blog/Como o PIX Revolucionou os.png",
     author: "Maria Silva",
     date: "12 de Janeiro, 2024",
     readTime: "5 min",
@@ -159,7 +160,7 @@ Utilize conexões seguras e evite transações financeiras em redes públicas.
 O Papel da Zi Credit na Segurança Digital
 A Zi Credit implementa camadas múltiplas de proteção, incluindo criptografia avançada, monitoramento antifraude em tempo real e autenticação biométrica, garantindo que cada transação seja validada e protegida.
  Além disso, oferece educação financeira digital para ajudar clientes a reconhecer ameaças e manter hábitos seguros.`,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/blog/Segurança Digital e Proteção Financeira (1).png",
     author: "Carlos Mendes",
     date: "10 de Janeiro, 2024",
     readTime: "6 min",
@@ -205,7 +206,7 @@ Ignorar taxas e impostos.
 O Diferencial da Zi Credit
 A Zi Credit oferece uma plataforma intuitiva, com ferramentas de educação financeira, simulações personalizadas e recomendações alinhadas ao seu perfil.
  Além disso, integra investimentos tradicionais e digitais, permitindo que o usuário diversifique e acompanhe resultados em tempo real.`,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/blog/Investimentos Inteligentes .png",
     author: "Ana Paula",
     date: "05 de Janeiro, 2024",
     readTime: "10 min",
@@ -247,7 +248,7 @@ Usar o saldo para pagar contas, investir ou fazer novas compras.
 Monitorar ganhos acumulados em tempo real pelo aplicativo.
 
 Essa abordagem torna a experiência de consumo mais inteligente, transparente e lucrativa para o usuário.`,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/blog/Cashback e Vantagens do Zi Credit.png",
     author: "Equipe Zi Credit",
     date: "01 de Janeiro, 2024",
     readTime: "7 min",
@@ -266,15 +267,35 @@ const ArticleCard = memo(function ArticleCard({
   article: (typeof articles)[0]
   onPreview: (article: (typeof articles)[0]) => void
 }) {
+  const [imageLoading, setImageLoading] = useState(true)
+
   return (
     <Card className="overflow-hidden shadow-lg cursor-pointer hover:shadow-xl transition-shadow">
       <div onClick={() => onPreview(article)}>
-        <img
-          src={article.image || "/placeholder.svg"}
-          alt={article.title}
-          className="w-full h-48 object-cover"
-          loading="lazy"
-        />
+        <div className="relative w-full h-48 bg-gray-100">
+          {imageLoading && (
+            <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-primary rounded-full animate-spin"></div>
+            </div>
+          )}
+          <img
+            src={article.image || "/placeholder.svg"}
+            alt={article.title}
+            className={`w-full h-full object-cover object-center transition-opacity duration-300 ${
+              imageLoading ? "opacity-0" : "opacity-100"
+            }`}
+            loading="lazy"
+            decoding="async"
+            onLoad={(e) => {
+              setImageLoading(false)
+              ;(e.target as HTMLImageElement).style.opacity = "1"
+            }}
+            onError={(e) => {
+              setImageLoading(false)
+              ;(e.target as HTMLImageElement).src = "/placeholder.svg?height=192&width=384&text=Imagem+não+encontrada"
+            }}
+          />
+        </div>
         <CardContent className="p-4">
           <Badge className="mb-2">{article.category}</Badge>
           <h3 className="text-lg font-bold text-gray-900 mb-2">{article.title}</h3>
@@ -338,32 +359,30 @@ const FullPagePreview = memo(function FullPagePreview({
           </div>
         </div>
       </div>
-    <header className="mb-12 text-center bg-primary py-16 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
-          <Badge className="mb-4 text-sm bg-black text-white">{article.category}</Badge>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">{article.title}</h1>
+      <header className="mb-12 text-center bg-primary py-16  px-4 sm:px-6 lg:px-8">
+        <Badge className="mb-4 text-sm bg-black text-white">{article.category}</Badge>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight mb-6">{article.title}</h1>
 
-          {/* Meta informações */}
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-black/70 mb-6">
-            <div className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
-              <span>{article.date}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              <span>{article.readTime}</span>
-            </div>
-            <span>Por {article.author}</span>
+        {/* Meta informações */}
+        <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-black/70 mb-6">
+          <div className="flex items-center gap-1">
+            <Calendar className="w-4 h-4" />
+            <span>{article.date}</span>
           </div>
+          <div className="flex items-center gap-1">
+            <Clock className="w-4 h-4" />
+            <span>{article.readTime}</span>
+          </div>
+          <span>Por {article.author}</span>
+        </div>
 
-          {/* Excerpt */}
-          <p className="text-lg sm:text-xl text-black/80 leading-relaxed mb-8 font-light max-w-4xl mx-auto">
-            {article.excerpt}
-          </p>
-        </header>
+        {/* Excerpt */}
+        <p className="text-lg sm:text-xl text-black/80 leading-relaxed mb-8 font-light max-w-4xl mx-auto">
+          {article.excerpt}
+        </p>
+      </header>
       {/* Conteúdo do artigo */}
       <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {contentTopics.map((topic, index) => (
             <Card
@@ -371,12 +390,7 @@ const FullPagePreview = memo(function FullPagePreview({
               className="p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="mb-4">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold text-sm">{index + 1}</span>
-                  </div>
-                  {topic.title}
-                </h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">{topic.title}</h3>
               </div>
               <div className="prose prose-gray max-w-none">
                 <div className="text-gray-700 leading-relaxed text-base whitespace-pre-line">{topic.content}</div>
@@ -401,9 +415,11 @@ const FullPagePreview = memo(function FullPagePreview({
         <div className="mt-12 p-8 bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-3">Gostou do conteúdo?</h3>
           <p className="text-gray-600 mb-6 text-lg">Descubra como o Zi Credit pode transformar suas finanças</p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 px-8 py-3">
-            Criar minha conta
-          </Button>
+          <Link href="/suporte">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 px-8 py-3">
+              Criar minha conta
+            </Button>
+          </Link>
         </div>
       </article>
     </div>
@@ -434,8 +450,6 @@ export default function BlogPage() {
     return filtered
   }, [searchTerm, selectedCategory])
 
-  const featuredArticle = useMemo(() => articles.find((article) => article.featured) || articles[0], [])
-
   const handleCategoryChange = useCallback((category: string) => {
     setSelectedCategory(category)
   }, [])
@@ -465,33 +479,6 @@ export default function BlogPage() {
           <p className="text-xl text-center text-gray-600 mb-12">
             Fique por dentro das últimas notícias e tendências do mundo financeiro.
           </p>
-
-          {/* Featured Article Section */}
-          {featuredArticle && (
-            <section className="mb-12">
-              <Card className="overflow-hidden shadow-lg cursor-pointer hover:shadow-xl transition-shadow">
-                <div onClick={() => handlePreview(featuredArticle)}>
-                  <img
-                    src={featuredArticle.image || "/placeholder.svg"}
-                    alt={featuredArticle.title}
-                    className="w-full h-64 object-cover"
-                    loading="eager"
-                  />
-                  <CardContent className="p-6">
-                    <Badge className="mb-2">{featuredArticle.category}</Badge>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">{featuredArticle.title}</h2>
-                    <p className="text-gray-700 mb-4">{featuredArticle.excerpt}</p>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      <span>{featuredArticle.date}</span>
-                      <Clock className="w-4 h-4 ml-4 mr-1" />
-                      <span>{featuredArticle.readTime}</span>
-                    </div>
-                  </CardContent>
-                </div>
-              </Card>
-            </section>
-          )}
 
           {/* Search and Filter Section */}
           <section className="mb-12">

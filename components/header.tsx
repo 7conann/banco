@@ -223,12 +223,12 @@ export const Header = memo(function Header() {
               </>
             ) : (
               <>
-                <Link href="/auth/login">
+                <Link href="/suporte">
                   <Button variant="ghost" className="rounded-full px-4 py-2 text-gray-700 hover:bg-gray-100">
                     Entrar
                   </Button>
                 </Link>
-                <Link href="/auth/register">
+                <Link href="/suporte">
                   <Button className="rounded-full px-4 py-2 bg-yellow-500 text-white hover:bg-yellow-600">
                     Criar conta
                   </Button>
@@ -335,12 +335,12 @@ export const Header = memo(function Header() {
             {/* Ações (não autenticado) */}
             {!isAuthenticated && (
               <div className="flex flex-col gap-2 px-4 py-3">
-                <Link href="/auth/login" onClick={() => setMobileOpen(false)}>
+                <Link href="/suporte" onClick={() => setMobileOpen(false)}>
                   <div className="w-full px-3 py-2 rounded-full text-center text-gray-700 hover:bg-gray-100">
                     Entrar
                   </div>
                 </Link>
-                <Link href="/auth/register" onClick={() => setMobileOpen(false)}>
+                <Link href="/suporte" onClick={() => setMobileOpen(false)}>
                   <div className="w-full px-3 py-2 rounded-full bg-yellow-500 text-white text-center hover:bg-yellow-600">
                     Criar conta
                   </div>
